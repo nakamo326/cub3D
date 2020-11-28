@@ -1,0 +1,31 @@
+MiniLibX 3 "September 19, 2002"
+NAME
+MiniLibX - Managing windows
+SYNOPSYS
+void *mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
+
+int mlx_clear_window(void *mlx_ptr, void *win_ptr);
+
+int mlx_destroy_window(void *mlx_ptr, void *win_ptr);
+
+DESCRIPTION
+mlx_new_window関数はスクリーン上に、
+size_xとsize_yをサイズに、titleをウィンドウのタイトルバーに表示した、
+新しいウィンドウを作ります。
+引数mlx_ptrはmlx_init関数の返り値の接続識別子です。（mlxのmanページ参照）
+mlx_new_window関数は返り値として、他のMiniLibX関数で利用できるウィンドウ識別子（voidポインター型）を返します。
+MiniLibXは任意の数の個別のウィンドウを管理できることに注意してください。
+
+mlx_clear_window関数とmlx_destroy_window関数は、与えられたウィンドウをそれぞれ、黒でクリアまたは破棄します。
+二つの引数は、mlx_ptrがスクリーンの接続識別子、win_ptrがウィンドウ識別子です。
+
+RETURN VALUES
+mlx_new_window関数はウィンドウの作成に失敗したとき、NULLをリターンします。
+それ以外はNULLポインターでない、ウィンドウ識別子をリターンします。
+mlx_clear_windowとmlx_destroy_windowは現在何もリターンしません。
+
+SEE ALSO
+mlx(3), mlx_pixel_put(3), mlx_new_image(3), mlx_loop(3)
+
+AUTHOR
+Copyright ol@ - 2002-2014 - Olivier Crouzet
