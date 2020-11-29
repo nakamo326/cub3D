@@ -13,84 +13,39 @@ int mlx_destroy_image(void *mlx_ptr, void *img_ptr);
 
 
 DESCRIPTION
-mlx_new_image関数は、メモリ内に新しい画像を作ります。この画像を操作するためのvoidポインター型の識別子をリターンします。
+mlx_new_image関数は、メモリ内に新しい画像を作ります。この画像を操作するためのvoidポインター型の識別子を返します。
 引数として作りたい画像の幅と高さ、接続識別子を必要とします。
-ユーザーはこの画像内に描写したり（下図参照）、指定したウィンドウにイメージの内容を表示することができます。
+ユーザーはこの画像内に描写したり（下記参照）、指定したウィンドウに画像の内容を表示することができます。
 これには、mlx_put_image_to_window関数を使用します。接続識別子、ウィンドウ識別子、画像識別子が必要です。
 座標(x,y)はウィンドウ内のどこに画像を表示するかを指定します。
 
-.B mlx_get_data_addr
-() returns information about the created image, allowing a user
-to modify it later. The
-.I img_ptr
-parameter specifies the image to use. The three next parameters should
-be the addresses of three different valid integers.
-.I bits_per_pixel
-will be filled with the number of bits needed to represent a pixel color
-(also called the depth of the image).
-.I size_line
-is the number of bytes used to store one line of the image in memory.
-This information is needed to move from one line to another in the image.
-.I endian
-tells you wether the pixel color in the image needs to be stored in
-little endian (
-.I endian
-== 0), or big endian (
-.I endian
-== 1).
+mlx_get_data_addr関数は作成された画像の情報を返し、ユーザーが編集できるようにします。
+引数img_ptrは使用する画像を指定し、残りの三つの引数はint型の変数のアドレスを指定します。
+bits_per_pixelは、ピクセルの色を表現するのに必要なbit数を返します。（色深度とも呼ばれます。）
+size_lineは、画像の一行をメモリ上に保存するのに必要なバイト数です。
+この情報は、画像ある行から別の行へ移動するのに必要です。
+endianは、画像のピクセルの色をリトルエンディアン（endian== 0）かビッグエンディアン（endian== 1）のどちらで保存しているかを示しています。（バイトオーダー）
+mlx_get_data_addr関数は画像が保存されているメモリの始まりを示すchar*型を返します。
+このアドレスから、最初のbits_per_pixelビットが最初の行の一つ目のピクセルの色を表現しています。
+次のbits_per_pixelビットが最初の行の二つ目のピクセルの色を表現します。
+アドレスに、size_lineを加えると、二行目の始まりのアドレスを取得できます。
+このようにして、任意のピクセルにアクセスすることができます。
 
-.B mlx_get_data_addr
-returns a
-.I char *
-address that represents the begining of the memory area where the image
-is stored. From this adress, the first
-.I bits_per_pixel
-bits represent the color of the first pixel in the first line of
-the image. The second group of
-.I bits_per_pixel
-bits represent the second pixel of the first line, and so on.
-Add
-.I size_line
-to the adress to get the begining of the second line. You can reach any
-pixels of the image that way.
+mlx_destroy_image関数は、与えられたimg_ptrの画像を破棄します。
 
-.B mlx_destroy_image
-destroys the given image (
-.I img_ptr
-).
+STORING COLOR INSIDE IMAGES
+ディスプレイによって、ピクセルの色を保存するのに使われるビット数は変化します。
+ユーザーは通常一つの色をRGBで表現し、三原色にそれぞれ1バイト使用します。(mlx_pixel_putを参照)
+これは、X-Server（つまりディスプレイ）が理解できる色にするため、bits_per_pixelの要求に合わせて変換しなければなりません。
+これが、mlx_get_color_value関数の目的です。通常のRGBを引数colorとして受け取り、unsigned int型の値を返します。
+bits_per_pixel分の下位ビットが色として画像に保存できます。
 
-.SH STORING COLOR INSIDE IMAGES
+下位ビットの位置がローカル環境のendianに依存することに注意してください。
+もし画像のendian（X-server側のコンピュータのendian）がローカルのendianと違う場合、値を変換してから使う必要があります。
 
-Depending on the display, the number of bits used to store a pixel color
-can change. The user usually represents a color in RGB mode, using
-one byte for each component (see
-.B mlx_pixel_put
-manual). This must be translated to fit the
-.I bits_per_pixel
-requirement of the image, and make the color understandable to the X-Server.
-That is the purpose of the
-.B mlx_get_color_value
-() function. It takes a standard RGB
-.I color
-parameter, and returns an
-.I unsigned int
-value.
-The
-.I bits_per_pixel
-least significant bits of this value can be stored in the image.
-
-Keep in mind that the least significant bits position depends on the local
-computer's endian. If the endian of the image (in fact the endian of
-the X-Server's computer) differs from the local endian, then the value should
-be transformed before being used.
-
-.SH XPM IMAGES
-
-The
-.B mlx_xpm_to_image
-() and
-.B mlx_xpm_file_to_image
-() functions will create a new image the same way.
+XPM IMAGES
+mlx_xpm_to_image関数と、mlx_xpm_file_to_image関数は新しい画像を同じ方法で作成します。
+xpm_dataかfilenameに指定された、
 They will fill it using the specified
 .I xpm_data
 or

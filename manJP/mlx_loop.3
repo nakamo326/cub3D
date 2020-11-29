@@ -3,98 +3,36 @@
 MiniLibX - Handle events
 .SH SYNOPSYS
 
-.nf
-.I int
-.fi
-.B mlx_loop
-(
-.I void *mlx_ptr
-);
+int mlx_loop(void *mlx_ptr);
+int mlx_key_hook(void *win_ptr, int (*funct_ptr)(), void *param);
+int mlx_mouse_hook(void *win_ptr, int (*funct_ptr)(), void *param);
+int mlx_expose_hook(void *win_ptr, int (*funct_ptr)(), void *param);
+int mlx_loop_hook(void *mlx_ptr, int (*funct_ptr)(), void *param);
 
-.nf
-.I int
-.fi
-.B mlx_key_hook
-(
-.I void *win_ptr, int (*funct_ptr)(), void *param
-);
+X-WINDOW EVENTS
+X-Window systemは双方向性を持ちます。
+一方ではプログラムがピクセルや画像などをスクリーンに表示する指令を送り、
+もう一方ではスクリーン側のキーボードやマウスから情報を得ることができます。
+そのために、プログラムは”イベント”をキーボードやマウスから受け取ります。
 
-.nf
-.I int
-.fi
-.B mlx_mouse_hook
-(
-.I void *win_ptr, int (*funct_ptr)(), void *param
-);
+DESCRIPTION
+イベントを受け取るためには、mlx_loop関数をreturnせずに使わなけれいけません。
+この無限ループは、イベントを待ち続け、イベントに対応したユーザー定義の関数をコールします。
+接続識別子mlx_ptrを引数として必要とします。(mlxマニュアル参照)
+以下の三つのイベントに任意の関数を割り当てることができます。
+・キー押下
+・マウスボタン押下
+・ウィンドウ再描画（これは"Expose"イベントと呼ばれ、管理するのはあなたのプログラムの仕事です。）
+同じイベントに対して、ウィンドウごとに異なる関数を定義できます。
 
-.nf
-.I int
-.fi
-.B mlx_expose_hook
-(
-.I void *win_ptr, int (*funct_ptr)(), void *param
-);
+mlx_key_hook関数、mlx_mouse_hook関数、 mlx_expose_hook関数は同じ様に動作します。
+関数ポインタfunct_ptrに、イベントが発生したときコールしたい関数を指定します。
+ウィンドウ識別子win_ptrで、イベントを待つウィンドウを指定します。
+paramはコールする関数に渡す引数を格納します。
 
-.nf
-.I int
-.fi
-.B mlx_loop_hook
-(
-.I void *mlx_ptr, int (*funct_ptr)(), void *param
-);
+.B mlx_loop_hook関数の構文は、mlx_loop関数と同じですが、与えられたはイベントが発生しなかったときにコールされます。
 
-.SH X-WINDOW EVENTS
-
-The X-Window system is bi-directionnal. On one hand, the program sends orders to
-the screen to display pixels, images, and so on. On the other hand,
-it can get information from the keyboard and mouse associated to
-the screen. To do so, the program receives "events" from the keyboard or the
-mouse.
-
-.SH DESCRIPTION
-
-To receive events, you must use
-.B mlx_loop
-(). This function never returns. It is an infinite loop that waits for
-an event, and then calls a user-defined function associated with this event.
-A single parameter is needed, the connection identifier
-.I mlx_ptr
-(see the
-.B mlx manual).
-
-You can assign different functions to the three following events:
-.br
-- A key is pressed
-.br
-- The mouse button is pressed
-.br
-- A part of the window should be re-drawn
-(this is called an "expose" event, and it is your program's job to handle it).
-.br
-
-Each window can define a different function for the same event.
-
-The three functions
-.B mlx_key_hook
-(),
-.B mlx_mouse_hook
-() and
-.B mlx_expose_hook
-() work exactly the same way.
-.I funct_ptr
-is a pointer to the function you want to be called
-when an event occurs. This assignment is specific to the window defined by the
-.I win_ptr
-identifier. The
-.I param
-adress will be passed to the function everytime it is called, and should be
-used to store the parameters it might need.
-
-The syntax for the
-.B mlx_loop_hook
-() function is identical to the previous ones, but the given function will be
-called when no event occurs.
-
+イベントをキャッチしたとき、
 When it catches an event, the MiniLibX calls the corresponding function
 with fixed parameters:
 .nf
