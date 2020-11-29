@@ -1,7 +1,7 @@
-.TH MiniLibX 3 "September 19, 2002"
-.SH NAME
+MiniLibX 3 "September 19, 2002"
+NAME
 MiniLibX - Handle events
-.SH SYNOPSYS
+SYNOPSYS
 
 int mlx_loop(void *mlx_ptr);
 int mlx_key_hook(void *win_ptr, int (*funct_ptr)(), void *param);
@@ -30,50 +30,31 @@ mlx_key_hook関数、mlx_mouse_hook関数、 mlx_expose_hook関数は同じ様�
 ウィンドウ識別子win_ptrで、イベントを待つウィンドウを指定します。
 paramはコールする関数に渡す引数を格納します。
 
-.B mlx_loop_hook関数の構文は、mlx_loop関数と同じですが、与えられたはイベントが発生しなかったときにコールされます。
-
-イベントをキャッチしたとき、
-When it catches an event, the MiniLibX calls the corresponding function
-with fixed parameters:
-.nf
+mlx_loop_hook関数の構文は、mlx_loop関数と同じですが、与えられたはイベントが発生しなかったときにコールされます。
+イベントをキャッチしたとき、MiniLibXは、対応した関数を以下のような引数でコールします。
 
   expose_hook(void *param);
   key_hook(int keycode,void *param);
   mouse_hook(int button,int x,int y,void *param);
   loop_hook(void *param);
 
-.fi
-These function names are arbitrary. They here are used to distinguish
-parameters according to the event. These functions are NOT part of the
-MiniLibX.
+これらの関数の名前は任意です。イベントに応じて引数が違うことを確認してください。
+コールされる関数は、MiniLibXには含まれません。
 
-.I param
-is the address specified in the mlx_*_hook calls. This address is never
-used nor modified by the MiniLibX. On key and mouse events, additional
-information is passed:
-.I keycode
-tells you which key is pressed (look for the X11 include file "keysymdef.h"),
-(
-.I x
-,
-.I y
-) are the coordinates of the mouse click in the window, and
-.I button
-tells you which mouse button was pressed.
+paramはmlx_*_hook関数で指定されたアドレスです。このアドレスは、MiniLibXが使用したり、変更したりすることはありません。
+キーボード、マウスイベントでは、追加の情報として、
+押下されたキーのkeycode(X11 include file "keysymdef.h"を参照)、
+マウスボタンが押下されたウィンドウ座標(x,y)と、どのbuttonを押したかが渡されます。
 
-.SH GOING FURTHER WITH EVENTS
-The MiniLibX provides a much generic access to all X-Window events. The
-.I mlx.h
-include define
-.B mlx_hook()
-in the same manner mlx_*_hook functions work. The event and mask values
-will be taken from the X11 include file "X.h".
 
-See source code of mlx_int_param_event.c to find out how the MiniLibX will
-call your own function for a specific event.
+GOING FURTHER WITH EVENTS
+The MiniLibXは、すべてのX-Windowイベントへの十分なアクセスを提供します。
+mlx.hはmlx_*_hook関数群と同様にmlx_hook関数の定義を含みます。
+イベントとマスク値はX11のインクルードファイルx.hから取得できます。
+mlx_int_param_event.cのソースコードをみて、MiniLibXがイベントに対して、どのようにあなたの関数をコールするか確認してください。
 
-.SH SEE ALSO
+SEE ALSO
 mlx(3), mlx_new_window(3), mlx_pixel_put(3), mlx_new_image(3)
 
-.SH AUTHOR
+AUTHOR
 Copyright ol@ - 2002-2014 - Olivier Crouzet

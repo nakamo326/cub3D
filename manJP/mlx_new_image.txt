@@ -45,29 +45,17 @@ bits_per_pixel分の下位ビットが色として画像に保存できます。
 
 XPM IMAGES
 mlx_xpm_to_image関数と、mlx_xpm_file_to_image関数は新しい画像を同じ方法で作成します。
-xpm_dataかfilenameに指定された、
-They will fill it using the specified
-.I xpm_data
-or
-.I filename
-, depending on which function is used.
-Note that MiniLibX does not use the standard
-Xpm library to deal with xpm images. You may not be able to
-read all types of xpm images. It however handles transparency.
+xpm_dataかfilenameに指定されたxpmを画像にします。
+MiniLibXは通常のXpmライブラリを利用しないため、全てのxpm画像が読み込めないかもしれません。
+しかし、透明度は扱えます。
 
-.SH RETURN VALUES
+RETURN VALUES
 The three functions that create images,
-.B mlx_new_image()
-,
-.B mlx_xpm_to_image()
-and
-.B mlx_xpm_file_to_image()
-, will return NULL if an error occurs. Otherwise they return a non-null pointer
-as an image identifier.
+mlx_new_image関数、mlx_xpm_to_image関数、mlx_xpm_file_to_image関数はエラーの際NULLを返します。
+それ以外は、NULLでない画像識別子を返します。
 
-
-.SH SEE ALSO
+SEE ALSO
 mlx(3), mlx_new_window(3), mlx_pixel_put(3), mlx_loop(3)
 
-.SH AUTHOR
+AUTHOR
 Copyright ol@ - 2002-2014 - Olivier Crouzet
