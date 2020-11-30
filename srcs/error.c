@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/30 22:24:12 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/11/30 23:04:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ void	config_error(int ret)
 	const char err_msg[][30] = {
 		{"Error in read function.\n"},
 		{"dummy for skip"},
+		{"Error in malloc function.\n"},
 		{"Invalid format.\n"},
-		{"Invalid resolution.\n"}
+		{"Invalid resolution.\n"},
+		{"Invalid file path.\n"},
+		{"Invalid color code.\n"}
 	};
 
 	free_cub_info();

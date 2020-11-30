@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/30 22:24:30 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/11/30 23:09:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct	s_cub
 	char	*we_path;
 	char	*ea_path;
 	char	*sp_path;
-	int		f_color;
-	int		c_color;
+	int		f_color[3];
+	int		c_color[3];
 	char	**map;
 }				t_cub;
 
@@ -56,8 +56,11 @@ typedef enum	e_id
 typedef enum	e_err_conf
 {
 	READ_ERROR = 0,
-	INVALID_FORMAT = 2,
-	INVALID_RESO
+	MALLOC_ERROR = 2,
+	INVALID_FORMAT,
+	INVALID_RESO,
+	INVALID_FILEPATH,
+	INVALID_COLOR
 }				t_err_conf;
 
 //image data 必要？
