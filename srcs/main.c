@@ -6,83 +6,29 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/29 23:43:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/11/30 22:24:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
-extern t_cub cub_info;
+t_cub cub_info;
 
 void	init_cub()
 {
-	cub_info.window_width = 0;
-	cub_info.window_height= 0;
+	cub_info.window_width = 640;
+	cub_info.window_height= 480;
 	cub_info.no_path = NULL;
 	cub_info.so_path = NULL;
 	cub_info.we_path = NULL;
 	cub_info.ea_path = NULL;
 	cub_info.sp_path = NULL;
-	cub_info.f_color = 0;
-	cub_info.c_color = 0;
+	cub_info.f_color = 0xFFFFFF;
+	cub_info.c_color = 0x111111;
 	cub_info.map = NULL;
 }
 
-int read_cub(int fd)
-{
-	char *line;
-	int rc;
-	int ret;
-
-	errno = 0;
-	line = NULL;
-	while((rc = get_next_line(fd, &line)) >= 0)
-	{
-		ret = perse_cub(line);
-		free(line);
-		if (ret != 1)
-			return (output_errmsg(ret));
-		if (rc == 0)
-			break;
-	}
-	if (rc == -1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd(errno, 2);
-		exit (EXIT_FAILURE);
-	}
-	return (1);
-}
-
-int		perse_cub(char *line)
-{
-	const char id[][3] = {{"R"},{"NO"},{"SO"},{"WE"},{"EA"},{"S"},{"F"},{"C"}};
-	//一文字ちゃんと比較できるか怪しい
-	char *ptr;
-	int		i;
-
-	i = 0;
-	while (id[i] != NULL)
-	{
-		ptr = ft_strnstr(line, id[i], 2);
-		if (!ptr)
-			continue;
-		if (i == 0)
-			return (input_res(ptr));
-		if (i >= 1 && i <= 5)
-			return (input_path(ptr));
-		if (i >= 6)
-			return (input_color(ptr));
-	}
-	return ();
-}
-
-output_errmsg(int ret)
-{
-
-}
-
-void init_game(int argc ,char **argv)
+void	init_game(int argc ,char **argv)
 {
 	int		fd;
 
@@ -92,7 +38,7 @@ void init_game(int argc ,char **argv)
 
 }
 
-int main(int argc, char  **argv)
+int		main(int argc, char  **argv)
 {
 	void	*mlx;
 	void	*mlx_win;

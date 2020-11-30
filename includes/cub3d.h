@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/29 23:43:54 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/11/30 22:24:30 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 #define PI 3.14159
 #define ERROR -1
 
-
 typedef struct	s_cub
 {
 	int		window_width;
@@ -41,21 +40,39 @@ typedef struct	s_cub
 	char	**map;
 }				t_cub;
 
-typedef enum e_cuberror
+typedef enum	e_id
 {
+	R,
+	NO,
+	SO,
+	WE,
+	EA,
+	S,
+	F,
+	C,
+	INVALID
+}				t_id;
 
-}
-
-
+typedef enum	e_err_conf
+{
+	READ_ERROR = 0,
+	INVALID_FORMAT = 2,
+	INVALID_RESO
+}				t_err_conf;
 
 //image data 必要？
-typedef struct s_data {
+typedef struct	s_data {
 	void *img;
 	char *addr;
 	int bits_per_pixel;
 	int line_length;
 	int endian;
-}	t_data;
+}				t_data;
+
+extern t_cub cub_info;
+
+void	err_exit(char *errormsg);
+void	config_error(int ret);
 
 
 #endif
