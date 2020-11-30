@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/30 23:09:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 00:03:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ extern t_cub cub_info;
 
 void	err_exit(char *errormsg);
 void	config_error(int ret);
-
+void	free_cub_info(void);
+int		input_resolution(char *line);
+int		input_path(char *line, int ret);
+int		input_color(char *line, int ret);
 
 #endif

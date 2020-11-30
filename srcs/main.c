@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/30 22:24:36 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/11/30 23:52:13 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ void	init_cub()
 	cub_info.we_path = NULL;
 	cub_info.ea_path = NULL;
 	cub_info.sp_path = NULL;
-	cub_info.f_color = 0xFFFFFF;
-	cub_info.c_color = 0x111111;
+	cub_info.f_color[0] = 0xFF;
+	cub_info.f_color[1] = 0xFF;
+	cub_info.f_color[2] = 0xFF;
+	cub_info.c_color[0] = 0x11;
+	cub_info.c_color[1] = 0x11;
+	cub_info.c_color[2] = 0x11;
 	cub_info.map = NULL;
 }
 
@@ -42,7 +46,7 @@ int		main(int argc, char  **argv)
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data	map;
+	//t_data	map;
 
 	//is_valid_arg();
 	init_cub();
