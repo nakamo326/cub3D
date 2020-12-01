@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 10:34:41 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 14:32:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		input_path(char *line, int identifier)
 	int		fd;
 	int		rc;
 	//pathのチェックは後でまとめてやる
-	//エラーだったらpathのfree必要（free_cub_info
 	if (!(path = ft_strtrim(line, " ")))
 		return (MALLOC_ERROR);
 	if (identifier == NO)
@@ -81,7 +80,7 @@ int		input_color(char *line, int identifier)
 			cub_info.c_color[i] = rgb[i++];
 	}
 	set_flag(identifier);
-	return (SUCCESS);
+	return (free_ret(strs, SUCCESS));
 }
 
 int		free_ret(char **strs, int ret)

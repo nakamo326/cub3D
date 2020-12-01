@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 09:46:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 15:23:59 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include "../get_next_line/get_next_line.h"
 
 #define PI 3.14159
+#define MAP_BUF_SIZE 256
 #define ERROR -1
 #define SUCCESS 1
 
@@ -60,7 +61,7 @@ typedef enum	e_id
 	S,
 	F,
 	C,
-	INVALID
+	MAP
 }				t_id;
 
 typedef enum	e_err_conf
@@ -71,7 +72,8 @@ typedef enum	e_err_conf
 	INVALID_FORMAT,
 	INVALID_RESO,
 	INVALID_FILEPATH,
-	INVALID_COLOR
+	INVALID_COLOR,
+	NO_MAP_INFILE
 }				t_err_conf;
 
 //image data 必要？

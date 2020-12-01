@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 10:38:03 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 09:52:45 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 15:35:27 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,31 @@ int		read_cub(int fd)
 	int		rc;
 	int		ret;
 
+	ret = 0;
 	line = NULL;
-	while ((rc = get_next_line(fd, &line)) >= 0)
+	while ((rc = get_next_line(fd, &line)) >= 0 && ret != MAP)
 	{
+		if (rc == 0)
+			config_error(NO_MAP_INFILE);
 		ret = perse_line(line);
+		free(line);
+		if (ret != SUCCESS && ret != MAP)
+			config_error(ret);
+	}
+	while ((rc = get_next_line(fd, &line)) > 0)
+	{
+		ret = is_validmapline(line);
 		free(line);
 		if (ret != SUCCESS)
 			config_error(ret);
-		if (rc == 0)
-			break ;
 	}
 	if (rc == -1)
 		config_error(READ_ERROR);
-	return (1);
+	return (SUCCESS);
 }
 //mapにはいったらidentifierこないはず。
 //map確認する段階に入ったらidentifier来たらエラー
-//identifierの重複チェック必要
+//map正しいかは後でチェック
 
 int		perse_line(char *line)
 {
@@ -52,8 +60,8 @@ int		perse_line(char *line)
 		return (input_path(line + 2, ret));
 	if (ret >= F)
 		return (input_color(line + 1, ret));
-	if (ret == INVALID)
-		is_validmap(line);
+	if (ret == MAP)
+		return (is_validmapline(line));
 	return (ERROR);
 }
 
@@ -75,7 +83,7 @@ int		check_identifier(char *line)
 		return (F);
 	if (line[0] == 'C' && line[1] == ' ')
 		return (C);
-	return (INVALID);
+	return (MAP);
 }
 
 int		check_multiple(int identifier)

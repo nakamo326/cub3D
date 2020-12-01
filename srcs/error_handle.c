@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 10:18:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 15:17:16 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	config_error(int ret)
 		{"Invalid format.\n"},
 		{"Invalid resolution.\n"},
 		{"Invalid file path.\n"},
-		{"Invalid color code.\n"}
+		{"Invalid color code.\n"},
+		{"No map in cub file.\n"}
 	};
 
 	free_cub_info();
