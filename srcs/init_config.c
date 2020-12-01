@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 10:38:03 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 00:04:17 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 09:52:45 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		read_cub(int fd)
 	line = NULL;
 	while ((rc = get_next_line(fd, &line)) >= 0)
 	{
-		ret = perse_cub(line);
+		ret = perse_line(line);
 		free(line);
 		if (ret != SUCCESS)
 			config_error(ret);
@@ -32,18 +32,25 @@ int		read_cub(int fd)
 		config_error(READ_ERROR);
 	return (1);
 }
+//mapにはいったらidentifierこないはず。
+//map確認する段階に入ったらidentifier来たらエラー
+//identifierの重複チェック必要
 
-int		perse_cub(char *line)
+int		perse_line(char *line)
 {
 	char	*ptr;
 	int		ret;
 
+	if (*line == '\0')
+		return (SUCCESS);
 	ret = check_identifier(line);
-	if (ret == 0)
+	if(check_multiple(ret) == ERROR)
+		return (MULTIPLE_ID);
+	if (ret == R)
 		return (input_resolution(line + 1));
-	if (ret >= 1 && ret <= 5)
+	if (ret >= NO && ret <= S)
 		return (input_path(line + 2, ret));
-	if (ret >= 6)
+	if (ret >= F)
 		return (input_color(line + 1, ret));
 	if (ret == INVALID)
 		is_validmap(line);
@@ -69,4 +76,25 @@ int		check_identifier(char *line)
 	if (line[0] == 'C' && line[1] == ' ')
 		return (C);
 	return (INVALID);
+}
+
+int		check_multiple(int identifier)
+{
+	if (identifier == R && cub_info.win_f == true)
+		return (ERROR);
+	if (identifier == NO && cub_info.no_path_f == true)
+		return (ERROR);
+	if (identifier == SO && cub_info.so_path_f == true)
+		return (ERROR);
+	if (identifier == WE && cub_info.we_path_f == true)
+		return (ERROR);
+	if (identifier == EA && cub_info.ea_path_f == true)
+		return (ERROR);
+	if (identifier == S && cub_info.sp_path_f == true)
+		return (ERROR);
+	if (identifier == F && cub_info.f_color_f == true)
+		return (ERROR);
+	if (identifier == C && cub_info.c_color_f == true)
+		return (ERROR);
+	return (SUCCESS);
 }

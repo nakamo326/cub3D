@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 00:03:36 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 09:46:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 #include <string.h>
 #include <math.h>
 #include <errno.h>
+#include <stdbool.h>
 #include "../libft/libft.h"
 #include "../minilibx-linux/mlx.h"
 #include "../get_next_line/get_next_line.h"
 
 #define PI 3.14159
 #define ERROR -1
+#define SUCCESS 1
 
 typedef struct	s_cub
 {
@@ -37,6 +39,14 @@ typedef struct	s_cub
 	char	*sp_path;
 	int		f_color[3];
 	int		c_color[3];
+	bool	win_f;
+	bool	no_path_f;
+	bool	so_path_f;
+	bool	we_path_f;
+	bool	ea_path_f;
+	bool	sp_path_f;
+	bool	f_color_f;
+	bool	c_color_f;
 	char	**map;
 }				t_cub;
 
@@ -57,6 +67,7 @@ typedef enum	e_err_conf
 {
 	READ_ERROR = 0,
 	MALLOC_ERROR = 2,
+	MULTIPLE_ID,
 	INVALID_FORMAT,
 	INVALID_RESO,
 	INVALID_FILEPATH,
@@ -78,7 +89,7 @@ void	err_exit(char *errormsg);
 void	config_error(int ret);
 void	free_cub_info(void);
 int		input_resolution(char *line);
-int		input_path(char *line, int ret);
-int		input_color(char *line, int ret);
+int		input_path(char *line, int identifier);
+int		input_color(char *line, int identifier);
 
 #endif

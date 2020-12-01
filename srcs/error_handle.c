@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 00:00:08 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 10:18:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	err_exit(char *errormsg)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(errormsg, 2);
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 void	free_cub_info(void)
@@ -46,6 +46,7 @@ void	config_error(int ret)
 		{"Error in read function.\n"},
 		{"dummy for skip"},
 		{"Error in malloc function.\n"},
+		{"Identifier is duplicated.\n"},
 		{"Invalid format.\n"},
 		{"Invalid resolution.\n"},
 		{"Invalid file path.\n"},

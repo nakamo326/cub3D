@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/11/30 23:52:13 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 09:38:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ void	init_cub()
 	cub_info.c_color[1] = 0x11;
 	cub_info.c_color[2] = 0x11;
 	cub_info.map = NULL;
+	cub_info.win_f = false;
+	cub_info.no_path_f = false;
+	cub_info.so_path_f = false;
+	cub_info.we_path_f = false;
+	cub_info.ea_path_f = false;
+	cub_info.sp_path_f = false;
+	cub_info.f_color_f = false;
+	cub_info.c_color_f = false;
 }
 
 void	init_game(int argc ,char **argv)
