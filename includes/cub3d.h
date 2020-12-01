@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 15:23:59 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 21:21:22 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #include "../get_next_line/get_next_line.h"
 
 #define PI 3.14159
-#define MAP_BUF_SIZE 256
+#define MAP_BUF_SIZE 64
 #define ERROR -1
 #define SUCCESS 1
 
@@ -48,7 +48,7 @@ typedef struct	s_cub
 	bool	sp_path_f;
 	bool	f_color_f;
 	bool	c_color_f;
-	char	**map;
+	char	*map[MAP_BUF_SIZE];
 }				t_cub;
 
 typedef enum	e_id
@@ -93,5 +93,12 @@ void	free_cub_info(void);
 int		input_resolution(char *line);
 int		input_path(char *line, int identifier);
 int		input_color(char *line, int identifier);
-
+void	test_print_cub(void);
+int		read_cub(int fd);
+int		is_validmapline(char *line);
+int		perse_line(char *line);
+int		check_identifier(char *line);
+int		check_multiple(int identifier);
+int		set_flag(int identifier);
+int		perse_map(int fd);
 #endif

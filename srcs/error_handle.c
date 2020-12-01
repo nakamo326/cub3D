@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 15:17:16 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 18:33:10 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	config_error(int ret)
 	};
 
 	free_cub_info();
-	err_exit(err_msg[ret]);
+	err_exit((char *)err_msg[ret]);
 }

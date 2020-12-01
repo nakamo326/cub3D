@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 09:38:49 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 21:01:01 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_cub()
 	cub_info.c_color[0] = 0x11;
 	cub_info.c_color[1] = 0x11;
 	cub_info.c_color[2] = 0x11;
-	cub_info.map = NULL;
+	cub_info.map[0] = NULL;
 	cub_info.win_f = false;
 	cub_info.no_path_f = false;
 	cub_info.so_path_f = false;
@@ -40,20 +40,21 @@ void	init_cub()
 	cub_info.c_color_f = false;
 }
 
-void	init_game(int argc ,char **argv)
+void	init_game(int argc ,char *argv[])
 {
 	int		fd;
 
+	(void)argc;
 	if((fd = open(argv[1],O_RDONLY)) == ERROR)
 		exit(EXIT_FAILURE);
 	read_cub(fd);
 
 }
 
-int		main(int argc, char  **argv)
+int		main(int argc, char *argv[])
 {
-	void	*mlx;
-	void	*mlx_win;
+	//void	*mlx;
+	//void	*mlx_win;
 	//t_data	map;
 
 	//is_valid_arg();
@@ -67,7 +68,7 @@ int		main(int argc, char  **argv)
 	//mlx_put_image_to_window(mlx, mlx_win, map.img, 0, 0);
 	//mlx_loop(mlx);
 
-	test_cub();
+	test_print_cub();
 	return 0;
 }
 
@@ -76,3 +77,24 @@ int		main(int argc, char  **argv)
 //まずcubファイルの読み込み。gnlで一行ずつ解釈して構造体に格納？
 //cubファイルに不備があった場合、""Error\n"出力後エラーメッセージ
 //ゲームループへ
+
+void	test_print_cub(void)
+{
+	int i;
+	printf("window width: %d\n", cub_info.window_width);
+	printf("window height: %d\n", cub_info.window_height);
+	printf("no_path: %s\n", cub_info.no_path);
+	printf("so_path: %s\n", cub_info.so_path);
+	printf("we_path: %s\n", cub_info.we_path);
+	printf("ea_path: %s\n", cub_info.ea_path);
+	printf("sp_path: %s\n", cub_info.sp_path);
+	printf("fcolor: %d, %d, %d\n", cub_info.f_color[0],cub_info.f_color[1],cub_info.f_color[2]);
+	printf("ccolor: %d, %d, %d\n", cub_info.c_color[0],cub_info.c_color[1],cub_info.c_color[2]);
+	i = 0;
+	while (cub_info.map[i] != NULL)
+	{
+		printf("map[%2d]:%s\n", i, cub_info.map[i]);
+		i++;
+	}
+
+}

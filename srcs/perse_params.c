@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 14:32:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/01 20:41:06 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int		input_resolution(char *line)
 
 	i = 0;
 	while (line[i])
-		if (!(line[i] == ' ' || ft_isdigit(line[i++])))
+	{
+		if (!(line[i] == ' ' || ft_isdigit(line[i])))
 			return (INVALID_FORMAT);
+		i++;
+	}
 	if (!(strs = ft_split(line, ' ')))
 		return (MALLOC_ERROR);
 	tmp = ft_atoi(strs[0]);
@@ -39,8 +42,7 @@ int		input_resolution(char *line)
 int		input_path(char *line, int identifier)
 {
 	char	*path;
-	int		fd;
-	int		rc;
+
 	//pathのチェックは後でまとめてやる
 	if (!(path = ft_strtrim(line, " ")))
 		return (MALLOC_ERROR);
@@ -58,6 +60,12 @@ int		input_path(char *line, int identifier)
 	return (SUCCESS);
 }
 
+int		free_ret(char **strs, int ret)
+{
+	ft_free_split(strs);
+	return (ret);
+}
+
 int		input_color(char *line, int identifier)
 {
 	char	**strs;
@@ -72,21 +80,16 @@ int		input_color(char *line, int identifier)
 		if (strs[i] == NULL)
 			return (free_ret(strs, INVALID_FORMAT));
 		rgb[i] = ft_atoi(strs[i]);
-		if (rgb[i] < 0 || rgb[i++] > 255)
+		if (rgb[i] < 0 || rgb[i] > 255)
 			return (free_ret(strs, INVALID_COLOR));
 		if (identifier == F)
-			cub_info.f_color[i] = rgb[i++];
+			cub_info.f_color[i] = rgb[i];
 		if (identifier == C)
-			cub_info.c_color[i] = rgb[i++];
+			cub_info.c_color[i] = rgb[i];
+		i++;
 	}
 	set_flag(identifier);
 	return (free_ret(strs, SUCCESS));
-}
-
-int		free_ret(char **strs, int ret)
-{
-	ft_free_split(strs);
-	return (ret);
 }
 
 int		set_flag(int identifier)
