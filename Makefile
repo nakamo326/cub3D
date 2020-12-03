@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/01 18:33:45 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/03 22:50:45 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/init_config.c \
 			srcs/perse_params.c \
 			srcs/perse_map.c \
-			srcs/error_handle.c
+			srcs/error_handle.c \
+			srcs/render_map.c
 
 
 

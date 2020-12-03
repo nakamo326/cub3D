@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/03 22:06:46 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 00:23:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ typedef struct	s_cub
 
 typedef struct	s_player
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
+	char	direction;
 }				t_player;
 
 typedef enum	e_id
@@ -87,7 +88,6 @@ typedef enum	e_err_conf
 	MAP_ISNT_CLOSED
 }				t_err_conf;
 
-//image data 必要？
 typedef struct	s_data {
 	void *img;
 	char *addr;
@@ -116,5 +116,7 @@ int		set_flag(int identifier);
 int		perse_map(int fd);
 int		is_valid_map(void);
 int		is_closed_map(int x, int y);
+void	render_map(t_data *map);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

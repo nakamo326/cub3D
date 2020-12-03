@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/03 22:08:21 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/03 23:58:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,25 @@ void	init_game(int argc ,char *argv[])
 
 int		main(int argc, char *argv[])
 {
-	//void	*mlx;
-	//void	*mlx_win;
-	//t_data	map;
+	void	*mlx;
+	void	*mlx_win;
+	t_data	map;
 
 	//is_valid_arg();
 	init_cub();
 	init_game(argc, argv);
-	//mlx = mlx_init();
-	//mlx_win = mlx_new_window(mlx, 640, 480, "2DgridMap");
-	//map.img = mlx_new_image(mlx, 640, 480);
-	//map.addr = mlx_get_data_addr(map.img, &map.bits_per_pixel, &map.line_length, &map.endian);
-	//my_mlx_pixel_put(&map, 5,5, 0x00FF0000);
-	//mlx_put_image_to_window(mlx, mlx_win, map.img, 0, 0);
-	//mlx_loop(mlx);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, cub.map_maxcol * 20, cub.map_maxrow * 20, "2DgridMap");
+	map.img = mlx_new_image(mlx, cub.map_maxcol * 20, cub.map_maxrow * 20);
+	map.addr = mlx_get_data_addr(map.img, &map.bits_per_pixel, &map.line_length, &map.endian);
+
+	//my_mlx_pixel_put(&map, 10,1, 0x00FF0000);
+	render_map(&map);
+	mlx_put_image_to_window(mlx, mlx_win, map.img, 0, 0);
+	mlx_loop(mlx);
 
 	return 0;
 }
-
 
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
 //まずcubファイルの読み込み。gnlで一行ずつ解釈して構造体に格納？
@@ -96,7 +97,6 @@ int		main(int argc, char *argv[])
 
 void	test_print_cub(void)
 {
-
 	printf("window width: %d\n", cub.window_width);
 	printf("window height: %d\n", cub.window_height);
 	printf("no_path: %s\n", cub.no_path);
