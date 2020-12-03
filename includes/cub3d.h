@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 21:21:22 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:06:46 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,16 @@ typedef struct	s_cub
 	bool	sp_path_f;
 	bool	f_color_f;
 	bool	c_color_f;
-	char	*map[MAP_BUF_SIZE];
+	char	*map[MAP_BUF_SIZE + 1];
+	int		map_maxrow;
+	int		map_maxcol;
 }				t_cub;
+
+typedef struct	s_player
+{
+	double x;
+	double y;
+}				t_player;
 
 typedef enum	e_id
 {
@@ -68,12 +76,15 @@ typedef enum	e_err_conf
 {
 	READ_ERROR = 0,
 	MALLOC_ERROR = 2,
+	ISNT_CUBFILE,
 	MULTIPLE_ID,
 	INVALID_FORMAT,
 	INVALID_RESO,
 	INVALID_FILEPATH,
 	INVALID_COLOR,
-	NO_MAP_INFILE
+	NO_MAP_INFILE,
+	MULTIPLE_PLAYER,
+	MAP_ISNT_CLOSED
 }				t_err_conf;
 
 //image data 必要？
@@ -85,7 +96,8 @@ typedef struct	s_data {
 	int endian;
 }				t_data;
 
-extern t_cub cub_info;
+extern t_cub cub;
+extern t_player pl_info;
 
 void	err_exit(char *errormsg);
 void	config_error(int ret);
@@ -94,6 +106,7 @@ int		input_resolution(char *line);
 int		input_path(char *line, int identifier);
 int		input_color(char *line, int identifier);
 void	test_print_cub(void);
+void	print_map(void);
 int		read_cub(int fd);
 int		is_validmapline(char *line);
 int		perse_line(char *line);
@@ -101,4 +114,7 @@ int		check_identifier(char *line);
 int		check_multiple(int identifier);
 int		set_flag(int identifier);
 int		perse_map(int fd);
+int		is_valid_map(void);
+int		is_closed_map(int x, int y);
+
 #endif

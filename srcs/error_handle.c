@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 18:33:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:08:18 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,37 @@ void	free_cub_info(void)
 {
 	int	i;
 
-	if (cub_info.no_path != NULL)
-		free(cub_info.no_path);
-	if (cub_info.so_path != NULL)
-		free(cub_info.so_path);
-	if (cub_info.we_path != NULL)
-		free(cub_info.we_path);
-	if (cub_info.ea_path != NULL)
-		free(cub_info.ea_path);
+	if (cub.no_path != NULL)
+		free(cub.no_path);
+	if (cub.so_path != NULL)
+		free(cub.so_path);
+	if (cub.we_path != NULL)
+		free(cub.we_path);
+	if (cub.ea_path != NULL)
+		free(cub.ea_path);
 	i = 0;
-	if (cub_info.map != NULL)
-		while (cub_info.map[i] != NULL)
+	if (cub.map != NULL)
+		while (cub.map[i] != NULL)
 		{
-			free(cub_info.map[i]);
+			free(cub.map[i]);
 			i++;
 		}
 }
 
 void	config_error(int ret)
 {
-	const char err_msg[][30] = {
+	const char err_msg[][40] = {
 		{"Error in read function.\n"},
-		{"dummy for skip"},
+		{"Dummy for skip"},
 		{"Error in malloc function.\n"},
 		{"Identifier is duplicated.\n"},
 		{"Invalid format.\n"},
 		{"Invalid resolution.\n"},
 		{"Invalid file path.\n"},
 		{"Invalid color code.\n"},
-		{"No map in cub file.\n"}
+		{"No map in cub file.\n"},
+		{"Player position is duplicated.\n"},
+		{"Map isn't closed.\n"}
 	};
 
 	free_cub_info();

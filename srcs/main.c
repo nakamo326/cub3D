@@ -6,38 +6,51 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 21:01:01 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:08:21 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_cub cub_info;
+t_cub cub;
+t_player pl_info;
 
 void	init_cub()
 {
-	cub_info.window_width = 640;
-	cub_info.window_height= 480;
-	cub_info.no_path = NULL;
-	cub_info.so_path = NULL;
-	cub_info.we_path = NULL;
-	cub_info.ea_path = NULL;
-	cub_info.sp_path = NULL;
-	cub_info.f_color[0] = 0xFF;
-	cub_info.f_color[1] = 0xFF;
-	cub_info.f_color[2] = 0xFF;
-	cub_info.c_color[0] = 0x11;
-	cub_info.c_color[1] = 0x11;
-	cub_info.c_color[2] = 0x11;
-	cub_info.map[0] = NULL;
-	cub_info.win_f = false;
-	cub_info.no_path_f = false;
-	cub_info.so_path_f = false;
-	cub_info.we_path_f = false;
-	cub_info.ea_path_f = false;
-	cub_info.sp_path_f = false;
-	cub_info.f_color_f = false;
-	cub_info.c_color_f = false;
+	cub.window_width = 640;
+	cub.window_height= 480;
+	cub.no_path = NULL;
+	cub.so_path = NULL;
+	cub.we_path = NULL;
+	cub.ea_path = NULL;
+	cub.sp_path = NULL;
+	cub.f_color[0] = 0xFF;
+	cub.f_color[1] = 0xFF;
+	cub.f_color[2] = 0xFF;
+	cub.c_color[0] = 0x11;
+	cub.c_color[1] = 0x11;
+	cub.c_color[2] = 0x11;
+	cub.win_f = false;
+	cub.no_path_f = false;
+	cub.so_path_f = false;
+	cub.we_path_f = false;
+	cub.ea_path_f = false;
+	cub.sp_path_f = false;
+	cub.f_color_f = false;
+	cub.c_color_f = false;
+	cub.map[0] = NULL;
+	cub.map_maxrow = 0;
+	cub.map_maxcol = 0;
+}
+
+int		is_cub(char *filepath)
+{
+	size_t len;
+
+	len = ft_strlen(filepath);
+	if (ft_strncmp(&filepath[len - 4], ".cub" , 4) == 0)
+		return (SUCCESS);
+	return (0);
 }
 
 void	init_game(int argc ,char *argv[])
@@ -45,10 +58,14 @@ void	init_game(int argc ,char *argv[])
 	int		fd;
 
 	(void)argc;
+	if (!is_cub(argv[1]))
+		config_error(ISNT_CUBFILE);
 	if((fd = open(argv[1],O_RDONLY)) == ERROR)
 		exit(EXIT_FAILURE);
 	read_cub(fd);
-
+	test_print_cub();
+	is_valid_map();
+	print_map();
 }
 
 int		main(int argc, char *argv[])
@@ -68,7 +85,6 @@ int		main(int argc, char *argv[])
 	//mlx_put_image_to_window(mlx, mlx_win, map.img, 0, 0);
 	//mlx_loop(mlx);
 
-	test_print_cub();
 	return 0;
 }
 
@@ -80,21 +96,27 @@ int		main(int argc, char *argv[])
 
 void	test_print_cub(void)
 {
+
+	printf("window width: %d\n", cub.window_width);
+	printf("window height: %d\n", cub.window_height);
+	printf("no_path: %s\n", cub.no_path);
+	printf("so_path: %s\n", cub.so_path);
+	printf("we_path: %s\n", cub.we_path);
+	printf("ea_path: %s\n", cub.ea_path);
+	printf("sp_path: %s\n", cub.sp_path);
+	printf("fcolor: %d, %d, %d\n", cub.f_color[0],cub.f_color[1],cub.f_color[2]);
+	printf("ccolor: %d, %d, %d\n", cub.c_color[0],cub.c_color[1],cub.c_color[2]);
+	//print_map();
+}
+
+void	print_map(void)
+{
 	int i;
-	printf("window width: %d\n", cub_info.window_width);
-	printf("window height: %d\n", cub_info.window_height);
-	printf("no_path: %s\n", cub_info.no_path);
-	printf("so_path: %s\n", cub_info.so_path);
-	printf("we_path: %s\n", cub_info.we_path);
-	printf("ea_path: %s\n", cub_info.ea_path);
-	printf("sp_path: %s\n", cub_info.sp_path);
-	printf("fcolor: %d, %d, %d\n", cub_info.f_color[0],cub_info.f_color[1],cub_info.f_color[2]);
-	printf("ccolor: %d, %d, %d\n", cub_info.c_color[0],cub_info.c_color[1],cub_info.c_color[2]);
+
 	i = 0;
-	while (cub_info.map[i] != NULL)
+	while (cub.map[i] != NULL)
 	{
-		printf("map[%2d]:%s\n", i, cub_info.map[i]);
+		printf("map[%2d]:%s\n", i, cub.map[i]);
 		i++;
 	}
-
 }

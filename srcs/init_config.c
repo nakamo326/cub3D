@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 10:38:03 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/01 21:22:22 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:08:19 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,21 @@ int		check_identifier(char *line)
 
 int		check_multiple(int identifier)
 {
-	if (identifier == R && cub_info.win_f == true)
+	if (identifier == R && cub.win_f == true)
 		return (ERROR);
-	if (identifier == NO && cub_info.no_path_f == true)
+	if (identifier == NO && cub.no_path_f == true)
 		return (ERROR);
-	if (identifier == SO && cub_info.so_path_f == true)
+	if (identifier == SO && cub.so_path_f == true)
 		return (ERROR);
-	if (identifier == WE && cub_info.we_path_f == true)
+	if (identifier == WE && cub.we_path_f == true)
 		return (ERROR);
-	if (identifier == EA && cub_info.ea_path_f == true)
+	if (identifier == EA && cub.ea_path_f == true)
 		return (ERROR);
-	if (identifier == S && cub_info.sp_path_f == true)
+	if (identifier == S && cub.sp_path_f == true)
 		return (ERROR);
-	if (identifier == F && cub_info.f_color_f == true)
+	if (identifier == F && cub.f_color_f == true)
 		return (ERROR);
-	if (identifier == C && cub_info.c_color_f == true)
+	if (identifier == C && cub.c_color_f == true)
 		return (ERROR);
 	return (SUCCESS);
 }
