@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/03 22:08:18 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 12:15:40 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	err_exit(char *errormsg)
 	ft_putstr_fd(errormsg, 2);
 	exit(EXIT_FAILURE);
 }
-
+/*
 void	free_cub_info(void)
 {
 	int	i;
@@ -39,7 +39,7 @@ void	free_cub_info(void)
 			i++;
 		}
 }
-
+*/
 void	config_error(int ret)
 {
 	const char err_msg[][40] = {
@@ -52,10 +52,10 @@ void	config_error(int ret)
 		{"Invalid file path.\n"},
 		{"Invalid color code.\n"},
 		{"No map in cub file.\n"},
-		{"Player position is duplicated.\n"},
+		{"Player's position is duplicated.\n"},
 		{"Map isn't closed.\n"}
 	};
 
-	free_cub_info();
+	//free_cub_info();
 	err_exit((char *)err_msg[ret]);
 }

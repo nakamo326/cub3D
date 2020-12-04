@@ -6,13 +6,13 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/03 22:09:21 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 11:14:48 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		input_resolution(char *line)
+int		input_resolution(char *line, t_cub *cub)
 {
 	int		i;
 	int		tmp;
@@ -28,33 +28,33 @@ int		input_resolution(char *line)
 	if (!(strs = ft_split(line, ' ')))
 		return (MALLOC_ERROR);
 	tmp = ft_atoi(strs[0]);
-	cub.window_width = tmp;
+	cub->window_width = tmp;
 	tmp = ft_atoi(strs[1]);
-	cub.window_height = tmp;
+	cub->window_height = tmp;
 	ft_free_split(strs);
-	if (cub.window_width <= 0 || cub.window_height <= 0)
+	if (cub->window_width <= 0 || cub->window_height <= 0)
 		return (INVALID_RESO);
-	cub.win_f = true;
+	cub->win_f = true;
 	return (SUCCESS);
 }
 
-int		input_path(char *line, int identifier)
+int		input_path(char *line, int identifier, t_cub *cub)
 {
 	char	*path;
 	//pathのチェックは後でまとめてやる
 	if (!(path = ft_strtrim(line, " ")))
 		return (MALLOC_ERROR);
 	if (identifier == NO)
-		cub.no_path = path;
+		cub->no_path = path;
 	if (identifier == SO)
-		cub.so_path = path;
+		cub->so_path = path;
 	if (identifier == WE)
-		cub.we_path = path;
+		cub->we_path = path;
 	if (identifier == EA)
-		cub.ea_path = path;
+		cub->ea_path = path;
 	if (identifier == S)
-		cub.sp_path = path;
-	set_flag(identifier);
+		cub->sp_path = path;
+	set_flag(identifier, cub);
 	return (SUCCESS);
 }
 
@@ -64,7 +64,7 @@ int		free_ret(char **strs, int ret)
 	return (ret);
 }
 
-int		input_color(char *line, int identifier)
+int		input_color(char *line, int identifier, t_cub *cub)
 {
 	char	**strs;
 	int		i;
@@ -81,30 +81,30 @@ int		input_color(char *line, int identifier)
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (free_ret(strs, INVALID_COLOR));
 		if (identifier == F)
-			cub.f_color[i] = rgb[i];
+			cub->f_color[i] = rgb[i];
 		if (identifier == C)
-			cub.c_color[i] = rgb[i];
+			cub->c_color[i] = rgb[i];
 		i++;
 	}
-	set_flag(identifier);
+	set_flag(identifier, cub);
 	return (free_ret(strs, SUCCESS));
 }
 
-int		set_flag(int identifier)
+int		set_flag(int identifier, t_cub *cub)
 {
 	if (identifier == NO)
-		cub.no_path_f = true;
+		cub->no_path_f = true;
 	if (identifier == SO)
-		cub.so_path_f = true;
+		cub->so_path_f = true;
 	if (identifier == WE)
-		cub.we_path_f = true;
+		cub->we_path_f = true;
 	if (identifier == EA)
-		cub.ea_path_f = true;
+		cub->ea_path_f = true;
 	if (identifier == S)
-		cub.sp_path_f = true;
+		cub->sp_path_f = true;
 	if (identifier == F)
-		cub.f_color_f = true;
+		cub->f_color_f = true;
 	if (identifier == C)
-		cub.c_color_f = true;
+		cub->c_color_f = true;
 	return (ERROR);
 }

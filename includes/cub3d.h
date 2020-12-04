@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 00:23:05 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 13:01:11 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 #define MAP_BUF_SIZE 64
 #define ERROR -1
 #define SUCCESS 1
+
+typedef struct	s_pl
+{
+	double	x;
+	double	y;
+	char	direction;
+}				t_pl;
 
 typedef struct	s_cub
 {
@@ -51,14 +58,9 @@ typedef struct	s_cub
 	char	*map[MAP_BUF_SIZE + 1];
 	int		map_maxrow;
 	int		map_maxcol;
+	t_pl	player;
 }				t_cub;
 
-typedef struct	s_player
-{
-	double	x;
-	double	y;
-	char	direction;
-}				t_player;
 
 typedef enum	e_id
 {
@@ -96,27 +98,25 @@ typedef struct	s_data {
 	int endian;
 }				t_data;
 
-extern t_cub cub;
-extern t_player pl_info;
-
 void	err_exit(char *errormsg);
 void	config_error(int ret);
-void	free_cub_info(void);
-int		input_resolution(char *line);
-int		input_path(char *line, int identifier);
-int		input_color(char *line, int identifier);
-void	test_print_cub(void);
-void	print_map(void);
-int		read_cub(int fd);
-int		is_validmapline(char *line);
-int		perse_line(char *line);
+//void	free_cub_info(void);
+int		input_resolution(char *line, t_cub *cub);
+int		input_path(char *line, int identifier, t_cub *cub);
+int		input_color(char *line, int identifier, t_cub *cub);
+void	test_print_cub(t_cub *cub);
+void	print_map(t_cub *cub);
+int		read_cub(int fd, t_cub *cub);
+int		is_validmapline(char *line, t_cub *cub);
+int		perse_line(char *line, t_cub *cub);
 int		check_identifier(char *line);
-int		check_multiple(int identifier);
-int		set_flag(int identifier);
-int		perse_map(int fd);
-int		is_valid_map(void);
-int		is_closed_map(int x, int y);
-void	render_map(t_data *map);
+int		check_multiple(int identifier, t_cub *cub);
+int		set_flag(int identifier, t_cub *cub);
+int		perse_map(int fd, t_cub *cub);
+int		is_valid_map(t_cub *cub);
+int		is_closed_map(t_cub *cub, int x, int y);
+void	render_map(t_data *map, t_cub cub);
+void	render_gridline(t_data *map, t_cub cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
