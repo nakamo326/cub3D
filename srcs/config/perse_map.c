@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 12:12:58 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 15:48:35 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		is_valid_map(t_cub *cub)
 					config_error(MULTIPLE_PLAYER);
 				cub->player.x = x;
 				cub->player.y = y;
-				cub->player.direction = cub->map[y][x];
+				cub->player.spawn_direction = cub->map[y][x];
 				p_flag = true;
 				cub->map[y][x] = '0';
 			}

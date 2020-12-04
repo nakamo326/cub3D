@@ -6,42 +6,11 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 13:25:14 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 17:43:07 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_cub(t_cub *cub)
-{
-	cub->window_width = 640;
-	cub->window_height= 480;
-	cub->no_path = NULL;
-	cub->so_path = NULL;
-	cub->we_path = NULL;
-	cub->ea_path = NULL;
-	cub->sp_path = NULL;
-	cub->f_color[0] = 0xFF;
-	cub->f_color[1] = 0xFF;
-	cub->f_color[2] = 0xFF;
-	cub->c_color[0] = 0x11;
-	cub->c_color[1] = 0x11;
-	cub->c_color[2] = 0x11;
-	cub->win_f = false;
-	cub->no_path_f = false;
-	cub->so_path_f = false;
-	cub->we_path_f = false;
-	cub->ea_path_f = false;
-	cub->sp_path_f = false;
-	cub->f_color_f = false;
-	cub->c_color_f = false;
-	cub->map[0] = NULL;
-	cub->map_maxrow = 0;
-	cub->map_maxcol = 0;
-	cub->player.direction = '\0';
-	cub->player.x = 0;
-	cub->player.y = 0;
-}
 
 int		is_cub(char *filepath)
 {
@@ -83,7 +52,7 @@ int		main(int argc, char *argv[])
 	mlx_win = mlx_new_window(mlx, cub.map_maxcol * 20, cub.map_maxrow * 20, "2DgridMap");
 	map.img = mlx_new_image(mlx, cub.map_maxcol * 20, cub.map_maxrow * 20);
 	map.addr = mlx_get_data_addr(map.img, &map.bits_per_pixel, &map.line_length, &map.endian);
-	render_gridline(&map, cub);
+	//render_gridline(&map, cub);
 	render_map(&map, cub);
 	mlx_put_image_to_window(mlx, mlx_win, map.img, 0, 0);
 	mlx_loop(mlx);

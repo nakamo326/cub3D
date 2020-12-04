@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 13:01:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 17:42:34 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ typedef struct	s_pl
 {
 	double	x;
 	double	y;
-	char	direction;
+	char	spawn_direction;//error case
+	int		turn_direction;//-1 if left, 1 if right
+	int		walk_direction;//-1 if back, 1 if front
+	double	rotation_angle;
+	double	move_speed;
+	double	rotation_speed;
 }				t_pl;
 
 typedef struct	s_cub
@@ -98,6 +103,7 @@ typedef struct	s_data {
 	int endian;
 }				t_data;
 
+void	init_cub(t_cub *cub);
 void	err_exit(char *errormsg);
 void	config_error(int ret);
 //void	free_cub_info(void);
