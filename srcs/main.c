@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/03 23:58:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 10:53:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,9 @@ int		main(int argc, char *argv[])
 	mlx_win = mlx_new_window(mlx, cub.map_maxcol * 20, cub.map_maxrow * 20, "2DgridMap");
 	map.img = mlx_new_image(mlx, cub.map_maxcol * 20, cub.map_maxrow * 20);
 	map.addr = mlx_get_data_addr(map.img, &map.bits_per_pixel, &map.line_length, &map.endian);
-
-	//my_mlx_pixel_put(&map, 10,1, 0x00FF0000);
 	render_map(&map);
 	mlx_put_image_to_window(mlx, mlx_win, map.img, 0, 0);
 	mlx_loop(mlx);
-
 	return 0;
 }
 
