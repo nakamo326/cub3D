@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 17:43:07 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 17:44:00 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ int		main(int argc, char *argv[])
 }
 
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
-//cubファイルに不備があった場合、""Error\n"出力後エラーメッセージ
-//ゲームループへ
-
 void	test_print_cub(t_cub *cub)
 {
 	printf("window width: %d\n", cub->window_width);

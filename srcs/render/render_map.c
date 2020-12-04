@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 13:30:16 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 17:45:37 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,6 @@ void	render_map_floor(t_data *map, t_cub cub, int x, int y)
 	}
 }
 
-void	render_map_wall(t_data *map, int x, int y)
-{
-	int i;
-
-	i = 0;
-	while (i < 20)
-	{
-		my_mlx_pixel_put(map, x * 20, y * 20 + i, 0x00B007);
-		my_mlx_pixel_put(map, x * 20 + i, y * 20, 0x00B007);
-		my_mlx_pixel_put(map, (x + 1) * 20, y * 20 + i, 0x00B007);
-		my_mlx_pixel_put(map, x * 20 + i, (y + 1) * 20, 0x00B007);
-		i++;
-	}
-}
-
 //mapのcharに合わせてimgに描写、ひとまず線で枠書く？プレイヤーは上書きできるはず。
 void	render_map(t_data *map, t_cub cub)
 {
@@ -84,16 +69,4 @@ void	render_map(t_data *map, t_cub cub)
 		}
 		y++;
 	}
-	//y = 0;
-	//while (y < cub.map_maxrow)
-	//{
-	//	x = 0;
-	//	while (cub.map[y][x] != '\0')
-	//	{
-	//		if (cub.map[y][x] == '1')
-	//			render_map_wall(map, x, y);
-	//		x++;
-	//	}
-	//	y++;
-	//}
 }

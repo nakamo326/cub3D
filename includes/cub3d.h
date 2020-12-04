@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 17:42:34 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 17:53:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 #define MAP_BUF_SIZE 64
 #define ERROR -1
 #define SUCCESS 1
+
+typedef struct	s_data {
+	void *img;
+	char *addr;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+}				t_data;
 
 typedef struct	s_pl
 {
@@ -66,7 +74,6 @@ typedef struct	s_cub
 	t_pl	player;
 }				t_cub;
 
-
 typedef enum	e_id
 {
 	R,
@@ -79,7 +86,6 @@ typedef enum	e_id
 	C,
 	MAP
 }				t_id;
-
 typedef enum	e_err_conf
 {
 	READ_ERROR = 0,
@@ -95,34 +101,23 @@ typedef enum	e_err_conf
 	MAP_ISNT_CLOSED
 }				t_err_conf;
 
-typedef struct	s_data {
-	void *img;
-	char *addr;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-}				t_data;
-
 void	init_cub(t_cub *cub);
 void	err_exit(char *errormsg);
 void	config_error(int ret);
 //void	free_cub_info(void);
+int		read_cub(int fd, t_cub *cub);
 int		input_resolution(char *line, t_cub *cub);
 int		input_path(char *line, int identifier, t_cub *cub);
 int		input_color(char *line, int identifier, t_cub *cub);
-void	test_print_cub(t_cub *cub);
-void	print_map(t_cub *cub);
-int		read_cub(int fd, t_cub *cub);
 int		is_validmapline(char *line, t_cub *cub);
-int		perse_line(char *line, t_cub *cub);
-int		check_identifier(char *line);
-int		check_multiple(int identifier, t_cub *cub);
 int		set_flag(int identifier, t_cub *cub);
 int		perse_map(int fd, t_cub *cub);
 int		is_valid_map(t_cub *cub);
-int		is_closed_map(t_cub *cub, int x, int y);
 void	render_map(t_data *map, t_cub cub);
 void	render_gridline(t_data *map, t_cub cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+//for debug
+void	test_print_cub(t_cub *cub);
+void	print_map(t_cub *cub);
 
 #endif

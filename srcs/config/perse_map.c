@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 15:48:35 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/04 17:48:55 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ int		perse_map(int fd, t_cub *cub)
 	return (SUCCESS);
 }
 
+void	store_item_cordinate(t_cub *cub, int x, int y)
+{
+	//連結リストに入れる。
+	cub->map[y][x] = 0;
+}
+
+int		is_closed_map(t_cub *cub, int x, int y)
+{
+	if (y < 0 || x < 0 || cub->map[y] == NULL ||
+			cub->map[y][x] == '\0')
+		return (0);
+	if (cub->map[y][x] == '2')
+		store_item_cordinate(cub, x, y);
+	if (cub->map[y][x] == '*' || cub->map[y][x] == '1')
+		return (0);
+	if (y == 0 || x == 0 || cub->map[y + 1] == NULL ||
+			cub->map[y][x + 1] == '\0')
+		config_error(MAP_ISNT_CLOSED);
+	cub->map[y][x] = '*';
+	is_closed_map(cub, x + 1, y);
+	is_closed_map(cub, x, y + 1);
+	is_closed_map(cub, x - 1, y);
+	is_closed_map(cub, x, y - 1);
+	return (SUCCESS);
+}
+
 int		is_valid_map(t_cub *cub)
 {
 	int		x;
@@ -80,30 +106,4 @@ int		is_valid_map(t_cub *cub)
 		y++;
 	}
 	return (is_closed_map(cub, cub->player.x, cub->player.y));
-}
-
-void	store_item_cordinate(t_cub *cub, int x, int y)
-{
-	//連結リストに入れる。
-	cub->map[y][x] = 0;
-}
-
-int		is_closed_map(t_cub *cub, int x, int y)
-{
-	if (y < 0 || x < 0 || cub->map[y] == NULL ||
-			cub->map[y][x] == '\0')
-		return (0);
-	if (cub->map[y][x] == '2')
-		store_item_cordinate(cub, x, y);
-	if (cub->map[y][x] == '*' || cub->map[y][x] == '1')
-		return (0);
-	if (y == 0 || x == 0 || cub->map[y + 1] == NULL ||
-			cub->map[y][x + 1] == '\0')
-		config_error(MAP_ISNT_CLOSED);
-	cub->map[y][x] = '*';
-	is_closed_map(cub, x + 1, y);
-	is_closed_map(cub, x, y + 1);
-	is_closed_map(cub, x - 1, y);
-	is_closed_map(cub, x, y - 1);
-	return (SUCCESS);
 }
