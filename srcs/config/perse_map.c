@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 11:59:53 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 14:09:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,15 @@ int		perse_map(int fd, t_cub *cub)
 void	store_item_cordinate(t_cub *cub, int x, int y)
 {
 	//連結リストに入れる。
-	cub->map[y][x] = 0;
+	t_list	*new;
+	int		*cordinate;
+	cordinate = malloc(sizeof(int) * 2);
+	cordinate[0] = x;
+	cordinate[1] = y;
+	if (!(new = ft_lstnew(cordinate)))
+		config_error(MALLOC_ERROR);
+	ft_lstadd_back(cub->items, new);
+	cub->map[y][x] = '0';
 }
 
 int		is_closed_map(t_cub *cub, int x, int y)

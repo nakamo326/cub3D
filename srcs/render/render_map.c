@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 12:31:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 12:55:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,44 +38,44 @@ void	render_map_floor(t_img *map, int x, int y)
 	}
 }
 
-void	render_map_wall(t_img *map, t_cub *cub, int x, int y)
+void	render_map_wall(t_game *game, int x, int y)
 {
 	int i;
 
 	i = 0;
 	while (i <= 20)
 	{
-		if (cub->map[y][x - 1] == '1')
-			my_mlx_pixel_put(map, x * 20, y * 20 + i, 0x00B007);
-		if (cub->map[y - 1][x] == '1')
-			my_mlx_pixel_put(map, x * 20 + i, y * 20, 0x00B007);
-		if (cub->map[y][x + 1] == '1')
-			my_mlx_pixel_put(map, (x + 1) * 20, y * 20 + i, 0x00B007);
-		if (cub->map[y + 1][x] == '1')
-			my_mlx_pixel_put(map, x * 20 + i, (y + 1) * 20, 0x00B007);
+		if (game->cub.map[y][x - 1] == '1')
+			my_mlx_pixel_put(&game->map, x * 20, y * 20 + i, 0x00B007);
+		if (game->cub.map[y - 1][x] == '1')
+			my_mlx_pixel_put(&game->map, x * 20 + i, y * 20, 0x00B007);
+		if (game->cub.map[y][x + 1] == '1')
+			my_mlx_pixel_put(&game->map, (x + 1) * 20, y * 20 + i, 0x00B007);
+		if (game->cub.map[y + 1][x] == '1')
+			my_mlx_pixel_put(&game->map, x * 20 + i, (y + 1) * 20, 0x00B007);
 		i++;
 	}
 }
 
-void	render_minimap(t_img *map, t_cub *cub, t_pl player)
+void	render_minimap(t_game *game)
 {
 	int x;
 	int y;
 
 	y = 0;
-	while (y < cub->map_maxrow)
+	while (y < game->cub.map_maxrow)
 	{
 		x = 0;
-		while (cub->map[y][x] != '\0')
+		while (game->cub.map[y][x] != '\0')
 		{
-			if (cub->map[y][x] == '*' || cub->map[y][x] == '0')
+			if (game->cub.map[y][x] == '*' || game->cub.map[y][x] == '0')
 			{
-				render_map_floor(map, x, y);
-				render_map_wall(map, cub, x, y);
+				render_map_floor(&game->map, x, y);
+				render_map_wall(game, x, y);
 			}
 			x++;
 		}
 		y++;
 	}
-	render_player(map, player);
+	render_map_object(game);
 }

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 12:32:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 14:06:11 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct	s_cub
 	bool	sp_path_f;
 	bool	f_color_f;
 	bool	c_color_f;
-	//t_pl	player;
+	t_list	**items;
 }				t_cub;
 
 typedef struct	s_game
@@ -120,8 +120,8 @@ int		is_validmapline(char *line, t_cub *cub);
 int		set_flag(int identifier, t_cub *cub);
 int		perse_map(int fd, t_cub *cub);
 int		is_valid_map(t_game *game);
-void	render_minimap(t_img *map, t_cub *cub, t_pl player);
-void	render_player(t_img *map, t_pl player);
+void	render_minimap(t_game *game);
+void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
