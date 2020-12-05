@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 15:23:50 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 17:07:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	print_map(game->cub);
 }
 
+int		key_hook(int keycode, t_game *game)
+{
+	double n;
+	n = 1 / (double)TILE_SIZE;
+	printf("The key you pressed is \"%d\"\n", keycode);
+	game->player.y -= n;
+	printf("%f\n",game->player.y);
+	return (SUCCESS);
+}
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
 int		main(int argc, char *argv[])
 {
@@ -53,6 +62,8 @@ int		main(int argc, char *argv[])
 	game.mlx_win = mlx_new_window(game.mlx, map_width, map_height, "2DgridMap");
 	game.map.img_ptr = mlx_new_image(game.mlx, map_width, map_height);
 	game.map.addr = mlx_get_data_addr(game.map.img_ptr, &game.map.bpp, &game.map.len, &game.map.endian);
+
+	mlx_key_hook(game.mlx_win, key_hook, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
 	return 0;
