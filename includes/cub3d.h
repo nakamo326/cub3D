@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 14:06:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 14:35:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct	s_cub
 	bool	sp_path_f;
 	bool	f_color_f;
 	bool	c_color_f;
-	t_list	**items;
+	t_list	*items;
 }				t_cub;
 
 typedef struct	s_game

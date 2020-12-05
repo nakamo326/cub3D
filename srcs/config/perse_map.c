@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 14:09:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 14:35:48 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	store_item_cordinate(t_cub *cub, int x, int y)
 	cordinate[1] = y;
 	if (!(new = ft_lstnew(cordinate)))
 		config_error(MALLOC_ERROR);
-	ft_lstadd_back(cub->items, new);
+	ft_lstadd_back(&cub->items, new);
 	cub->map[y][x] = '0';
 }
 
