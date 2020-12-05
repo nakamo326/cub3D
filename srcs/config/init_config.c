@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 10:38:03 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 11:05:49 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 11:58:43 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		perse_line(char *line, t_cub *cub)
 	return (ERROR);
 }
 
-int		read_cub(int fd, t_game *game)
+int		read_cub(int fd, t_cub *cub)
 {
 	char	*line;
 	int		rc;
@@ -86,12 +86,12 @@ int		read_cub(int fd, t_game *game)
 	{
 		if (rc == 0)
 			config_error(NO_MAP_INFILE);
-		ret = perse_line(line, &game->cub);
+		ret = perse_line(line, cub);
 		free(line);
 		if (ret != SUCCESS && ret != MAP)
 			config_error(ret);
 	}
 	if (rc == -1)
 		config_error(READ_ERROR);
-	return (perse_map(fd, game));
+	return (perse_map(fd, cub));
 }

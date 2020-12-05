@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 11:13:51 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 11:59:53 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		is_validmapline(char *line, t_cub *cub)
 	return (MAP);
 }
 
-int		perse_map(int fd, t_game *game)
+int		perse_map(int fd, t_cub *cub)
 {
 	int		rc;
 	int		ret;
@@ -41,7 +41,7 @@ int		perse_map(int fd, t_game *game)
 	line = NULL;
 	while ((rc = get_next_line(fd, &line)) >= 0)
 	{
-		ret = is_validmapline(line, &game->cub);
+		ret = is_validmapline(line, cub);
 		free(line);
 		if (ret != MAP)
 			config_error(ret);

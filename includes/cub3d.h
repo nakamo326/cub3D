@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 11:14:36 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 12:32:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,15 +112,16 @@ void	init_val(t_game *game);
 void	err_exit(char *errormsg);
 void	config_error(int ret);
 //void	free_cub_info(void);
-int		read_cub(int fd, t_game *game);
+int		read_cub(int fd, t_cub *cub);
 int		input_resolution(char *line, t_cub *cub);
 int		input_path(char *line, int identifier, t_cub *cub);
 int		input_color(char *line, int identifier, t_cub *cub);
 int		is_validmapline(char *line, t_cub *cub);
 int		set_flag(int identifier, t_cub *cub);
-int		perse_map(int fd, t_game *game);
+int		perse_map(int fd, t_cub *cub);
 int		is_valid_map(t_game *game);
-void	render_map(t_img *map, t_cub *cub, t_pl player);
+void	render_minimap(t_img *map, t_cub *cub, t_pl player);
+void	render_player(t_img *map, t_pl player);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 11:00:38 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 12:15:40 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_player(t_game *game)
 	game->player.rotation_speed = 3 * PI / 180;
 }
 
-void	init_val(t_game *game)
+void	init_cub(t_game *game)
 {
 	game->cub.window_width = 640;
 	game->cub.window_height= 480;
@@ -54,6 +54,11 @@ void	init_val(t_game *game)
 	game->cub.map[0] = NULL;
 	game->cub.map_maxrow = 0;
 	game->cub.map_maxcol = 0;
+}
+
+void	init_val(t_game *game)
+{
+	init_cub(game);
 	init_flags(game);
 	init_player(game);
 }
