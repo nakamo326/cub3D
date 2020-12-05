@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 10:34:14 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 11:16:08 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void	render_map_floor(t_img *map, t_cub *cub, int x, int y)
 	}
 }
 
-void	render_player(t_img *map, t_cub *cub)
+void	render_player(t_img *map, t_pl player)
 {
 	//red dot with anti alias
 	int x;
 	int y;
 
-	x = cub->player.x;
-	y = cub->player.y;
+	x = player.x;
+	y = player.y;
 	my_mlx_pixel_put(map, x * 20 + 10, y * 20 + 10, 0xFF0000);
 	my_mlx_pixel_put(map, x * 20 + 11, y * 20 + 10, 0xFF0000);
 	my_mlx_pixel_put(map, x * 20 +  9, y * 20 + 10, 0xFF0000);
@@ -70,7 +70,7 @@ void	render_player(t_img *map, t_cub *cub)
 	my_mlx_pixel_put(map, x * 20 + 11, y * 20 + 11, 0x80110B);
 }
 
-void	render_map(t_img *map, t_cub *cub)
+void	render_map(t_img *map, t_cub *cub, t_pl player)
 {
 	int x;
 	int y;
@@ -87,5 +87,5 @@ void	render_map(t_img *map, t_cub *cub)
 		}
 		y++;
 	}
-	render_player(map, cub);
+	render_player(map, player);
 }

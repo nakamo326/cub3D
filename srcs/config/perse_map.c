@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 17:48:55 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 11:13:51 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		is_validmapline(char *line, t_cub *cub)
 	return (MAP);
 }
 
-int		perse_map(int fd, t_cub *cub)
+int		perse_map(int fd, t_game *game)
 {
 	int		rc;
 	int		ret;
@@ -41,7 +41,7 @@ int		perse_map(int fd, t_cub *cub)
 	line = NULL;
 	while ((rc = get_next_line(fd, &line)) >= 0)
 	{
-		ret = is_validmapline(line, cub);
+		ret = is_validmapline(line, &game->cub);
 		free(line);
 		if (ret != MAP)
 			config_error(ret);
@@ -79,31 +79,31 @@ int		is_closed_map(t_cub *cub, int x, int y)
 	return (SUCCESS);
 }
 
-int		is_valid_map(t_cub *cub)
+int		is_valid_map(t_game *game)
 {
 	int		x;
 	int		y;
 	bool	p_flag;
 	y = 0;
 	p_flag = false;
-	while (cub->map[y] != NULL)
+	while (game->cub.map[y] != NULL)
 	{
 		x = 0;
-		while (cub->map[y][x] != '\0')
+		while (game->cub.map[y][x] != '\0')
 		{
-			if (ft_strchr("NSWE", cub->map[y][x]))
+			if (ft_strchr("NSWE", game->cub.map[y][x]))
 			{
 				if (p_flag == true)
 					config_error(MULTIPLE_PLAYER);
-				cub->player.x = x;
-				cub->player.y = y;
-				cub->player.spawn_direction = cub->map[y][x];
+				game->player.x = x;
+				game->player.y = y;
+				game->player.spawn_direction = game->cub.map[y][x];
 				p_flag = true;
-				cub->map[y][x] = '0';
+				game->cub.map[y][x] = '0';
 			}
 			x++;
 		}
 		y++;
 	}
-	return (is_closed_map(cub, cub->player.x, cub->player.y));
+	return (is_closed_map(&game->cub, game->player.x, game->player.y));
 }
