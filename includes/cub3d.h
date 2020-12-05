@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/04 17:53:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 10:33:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@
 #define ERROR -1
 #define SUCCESS 1
 
-typedef struct	s_data {
-	void *img;
+typedef struct	s_img {
+	void *img_ptr;
 	char *addr;
-	int bits_per_pixel;
-	int line_length;
+	int bpp;
+	int len;
 	int endian;
-}				t_data;
+}				t_img;
 
 typedef struct	s_pl
 {
@@ -60,6 +60,9 @@ typedef struct	s_cub
 	char	*sp_path;
 	int		f_color[3];
 	int		c_color[3];
+	char	*map[MAP_BUF_SIZE + 1];
+	int		map_maxrow;
+	int		map_maxcol;
 	bool	win_f;
 	bool	no_path_f;
 	bool	so_path_f;
@@ -68,9 +71,6 @@ typedef struct	s_cub
 	bool	sp_path_f;
 	bool	f_color_f;
 	bool	c_color_f;
-	char	*map[MAP_BUF_SIZE + 1];
-	int		map_maxrow;
-	int		map_maxcol;
 	t_pl	player;
 }				t_cub;
 
@@ -113,10 +113,10 @@ int		is_validmapline(char *line, t_cub *cub);
 int		set_flag(int identifier, t_cub *cub);
 int		perse_map(int fd, t_cub *cub);
 int		is_valid_map(t_cub *cub);
-void	render_map(t_data *map, t_cub cub);
-void	render_gridline(t_data *map, t_cub cub);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	render_map(t_img *map, t_cub *cub);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 //for debug
+void	render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub *cub);
 void	print_map(t_cub *cub);
 

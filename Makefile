@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/04 16:55:06 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/05 10:36:55 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = cub3D
 
 SRCFILE =	get_next_line/get_next_line.c \
+			srcs/testcode.c \
 			srcs/config/init_config.c \
 			srcs/config/perse_params.c \
 			srcs/config/perse_map.c \
