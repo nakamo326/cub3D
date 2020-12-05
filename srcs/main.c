@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 12:48:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 15:13:41 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,19 @@ void	init_game(int argc ,char *argv[], t_game *game)
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
 int		main(int argc, char *argv[])
 {
-	void		*mlx;
-	void		*mlx_win;
-	//t_img		map;
-	//t_cub		cub;
+	//void		*mlx;
+	//void		*mlx_win;
 	t_game		game;
 
 
 	//is_valid_arg();
 	init_val(&game);
 	init_game(argc, argv, &game);
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, game.cub.map_maxcol * 20, game.cub.map_maxrow * 20, "2DgridMap");
-	game.map.img_ptr = mlx_new_image(mlx, game.cub.map_maxcol * 20, game.cub.map_maxrow * 20);
+	game.mlx = mlx_init();
+	game.mlx_win = mlx_new_window(game.mlx, game.cub.map_maxcol * 20, game.cub.map_maxrow * 20, "2DgridMap");
+	game.map.img_ptr = mlx_new_image(game.mlx, game.cub.map_maxcol * 20, game.cub.map_maxrow * 20);
 	game.map.addr = mlx_get_data_addr(game.map.img_ptr, &game.map.bpp, &game.map.len, &game.map.endian);
-	//render_gridline(&map, cub);
-	render_minimap(&game);
-	mlx_put_image_to_window(mlx, mlx_win, game.map.img_ptr, 0, 0);
-	mlx_loop(mlx);
+	mlx_loop_hook(game.mlx, loop, &game);
+	mlx_loop(game.mlx);
 	return 0;
 }

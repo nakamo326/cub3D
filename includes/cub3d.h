@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 14:35:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 15:12:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct	s_cub
 
 typedef struct	s_game
 {
+	void	*mlx;
+	void	*mlx_win;
 	t_cub	cub;
 	t_img	map;
 	t_pl	player;
@@ -123,9 +125,11 @@ int		is_valid_map(t_game *game);
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int		loop(t_game *game);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
 void	print_map(t_cub cub);
+
 
 #endif

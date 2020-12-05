@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/05 12:32:58 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/05 15:15:04 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/main.c \
 			srcs/init_struct.c \
 			srcs/error_handle.c \
+			srcs/loop.c \
 			srcs/render/render_map.c \
 			srcs/render/render_map_object.c
 
