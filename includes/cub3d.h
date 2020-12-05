@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 15:36:14 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 16:20:13 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct	s_pl
 	double	move_speed;
 	double	rotation_speed;
 }				t_pl;
+
+typedef struct	s_sprite
+{
+	int		number;
+	double	x;
+	double	y;
+}				t_sprite;
 
 typedef struct	s_cub
 {

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 15:31:19 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 16:31:25 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	render_player(t_img *map, int x, int y)
 
 void	render_items(t_img *map, int x, int y)
 {
-	//#2dc8ff
 	int i;
 	int j;
 
@@ -49,10 +48,10 @@ void	render_items(t_img *map, int x, int y)
 
 void	render_map_object(t_game *game)
 {
-	t_list *lstptr;
-	int *cordinate;
-	int x;
-	int y;
+	t_list		*lstptr;
+	t_sprite	*item_info;
+	int			x;
+	int			y;
 	//change after define map_tilesize
 	render_player(&game->map, game->player.x * TILE_SIZE + TILE_SIZE /2,
 				game->player.y * TILE_SIZE + TILE_SIZE /2);
@@ -60,9 +59,9 @@ void	render_map_object(t_game *game)
 	lstptr = game->cub.items;
 	while (lstptr != NULL)
 	{
-		cordinate = lstptr->content;
-		x = cordinate[0];
-		y = cordinate[1];
+		item_info = lstptr->content;
+		x = item_info->x;
+		y = item_info->y;
 		render_items(&game->map, x * TILE_SIZE + TILE_SIZE /2,
 			y * TILE_SIZE + TILE_SIZE /2);
 		lstptr = lstptr->next;
