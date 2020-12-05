@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 15:44:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 17:27:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	render_minimap(t_game *game)
 	int y;
 
 	y = 0;
+	//at first set tFF all pixel
 	while (y < game->cub.map_maxrow)
 	{
 		x = 0;

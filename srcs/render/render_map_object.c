@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 16:31:25 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 17:55:44 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	render_map_object(t_game *game)
 	int			x;
 	int			y;
 	//change after define map_tilesize
-	render_player(&game->map, game->player.x * TILE_SIZE + TILE_SIZE /2,
-				game->player.y * TILE_SIZE + TILE_SIZE /2);
+	render_player(&game->map, game->player.x + TILE_SIZE /2,
+				game->player.y + TILE_SIZE /2);
 
 	lstptr = game->cub.items;
 	while (lstptr != NULL)

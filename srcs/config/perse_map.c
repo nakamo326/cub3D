@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 16:27:24 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 17:55:38 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ int		is_valid_map(t_game *game)
 			{
 				if (p_flag == true)
 					config_error(MULTIPLE_PLAYER);
-				game->player.x = x;
-				game->player.y = y;
+				game->player.x = x * TILE_SIZE;
+				game->player.y = y * TILE_SIZE;
 				game->player.spawn_direction = game->cub.map[y][x];
 				p_flag = true;
 				game->cub.map[y][x] = '0';
@@ -115,5 +115,6 @@ int		is_valid_map(t_game *game)
 		}
 		y++;
 	}
-	return (is_closed_map(&game->cub, game->player.x, game->player.y));
+	return (is_closed_map(&game->cub,
+		game->player.x / TILE_SIZE, game->player.y / TILE_SIZE));
 }

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 17:07:14 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 17:50:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ void	init_game(int argc ,char *argv[], t_game *game)
 
 int		key_hook(int keycode, t_game *game)
 {
-	double n;
-	n = 1 / (double)TILE_SIZE;
 	printf("The key you pressed is \"%d\"\n", keycode);
-	game->player.y -= n;
+	game->player.y -= 1;
 	printf("%f\n",game->player.y);
 	return (SUCCESS);
 }
