@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 17:52:56 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/05 22:49:13 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <math.h>
 #include <errno.h>
 #include <stdbool.h>
+#include <X11/keysym.h>
+#include <X11/X.h>
 #include "../libft/libft.h"
 #include "../minilibx-linux/mlx.h"
 #include "../get_next_line/get_next_line.h"
@@ -133,7 +135,9 @@ int		is_valid_map(t_game *game);
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int		keypress_hook(int keycode, t_game *game);
 int		loop(t_game *game);
+
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
