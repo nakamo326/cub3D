@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 11:14:51 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 12:34:55 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 #define TILE_SIZE 32
 #define ERROR -1
 #define SUCCESS 1
+#define INWALL 1
+#define ONFLOOR 0
 
 typedef struct	s_img {
 	void *img_ptr;
