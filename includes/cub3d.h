@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 12:34:55 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 13:53:39 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_pl
 	char	spawn_direction;//error case
 	int		turn_direction;//-1 if left, 1 if right
 	int		walk_direction;//-1 if back, 1 if front
+	int		sidewalk_direction;//-1 if left, 1 if right
 	double	rotation_angle;
 	double	move_speed;
 	double	rotation_speed;
@@ -142,6 +143,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
+void	move_player(t_game *game);
 
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
