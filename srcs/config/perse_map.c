@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 19:06:35 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 11:09:28 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int		is_closed_map(t_cub *cub, int x, int y)
 	if (y < 0 || x < 0 || cub->map[y] == NULL ||
 			cub->map[y][x] == '\0')
 		return (0);
-	if (cub->map[y][x] == '2')
-		store_item_cordinate(cub, x, y);
 	if (cub->map[y][x] == '*' || cub->map[y][x] == '1')
 		return (0);
 	if (y == 0 || x == 0 || cub->map[y + 1] == NULL ||
@@ -87,6 +85,21 @@ int		is_closed_map(t_cub *cub, int x, int y)
 	is_closed_map(cub, x - 1, y);
 	is_closed_map(cub, x, y - 1);
 	return (SUCCESS);
+}
+
+void	store_pl_info(t_game *game, int x, int y)
+{
+	game->player.x = x * TILE_SIZE + TILE_SIZE /2;
+	game->player.y = y * TILE_SIZE + TILE_SIZE /2;
+	if (game->cub.map[y][x] == 'N')
+		game->player.rotation_angle = 270 * PI / 180;
+	if (game->cub.map[y][x] == 'S')
+		game->player.rotation_angle = 90 * PI / 180;
+	if (game->cub.map[y][x] == 'W')
+		game->player.rotation_angle = 0 * PI / 180;
+	if (game->cub.map[y][x] == 'E')
+		game->player.rotation_angle = 180 * PI / 180;
+	game->cub.map[y][x] = '0';
 }
 
 int		is_valid_map(t_game *game)
@@ -101,20 +114,20 @@ int		is_valid_map(t_game *game)
 		x = 0;
 		while (game->cub.map[y][x] != '\0')
 		{
+			if (game->cub.map[y][x] == '2')
+				store_item_cordinate(&game->cub, x, y);
 			if (ft_strchr("NSWE", game->cub.map[y][x]))
 			{
 				if (p_flag == true)
 					config_error(MULTIPLE_PLAYER);
-				game->player.x = x * TILE_SIZE;
-				game->player.y = y * TILE_SIZE;
-				game->player.spawn_direction = game->cub.map[y][x];
+				store_pl_info(game, x, y);
 				p_flag = true;
-				game->cub.map[y][x] = '0';
 			}
 			x++;
 		}
 		y++;
 	}
-	return (is_closed_map(&game->cub,
-		game->player.x / TILE_SIZE, game->player.y / TILE_SIZE));
+	x = game->player.x / TILE_SIZE;
+	y = game->player.y / TILE_SIZE;
+	return (is_closed_map(&game->cub, x, y));
 }

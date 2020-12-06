@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 10:32:44 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 10:41:06 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_player(t_game *game)
 	game->player.spawn_direction = '\0';//error case
 	game->player.turn_direction = 0;//-1 if left, 1 if right
 	game->player.walk_direction = 0;//-1 if back, 1 if front
-	game->player.rotation_angle = PI / 2;
+	game->player.rotation_angle = 0;
 	game->player.move_speed = 1.0;
 	game->player.rotation_speed = 1 * PI / 180;
 }
