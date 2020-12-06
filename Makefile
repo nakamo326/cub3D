@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/06 10:26:37 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/06 11:15:57 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/config/init_config.c \
 			srcs/config/perse_params.c \
 			srcs/config/perse_map.c \
+			srcs/config/store_object_info.c \
 			srcs/main.c \
 			srcs/hook.c \
 			srcs/init_struct.c \

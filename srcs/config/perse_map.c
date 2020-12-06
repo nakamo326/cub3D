@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 11:09:28 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 11:15:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,6 @@ int		perse_map(int fd, t_cub *cub)
 	return (SUCCESS);
 }
 
-void	store_item_cordinate(t_cub *cub, int x, int y)
-{
-	//連結リストに入れる。
-	t_list		*new;
-	t_sprite	*item_info;
-	static int	num = 0;
-	item_info = malloc(sizeof(t_sprite));
-	item_info->x = x;
-	item_info->y = y;
-	item_info->number = num++;
-	if (!(new = ft_lstnew(item_info)))
-		config_error(MALLOC_ERROR);
-	ft_lstadd_back(&cub->items, new);
-	cub->map[y][x] = '0';
-}
-
 int		is_closed_map(t_cub *cub, int x, int y)
 {
 	if (y < 0 || x < 0 || cub->map[y] == NULL ||
@@ -87,21 +71,6 @@ int		is_closed_map(t_cub *cub, int x, int y)
 	return (SUCCESS);
 }
 
-void	store_pl_info(t_game *game, int x, int y)
-{
-	game->player.x = x * TILE_SIZE + TILE_SIZE /2;
-	game->player.y = y * TILE_SIZE + TILE_SIZE /2;
-	if (game->cub.map[y][x] == 'N')
-		game->player.rotation_angle = 270 * PI / 180;
-	if (game->cub.map[y][x] == 'S')
-		game->player.rotation_angle = 90 * PI / 180;
-	if (game->cub.map[y][x] == 'W')
-		game->player.rotation_angle = 0 * PI / 180;
-	if (game->cub.map[y][x] == 'E')
-		game->player.rotation_angle = 180 * PI / 180;
-	game->cub.map[y][x] = '0';
-}
-
 int		is_valid_map(t_game *game)
 {
 	int		x;
@@ -115,7 +84,7 @@ int		is_valid_map(t_game *game)
 		while (game->cub.map[y][x] != '\0')
 		{
 			if (game->cub.map[y][x] == '2')
-				store_item_cordinate(&game->cub, x, y);
+				store_item_info(&game->cub, x, y);
 			if (ft_strchr("NSWE", game->cub.map[y][x]))
 			{
 				if (p_flag == true)

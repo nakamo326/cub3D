@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 10:10:17 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 11:14:51 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ int		is_validmapline(char *line, t_cub *cub);
 int		set_flag(int identifier, t_cub *cub);
 int		perse_map(int fd, t_cub *cub);
 int		is_valid_map(t_game *game);
+void	store_pl_info(t_game *game, int x, int y);
+void	store_item_info(t_cub *cub, int x, int y);
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
