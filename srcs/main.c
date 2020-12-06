@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 22:49:17 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 10:09:44 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(int argc, char *argv[])
 
 	//mlx_key_hook(game.mlx_win, key_hook, &game);
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
-	//mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
+	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
 	return 0;

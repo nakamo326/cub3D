@@ -6,11 +6,30 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 17:27:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 10:06:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	clear_transparecy(t_game *game)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < game->cub.map_maxrow * TILE_SIZE)
+	{
+		x= 0;
+		while (x < game->cub.map_maxcol * TILE_SIZE)
+		{
+			my_mlx_pixel_put(&game->map, x, y, 0xFF000000);
+			x++;
+		}
+		y++;
+	}
+
+}
 
 void	render_map_floor(t_img *map, int x, int y)
 {
@@ -55,7 +74,8 @@ void	render_minimap(t_game *game)
 	int y;
 
 	y = 0;
-	//at first set tFF all pixel
+	//need test this function
+	clear_transparecy(game);
 	while (y < game->cub.map_maxrow)
 	{
 		x = 0;

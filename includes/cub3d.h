@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 22:49:13 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 10:10:17 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		keypress_hook(int keycode, t_game *game);
+int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 
 //for debug

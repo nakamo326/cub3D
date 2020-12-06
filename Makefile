@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/05 22:50:02 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/06 10:26:37 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ libft:
 	$(MAKE) bonus -C ./libft
 
 $(NAME): libft $(OBJECTS)
-	gcc -g $(SRCFILE) -I./includes -L./libft -lft -lmlx -lXext -lX11 -o cub3D
+	gcc -g $(SRCFILE) -I./includes -L./libft -lft -lmlx -lXext -lX11 -lm -o cub3D
 
 %.o: %.c
 	gcc $(CFLAGS) -c $< -o $@ -I./includes
