@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 10:09:44 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 15:21:38 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		main(int argc, char *argv[])
 	game.map.addr = mlx_get_data_addr(game.map.img_ptr, &game.map.bpp, &game.map.len, &game.map.endian);
 
 	//mlx_key_hook(game.mlx_win, key_hook, &game);
+	mlx_do_key_autorepeatoff(game.mlx);
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
 	mlx_loop_hook(game.mlx, loop, &game);

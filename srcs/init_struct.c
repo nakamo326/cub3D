@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 14:19:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/06 16:28:50 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	init_val(t_game *game)
 	init_cub(game);
 	init_flags(game);
 	init_player(game);
+	game->rays = ft_calloc(game->cub.window_width, sizeof(t_ray));
 }

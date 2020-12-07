@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 10:06:05 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/07 10:58:34 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,20 @@ void	render_map_floor(t_img *map, int x, int y)
 void	render_map_wall(t_game *game, int x, int y)
 {
 	int i;
+	int t;
 
 	i = 0;
+	t = TILE_SIZE;
 	while (i <= TILE_SIZE)
 	{
 		if (game->cub.map[y][x - 1] == '1')
-			my_mlx_pixel_put(&game->map, x * TILE_SIZE, y * TILE_SIZE + i, 0x00B007);
+			my_mlx_pixel_put(&game->map, x * t, y * t + i, 0x00B007);
 		if (game->cub.map[y - 1][x] == '1')
-			my_mlx_pixel_put(&game->map, x * TILE_SIZE + i, y * TILE_SIZE, 0x00B007);
+			my_mlx_pixel_put(&game->map, x * t + i, y * t, 0x00B007);
 		if (game->cub.map[y][x + 1] == '1')
-			my_mlx_pixel_put(&game->map, (x + 1) * TILE_SIZE, y * TILE_SIZE + i, 0x00B007);
+			my_mlx_pixel_put(&game->map, (x + 1) * t, y * t + i, 0x00B007);
 		if (game->cub.map[y + 1][x] == '1')
-			my_mlx_pixel_put(&game->map, x * TILE_SIZE + i, (y + 1) * TILE_SIZE, 0x00B007);
+			my_mlx_pixel_put(&game->map, x * t + i, (y + 1) * t, 0x00B007);
 		i++;
 	}
 }

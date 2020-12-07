@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 13:53:39 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/07 10:11:56 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <stdbool.h>
 #include <X11/keysym.h>
 #include <X11/X.h>
+#include <assert.h>
 #include "../libft/libft.h"
 #include "../minilibx-linux/mlx.h"
 #include "../get_next_line/get_next_line.h"
@@ -33,6 +34,7 @@
 #define SUCCESS 1
 #define INWALL 1
 #define ONFLOOR 0
+#define FOV (60 * PI / 180)
 
 typedef struct	s_img {
 	void *img_ptr;
@@ -61,6 +63,14 @@ typedef struct	s_sprite
 	double	x;
 	double	y;
 }				t_sprite;
+
+typedef struct	s_ray
+{
+	int		ray_number;
+	double	ray_angle;
+
+}				t_ray;
+
 
 typedef struct	s_cub
 {
@@ -93,7 +103,9 @@ typedef struct	s_game
 	void	*mlx_win;
 	t_cub	cub;
 	t_img	map;
+	t_img	view;
 	t_pl	player;
+	t_ray	*rays;
 }				t_game;
 
 typedef enum	e_id
@@ -144,7 +156,8 @@ int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
-
+//void	draw_line(t_game *game, double x0, double y0, double x1, double y1);
+void draw_line(t_game *game, int xa, int xb, int ya, int yb);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
