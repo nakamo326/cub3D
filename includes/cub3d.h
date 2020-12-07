@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/07 10:11:56 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/07 14:50:58 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ typedef struct	s_ray
 
 }				t_ray;
 
+typedef struct	s_line
+{
+	int		x0;
+	int		y0;
+	int		x1;
+	int		y1;
+	int		delta_x;
+	int		delta_y;
+	bool	steep;
+}				t_line;
 
 typedef struct	s_cub
 {
@@ -156,8 +166,7 @@ int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
-//void	draw_line(t_game *game, double x0, double y0, double x1, double y1);
-void draw_line(t_game *game, int xa, int xb, int ya, int yb);
+void	draw_line(t_game *game, t_line line);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
