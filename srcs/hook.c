@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 20:49:47 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 12:57:01 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	update_direction(int keycode, t_game *game)
 	if (keycode == 115)
 		game->player.walk_direction = -1;
 	if (keycode == 100)
-		game->player.sidewalk_direction = -1;
-	if (keycode == 97)
 		game->player.sidewalk_direction = 1;
+	if (keycode == 97)
+		game->player.sidewalk_direction = -1;
 	if (keycode == 65363)
 		game->player.turn_direction = 1;
 	if (keycode == 65361)
@@ -50,7 +50,7 @@ void	reset_direction(int keycode, t_game *game)
 int		keypress_hook(int keycode, t_game *game)
 {
 	// press Q to quit
-	printf("The key you pressed is \"%d\"\n", keycode);
+	//printf("The key you pressed is \"%d\"\n", keycode);
 	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 ||
 		keycode == 65361 || keycode == 65363)
 		update_direction(keycode, game);
@@ -60,7 +60,7 @@ int		keypress_hook(int keycode, t_game *game)
 
 int		keyrelease_hook(int keycode, t_game *game)
 {
-	printf("The key you released is \"%d\"\n", keycode);
+	//printf("The key you released is \"%d\"\n", keycode);
 	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 ||
 		keycode == 65361 || keycode == 65363)
 		reset_direction(keycode, game);

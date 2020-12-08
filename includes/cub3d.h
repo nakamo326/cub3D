@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/07 14:50:58 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 10:14:27 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,14 @@ typedef struct	s_sprite
 
 typedef struct	s_ray
 {
-	int		ray_number;
 	double	ray_angle;
-
+	int		wall_x;
+	int		wall_y;
+	double	distance;
+	bool	facing_up;
+	bool	facing_down;
+	bool	facing_right;
+	bool	facing_left;
 }				t_ray;
 
 typedef struct	s_line
@@ -166,7 +171,10 @@ int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
+int		check_collision(t_game *game, double x, double y);
+void	cast_all_rays(t_game *game);
 void	draw_line(t_game *game, t_line line);
+double	normalize_angle(double angle);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
