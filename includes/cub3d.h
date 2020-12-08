@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 13:18:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 16:23:03 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 #define PI 3.14159
 #define MAP_BUF_SIZE 64
-#define TILE_SIZE 32
+#define TILE_SIZE 20
 #define ERROR -1
 #define SUCCESS 1
 #define INWALL 1
@@ -67,8 +67,12 @@ typedef struct	s_sprite
 typedef struct	s_ray
 {
 	double	ray_angle;
-	int		wall_x;
-	int		wall_y;
+	bool	hwall_hit;
+	int		hwall_x;
+	int		hwall_y;
+	bool	vwall_hit;
+	int		vwall_x;
+	int		vwall_y;
 	double	distance;
 	bool	facing_up;
 	bool	facing_down;

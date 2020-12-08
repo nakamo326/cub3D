@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 13:59:47 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 16:43:15 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,28 @@ void	render_player(t_game *game, int x, int y)
 
 void	render_ray(t_game *game)
 {
-	t_line line;
-	//double start_angle;
-	//double ray_angle;
+	t_line	line;
 	int		i;
 
-	//start_angle = game->player.rotation_angle - 30 * PI / 180;
-	//ray_angle = 60 * PI / 180 / game->cub.window_width;
 	i = 0;
-	while(i < 1/*game->cub.window_width*/)
+	while(i < game->cub.window_width)
 	{
-		//line.x0 = game->player.x + cos(start_angle + i) * 10;
-		//line.y0 = game->player.y + sin(start_angle + i) * 10;
-		////add check wall collision
-		//line.x1 = game->player.x + cos(start_angle + i) * 60;
-		//line.y1 = game->player.y + sin(start_angle + i) * 60;
-		line.x0 = game->player.x;
-		line.y0 = game->player.y;
-		line.x1 = game->rays[i].wall_x;
-		line.y1 = game->rays[i].wall_y;
-		draw_line(game, line, 0x50FFFF00);
+		if (game->rays[i].hwall_hit == true)
+		{
+			line.x0 = game->player.x;
+			line.y0 = game->player.y;
+			line.x1 = game->rays[i].hwall_x;
+			line.y1 = game->rays[i].hwall_y;
+			draw_line(game, line, 0x50FFFF00);
+		}
+		if (game->rays[i].vwall_hit == true)
+		{
+			line.x0 = game->player.x;
+			line.y0 = game->player.y;
+			line.x1 = game->rays[i].vwall_x;
+			line.y1 = game->rays[i].vwall_y;
+			draw_line(game, line, 0x50FFFF00);
+		}
 		i++;
 	}
 }
