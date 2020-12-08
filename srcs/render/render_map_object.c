@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 16:43:15 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 19:23:16 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,16 @@ void	render_ray(t_game *game)
 	i = 0;
 	while(i < game->cub.window_width)
 	{
+		line.x0 = game->player.x;
+		line.y0 = game->player.y;
 		if (game->rays[i].hwall_hit == true)
 		{
-			line.x0 = game->player.x;
-			line.y0 = game->player.y;
 			line.x1 = game->rays[i].hwall_x;
 			line.y1 = game->rays[i].hwall_y;
 			draw_line(game, line, 0x50FFFF00);
 		}
 		if (game->rays[i].vwall_hit == true)
 		{
-			line.x0 = game->player.x;
-			line.y0 = game->player.y;
 			line.x1 = game->rays[i].vwall_x;
 			line.y1 = game->rays[i].vwall_y;
 			draw_line(game, line, 0x50FFFF00);
