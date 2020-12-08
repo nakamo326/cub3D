@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   render_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 17:07:55 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/07 14:50:15 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 13:00:13 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	exchange_quadrant(t_line *line)
 	return (steep);
 }
 
-void	draw_line(t_game *game, t_line line)
+void	draw_line(t_game *game, t_line line, int color)
 {
 	int		error;
 	int		ystep;
@@ -59,9 +59,9 @@ void	draw_line(t_game *game, t_line line)
 	while (line.x0 <= line.x1)
 	{
 		if (line.steep)
-			my_mlx_pixel_put(&game->map, line.y0, line.x0, 0x50FFFF00);
+			my_mlx_pixel_put(&game->map, line.y0, line.x0, color);
 		else
-			my_mlx_pixel_put(&game->map, line.x0, line.y0, 0x50FFFF00);
+			my_mlx_pixel_put(&game->map, line.x0, line.y0, color);
 		error = error - line.delta_y;
 		if (error < 0)
 		{

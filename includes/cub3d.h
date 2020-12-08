@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 10:14:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 13:18:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef enum	e_err_conf
 	INVALID_COLOR,
 	NO_MAP_INFILE,
 	MULTIPLE_PLAYER,
+	NO_PLAYER,
 	MAP_ISNT_CLOSED
 }				t_err_conf;
 
@@ -173,7 +174,7 @@ int		loop(t_game *game);
 void	move_player(t_game *game);
 int		check_collision(t_game *game, double x, double y);
 void	cast_all_rays(t_game *game);
-void	draw_line(t_game *game, t_line line);
+void	draw_line(t_game *game, t_line line, int color);
 double	normalize_angle(double angle);
 //for debug
 void	render_gridline(t_img *map, t_cub cub);

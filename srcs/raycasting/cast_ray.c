@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 10:48:50 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 13:33:43 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	check_horizontal_intersections(t_game *game, int i)
 		{
 			game->rays[i].wall_x = x;
 			game->rays[i].wall_y = y;
-			//test drawing ray;
-
 			break;
 		}
 		x += xstep;
@@ -95,7 +93,7 @@ void	cast_all_rays(t_game *game)
 	ray_angle = start_angle;
 	while (i < game->cub.window_width)
 	{
-		game->rays[i].ray_angle = ray_angle;
+		game->rays[i].ray_angle = normalize_angle(ray_angle);
 		search_first_collision_wall(game, i);
 		ray_angle += angle_per_pixel;
 		i++;

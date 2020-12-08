@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 11:15:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/08 13:18:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int		is_valid_map(t_game *game)
 		}
 		y++;
 	}
+	if (p_flag == false)
+		config_error(NO_PLAYER);
 	x = game->player.x / TILE_SIZE;
 	y = game->player.y / TILE_SIZE;
 	return (is_closed_map(&game->cub, x, y));
