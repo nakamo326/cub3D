@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 19:22:06 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/09 23:36:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ double	normalize_angle(double angle)
 	return (angle);
 }
 
-void	check_ray_direction(t_game *game, int i)
+void	check_ray_direction(t_ray *rays, int i)
 {
 	double angle;
 
-	angle = game->rays[i].ray_angle;
-	game->rays[i].facing_down = angle > 0 && angle < PI;
-	game->rays[i].facing_up = !game->rays[i].facing_down;
-	game->rays[i].facing_left = angle > PI / 2 && angle < 1.5 * PI;
-	game->rays[i].facing_right = !game->rays[i].facing_left;
+	angle = rays[i].ray_angle;
+	rays[i].facing_down = angle > 0 && angle < PI;
+	rays[i].facing_up = !rays[i].facing_down;
+	rays[i].facing_left = angle > PI / 2 && angle < 1.5 * PI;
+	rays[i].facing_right = !rays[i].facing_left;
 }
 
 void	compare_distances(t_game *game, int i)
@@ -86,18 +86,29 @@ void	check_horizontal_intersections(t_game *game, int i)
 		xstep *= -1;
 	x = xintercept;
 	y = yintercept;
-	if (game->rays[i].facing_up)
-		y--;
 	game->rays[i].hwall_hit = false;
 	while (x >= 0 && x <= game->cub.map_maxcol * TILE_SIZE &&
 			y >= 0 && y <= game->cub.map_maxrow * TILE_SIZE)
 	{
-		if (check_collision(game, x, y))
+		if (game->rays[i].facing_up)
 		{
-			game->rays[i].hwall_hit = true;
-			game->rays[i].hwall_x = x;
-			game->rays[i].hwall_y = y;
-			break;
+			if (check_collision(game, x, y - 1))
+			{
+				game->rays[i].hwall_hit = true;
+				game->rays[i].hwall_x = x;
+				game->rays[i].hwall_y = y;
+				break;
+			}
+		}
+		else
+		{
+			if (check_collision(game, x, y))
+			{
+				game->rays[i].hwall_hit = true;
+				game->rays[i].hwall_x = x;
+				game->rays[i].hwall_y = y;
+				break;
+			}
 		}
 		x += xstep;
 		y += ystep;
@@ -128,18 +139,29 @@ void	check_vertical_intersection(t_game *game, int i)
 		ystep *= -1;
 	x = xintercept;
 	y = yintercept;
-	if (game->rays[i].facing_left)
-		x--;
 	game->rays[i].vwall_hit = false;
 	while (x >= 0 && x <= game->cub.map_maxcol * TILE_SIZE &&
 			y >= 0 && y <= game->cub.map_maxrow * TILE_SIZE)
 	{
-		if (check_collision(game, x, y))
+		if (game->rays[i].facing_left)
 		{
-			game->rays[i].vwall_hit = true;
-			game->rays[i].vwall_x = x;
-			game->rays[i].vwall_y = y;
-			break;
+			if (check_collision(game, x - 1, y))
+			{
+				game->rays[i].vwall_hit = true;
+				game->rays[i].vwall_x = x;
+				game->rays[i].vwall_y = y;
+				break;
+			}
+		}
+		else
+		{
+			if (check_collision(game, x, y))
+			{
+				game->rays[i].vwall_hit = true;
+				game->rays[i].vwall_x = x;
+				game->rays[i].vwall_y = y;
+				break;
+			}
 		}
 		x += xstep;
 		y += ystep;
@@ -148,7 +170,7 @@ void	check_vertical_intersection(t_game *game, int i)
 
 void	search_first_collision_wall(t_game *game, int i)
 {
-	check_ray_direction(game, i);
+	check_ray_direction(game->rays, i);
 	check_horizontal_intersections(game, i);
 	check_vertical_intersection(game, i);
 	compare_distances(game, i);

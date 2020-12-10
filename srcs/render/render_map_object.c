@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 19:23:16 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/09 22:39:24 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	render_ray(t_game *game)
 			line.y1 = game->rays[i].vwall_y;
 			draw_line(game, line, 0x50FFFF00);
 		}
-		i++;
+	i++;
 	}
 }
 
