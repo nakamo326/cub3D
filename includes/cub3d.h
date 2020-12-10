@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 00:07:41 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 10:55:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 #define INWALL 1
 #define ONFLOOR 0
 #define FOV (60 * PI / 180)
-#define MINIMAP_SCALE 0.2
+#define MINIMAP_SCALE 0.5
 
 typedef struct	s_img {
 	void *img_ptr;

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/06 15:21:38 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 12:45:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	print_map(game->cub);
 }
 
+void	print_items(t_game game)
+{
+	t_list *ptr;
+	t_sprite *item_info;
+
+	ptr = game.cub.items;
+	while(ptr->next == NULL)
+	{
+		item_info = ptr->content;
+		printf("item number: %d : %f , %f\n",item_info->number, item_info->x, item_info->y);
+		ptr = ptr->next;
+	}
+}
+
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
 int		main(int argc, char *argv[])
 {
@@ -48,14 +62,14 @@ int		main(int argc, char *argv[])
 	init_game(argc, argv, &game);
 	map_width = game.cub.map_maxcol * TILE_SIZE;
 	map_height = game.cub.map_maxrow * TILE_SIZE;
+	print_items(game);
 	//is_valid_arg();
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, map_width, map_height, "2DgridMap");
+	printf("initialize %d x %d window.\n", map_width, map_height);
 	game.map.img_ptr = mlx_new_image(game.mlx, map_width, map_height);
 	game.map.addr = mlx_get_data_addr(game.map.img_ptr, &game.map.bpp, &game.map.len, &game.map.endian);
 
-	//mlx_key_hook(game.mlx_win, key_hook, &game);
-	mlx_do_key_autorepeatoff(game.mlx);
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
 	mlx_loop_hook(game.mlx, loop, &game);

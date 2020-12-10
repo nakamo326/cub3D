@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 13:58:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 11:10:07 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	loop(t_game *game)
 
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->map.img_ptr, 0, 0);
 	mlx_do_sync(game->mlx);
-	printf("%f\n", game->player.rotation_angle);
 	return (SUCCESS);
 }

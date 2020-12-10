@@ -6,14 +6,11 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 12:57:01 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 11:12:06 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-//実際は向いている角度と進むスピードから三角関数でx,yの距離が出せる
-	//keyhookでは方向を変えるだけ、リリースで戻す
-	//loopの中に更新の関数入れる。横歩きどうする？？
 
 void	update_direction(int keycode, t_game *game)
 {
@@ -54,7 +51,6 @@ int		keypress_hook(int keycode, t_game *game)
 	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 ||
 		keycode == 65361 || keycode == 65363)
 		update_direction(keycode, game);
-	printf("(%f,%f)\n", game->player.x, game->player.y);
 	return (SUCCESS);
 }
 
