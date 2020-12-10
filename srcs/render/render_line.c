@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 17:07:55 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 13:00:13 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 16:35:12 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	draw_line(t_game *game, t_line line, int color)
 	while (line.x0 <= line.x1)
 	{
 		if (line.steep)
-			my_mlx_pixel_put(&game->map, line.y0, line.x0, color);
+			my_mlx_pixel_put(&game->view, line.y0, line.x0, color);
 		else
-			my_mlx_pixel_put(&game->map, line.x0, line.y0, color);
+			my_mlx_pixel_put(&game->view, line.x0, line.y0, color);
 		error = error - line.delta_y;
 		if (error < 0)
 		{

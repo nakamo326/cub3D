@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 14:29:35 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 16:36:03 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	render_player(t_game *game, int x, int y)
 	line.y1 = y + sin(game->player.rotation_angle - PI / 2) * 5;
 	draw_line(game, line, 0x0000FF);
 	//red dot with anti alias
-	my_mlx_pixel_put(&game->map, x, y, 0xFF0000);
-	my_mlx_pixel_put(&game->map, x + 1, y, 0xFF0000);
-	my_mlx_pixel_put(&game->map, x - 1, y, 0xFF0000);
-	my_mlx_pixel_put(&game->map, x, y + 1, 0xFF0000);
-	my_mlx_pixel_put(&game->map, x, y - 1, 0xFF0000);
-	my_mlx_pixel_put(&game->map, x - 1, y - 1, 0x80110B);
-	my_mlx_pixel_put(&game->map, x - 1, y + 1, 0x80110B);
-	my_mlx_pixel_put(&game->map, x + 1, y - 1, 0x80110B);
-	my_mlx_pixel_put(&game->map, x + 1, y + 1, 0x80110B);
+	my_mlx_pixel_put(&game->view, x, y, 0xFF0000);
+	my_mlx_pixel_put(&game->view, x + 1, y, 0xFF0000);
+	my_mlx_pixel_put(&game->view, x - 1, y, 0xFF0000);
+	my_mlx_pixel_put(&game->view, x, y + 1, 0xFF0000);
+	my_mlx_pixel_put(&game->view, x, y - 1, 0xFF0000);
+	my_mlx_pixel_put(&game->view, x - 1, y - 1, 0x80110B);
+	my_mlx_pixel_put(&game->view, x - 1, y + 1, 0x80110B);
+	my_mlx_pixel_put(&game->view, x + 1, y - 1, 0x80110B);
+	my_mlx_pixel_put(&game->view, x + 1, y + 1, 0x80110B);
 }
 
 void	render_ray(t_game *game)
@@ -96,7 +96,7 @@ void	render_map_object(t_game *game)
 	while (lstptr != NULL)
 	{
 		item_info = lstptr->content;
-		render_items(&game->map, item_info->x * MINIMAP_SCALE, item_info->y * MINIMAP_SCALE);
+		render_items(&game->view, item_info->x * MINIMAP_SCALE, item_info->y * MINIMAP_SCALE);
 		lstptr = lstptr->next;
 	}
 

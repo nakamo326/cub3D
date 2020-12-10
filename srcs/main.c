@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 16:22:01 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 16:41:24 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,18 @@ void	print_items(t_game game)
 int		main(int argc, char *argv[])
 {
 	t_game	game;
-	int		map_width;
-	int		map_height;
+	int		win_width;
+	int		win_height;
 
 	init_val(&game);
 	init_game(argc, argv, &game);
-	map_width = game.cub.map_maxcol * TILE_SIZE * MINIMAP_SCALE;
-	map_height = game.cub.map_maxrow * TILE_SIZE * MINIMAP_SCALE;
 	print_items(game);
+	win_width = game.cub.window_width;
+	win_height= game.cub.window_height;
 	//is_valid_arg();
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.cub.window_width, game.cub.window_height, "cub3D");
-	game.map.img_ptr = mlx_new_image(game.mlx, map_width, map_height);
-	game.map.addr = mlx_get_data_addr(game.map.img_ptr, &game.map.bpp, &game.map.len, &game.map.endian);
-	game.view.img_ptr = mlx_new_image(game.mlx, game.cub.window_width, game.cub.window_height);
+	game.mlx_win = mlx_new_window(game.mlx, win_width, win_height, "cub3D");
+	game.view.img_ptr = mlx_new_image(game.mlx,  win_width, win_height);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr, &game.view.bpp, &game.view.len, &game.view.endian);
 
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);

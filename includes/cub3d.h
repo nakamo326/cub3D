@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 14:34:40 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 16:41:41 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ typedef struct	s_game
 	void	*mlx;
 	void	*mlx_win;
 	t_cub	cub;
-	t_img	map;
 	t_img	view;
 	t_pl	player;
 	t_ray	*rays;
