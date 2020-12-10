@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 12:45:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 13:11:52 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	print_items(t_game game)
 	t_sprite *item_info;
 
 	ptr = game.cub.items;
-	while(ptr->next == NULL)
+	while(ptr != NULL)
 	{
 		item_info = ptr->content;
 		printf("item number: %d : %f , %f\n",item_info->number, item_info->x, item_info->y);
@@ -66,7 +66,7 @@ int		main(int argc, char *argv[])
 	//is_valid_arg();
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, map_width, map_height, "2DgridMap");
-	printf("initialize %d x %d window.\n", map_width, map_height);
+	printf("initialized %d x %d window.\n", map_width, map_height);
 	game.map.img_ptr = mlx_new_image(game.mlx, map_width, map_height);
 	game.map.addr = mlx_get_data_addr(game.map.img_ptr, &game.map.bpp, &game.map.len, &game.map.endian);
 

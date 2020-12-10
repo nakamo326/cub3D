@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/09 23:36:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 13:18:03 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void	cast_all_rays(t_game *game)
 	double	ray_angle;
 	int		i;
 
+	game->rays = malloc(sizeof(t_ray) * game->cub.window_width);
 	start_angle = game->player.rotation_angle - FOV / 2;
 	angle_per_pixel = FOV / game->cub.window_width;
 	i = 0;
