@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/07 10:58:34 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 16:33:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	clear_transparecy(t_game *game)
 	int y;
 
 	y = 0;
-	while (y < game->cub.map_maxrow * TILE_SIZE)
+	while (y < game->cub.map_maxrow * TILE_SIZE * MINIMAP_SCALE)
 	{
 		x= 0;
-		while (x < game->cub.map_maxcol * TILE_SIZE)
+		while (x < game->cub.map_maxcol * TILE_SIZE * MINIMAP_SCALE)
 		{
-			my_mlx_pixel_put(&game->map, x, y, 0xFF000000);
+			my_mlx_pixel_put(&game->map, x, y, 0xFFFFFF);
 			x++;
 		}
 		y++;
@@ -37,12 +37,12 @@ void	render_map_floor(t_img *map, int x, int y)
 	int j;
 
 	i = 0;
-	while (i <= TILE_SIZE)
+	while (i <= TILE_SIZE * MINIMAP_SCALE)
 	{
 		j = 0;
-		while (j < TILE_SIZE)
+		while (j < TILE_SIZE * MINIMAP_SCALE)
 		{
-			my_mlx_pixel_put(map, x * TILE_SIZE + i, y * TILE_SIZE + j, 0x012217);
+			my_mlx_pixel_put(map, x * TILE_SIZE * MINIMAP_SCALE + i, y * TILE_SIZE * MINIMAP_SCALE + j, 0x012217);
 			j++;
 		}
 		i++;
@@ -55,8 +55,8 @@ void	render_map_wall(t_game *game, int x, int y)
 	int t;
 
 	i = 0;
-	t = TILE_SIZE;
-	while (i <= TILE_SIZE)
+	t = TILE_SIZE * MINIMAP_SCALE;
+	while (i <= TILE_SIZE * MINIMAP_SCALE)
 	{
 		if (game->cub.map[y][x - 1] == '1')
 			my_mlx_pixel_put(&game->map, x * t, y * t + i, 0x00B007);
@@ -77,7 +77,7 @@ void	render_minimap(t_game *game)
 
 	y = 0;
 	//need test this function
-	clear_transparecy(game);
+	//clear_transparecy(game);
 	while (y < game->cub.map_maxrow)
 	{
 		x = 0;

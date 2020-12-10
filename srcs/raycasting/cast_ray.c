@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 13:18:03 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/10 16:29:12 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	compare_distances(t_game *game, int i)
 	double hor_hit_dist;
 	double ver_hit_dist;
 
-	if (game->rays[i].hwall_hit == false || game->rays[i].vwall_hit == false)
-		return ;
 	hor_hit_dist = sqrt((game->rays[i].hwall_x - game->player.x) *
 					(game->rays[i].hwall_x - game->player.x) +
 					(game->rays[i].hwall_y - game->player.y) *
@@ -48,13 +46,19 @@ void	compare_distances(t_game *game, int i)
 					(game->rays[i].vwall_x - game->player.x) +
 					(game->rays[i].vwall_y - game->player.y) *
 					(game->rays[i].vwall_y - game->player.y));
-	if (hor_hit_dist < ver_hit_dist)
+	if (hor_hit_dist < ver_hit_dist || game->rays[i].vwall_hit == false)
 	{
 		game->rays[i].vwall_hit = false;
 		game->rays[i].distance = hor_hit_dist;
 		return ;
 	}
-	if (ver_hit_dist < hor_hit_dist)
+	if (ver_hit_dist < hor_hit_dist || game->rays[i].hwall_hit == false)
+	{
+		game->rays[i].hwall_hit = false;
+		game->rays[i].distance = ver_hit_dist;
+		return ;
+	}
+	if (hor_hit_dist == ver_hit_dist)
 	{
 		game->rays[i].hwall_hit = false;
 		game->rays[i].distance = ver_hit_dist;

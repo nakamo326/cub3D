@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/07 17:12:25 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/10 15:34:01 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/render/render_map_object.c \
 			srcs/render/render_utils.c \
 			srcs/render/render_line.c \
-			srcs/raycasting/cast_ray.c
+			srcs/raycasting/cast_ray.c \
+			srcs/render/render_3dwall.c
 
 
 
