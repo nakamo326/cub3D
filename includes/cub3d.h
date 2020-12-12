@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 16:41:41 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/12 22:48:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ typedef struct	s_ray
 {
 	double	ray_angle;
 	bool	hwall_hit;
-	int		hwall_x;
-	int		hwall_y;
+	double	hwall_x;
+	double	hwall_y;
 	bool	vwall_hit;
-	int		vwall_x;
-	int		vwall_y;
+	double	vwall_x;
+	double	vwall_y;
 	double	distance;
 	bool	facing_up;
 	bool	facing_down;

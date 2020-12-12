@@ -6,11 +6,18 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 17:07:55 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/12 10:33:08 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/12 22:31:04 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	ft_fabs(double n)
+{
+	if (n > 0)
+		return (n);
+	return (-n);
+}
 
 void	ft_swap(int *a, int *b)
 {
@@ -25,7 +32,7 @@ bool	exchange_quadrant(t_line *line)
 {
 	bool steep;
 
-	steep = abs(line->y1 - line->y0) > abs(line->x1 - line->x0);
+	steep = ft_abs(line->y1 - line->y0) > ft_abs(line->x1 - line->x0);
 	if (steep)
 	{
 		ft_swap(&line->x0, &line->y0);
@@ -46,7 +53,7 @@ void	draw_line(t_game *game, t_line line, int color)
 
 	line.steep = exchange_quadrant(&line);
 	line.delta_x = line.x1 - line.x0;
-	line.delta_y = abs(line.y1 - line.y0);
+	line.delta_y = ft_abs(line.y1 - line.y0);
 	error = line.delta_x / 2;
 	ystep = line.y1 > line.y0 ? 1 : -1;
 	while (line.x0 <= line.x1)
