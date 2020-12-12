@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/12 10:09:52 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/12 10:50:08 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	render_projected_wall(t_game *game)
 		wall_height = (TILE_SIZE / correct_distance) * distance_plane;
 		wall_start = (game->cub.window_height / 2) - (wall_height / 2);
 		j = 0;
-		while (j < wall_height && j < game->cub.window_height)
+		while (j < wall_height && wall_start + j < game->cub.window_height)
 		{
 			if (wall_start + j > 0)
 				my_mlx_pixel_put(&game->view, i, wall_start + j, 0x000000);
