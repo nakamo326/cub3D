@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/12 22:49:08 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/13 14:37:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,23 @@ void	compare_distances(t_game *game, int i)
 					(game->rays[i].vwall_x - game->player.x) +
 					(game->rays[i].vwall_y - game->player.y) *
 					(game->rays[i].vwall_y - game->player.y));
-	if (hor_hit_dist < ver_hit_dist || game->rays[i].vwall_hit == false)
+	if (game->rays[i].vwall_hit == false)
+	{
+		game->rays[i].distance = hor_hit_dist;
+		return ;
+	}
+	if (game->rays[i].hwall_hit == false)
+	{
+		game->rays[i].distance = ver_hit_dist;
+		return ;
+	}
+	if (hor_hit_dist < ver_hit_dist)
 	{
 		game->rays[i].vwall_hit = false;
 		game->rays[i].distance = hor_hit_dist;
 		return ;
 	}
-	if (ver_hit_dist < hor_hit_dist || game->rays[i].hwall_hit == false)
-	{
-		game->rays[i].hwall_hit = false;
-		game->rays[i].distance = ver_hit_dist;
-		return ;
-	}
-	if (hor_hit_dist == ver_hit_dist)
+	if (ver_hit_dist < hor_hit_dist)
 	{
 		game->rays[i].hwall_hit = false;
 		game->rays[i].distance = ver_hit_dist;
@@ -187,7 +191,8 @@ void	cast_all_rays(t_game *game)
 	double	ray_angle;
 	int		i;
 
-	game->rays = malloc(sizeof(t_ray) * game->cub.window_width);
+	free(game->rays);
+	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
 	start_angle = game->player.rotation_angle - FOV / 2;
 	angle_per_pixel = FOV / game->cub.window_width;
 	i = 0;

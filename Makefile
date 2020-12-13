@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/10 15:34:01 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/13 12:22:17 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/config/perse_map.c \
 			srcs/config/store_object_info.c \
 			srcs/main.c \
-			srcs/hook.c \
 			srcs/init_struct.c \
 			srcs/error_handle.c \
-			srcs/loop.c \
-			srcs/move.c \
+			srcs/loop/loop.c \
+			srcs/loop/hook.c \
+			srcs/loop/move.c \
 			srcs/render/render_map.c \
 			srcs/render/render_map_object.c \
 			srcs/render/render_utils.c \
@@ -33,7 +33,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/render/render_3dwall.c
 
 
-
+OBJDIR = ./obj
 OBJECTS = $(SRCFILE:.c=.o)
 
 all: $(NAME)

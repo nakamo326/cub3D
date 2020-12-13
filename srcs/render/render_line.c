@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 17:07:55 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/12 22:31:04 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/13 12:42:30 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ bool	exchange_quadrant(t_line *line)
 
 void	draw_line(t_game *game, t_line line, int color)
 {
-	int		error;
-	int		ystep;
+	int	error;
+	int	ystep;
 
 	line.steep = exchange_quadrant(&line);
 	line.delta_x = line.x1 - line.x0;
@@ -66,7 +66,7 @@ void	draw_line(t_game *game, t_line line, int color)
 		if (error < 0)
 		{
 			line.y0 += ystep;
-			error = error + line.delta_x;
+			error += line.delta_x;
 		}
 		line.x0++;
 	}
