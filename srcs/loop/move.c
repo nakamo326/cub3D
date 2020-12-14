@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 13:52:52 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/14 12:26:55 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/14 17:49:17 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		check_collision(t_game *game, double x, double y)
 
 	map_x = floor(x / TILE_SIZE);
 	map_y = floor(y / TILE_SIZE);
-	if (map_y >= game->cub.map_maxrow ||
+	if (map_y < 0 || map_y >= game->cub.map_maxrow || map_x < 0 ||
 		map_x > (int)ft_strlen(game->cub.map[map_y]))
 		return (INWALL);
 	if (game->cub.map[map_y][map_x] == '1')
