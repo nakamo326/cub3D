@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/12 22:48:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/14 17:36:31 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 #define INWALL 1
 #define ONFLOOR 0
 #define FOV (60 * PI / 180)
-#define MINIMAP_SCALE 0.5
+//#define MINIMAP_SCALE 0.5
 
 typedef struct	s_img {
 	void *img_ptr;
@@ -115,6 +115,7 @@ typedef struct	s_cub
 	bool	f_color_f;
 	bool	c_color_f;
 	t_list	*items;
+	double	map_scale;
 }				t_cub;
 
 typedef struct	s_game
