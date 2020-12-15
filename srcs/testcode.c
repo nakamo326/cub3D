@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/05 11:15:01 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/15 17:42:10 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,19 @@ void	render_gridline(t_img *map, t_cub cub)
 		while (i < cub.map_maxcol * 20)
 			my_mlx_pixel_put(map, i++, j * 20, 0xB4B4B4);
 		j++;
+	}
+}
+
+void	print_items(t_game game)
+{
+	t_list *ptr;
+	t_sprite *item_info;
+
+	ptr = game.cub.items;
+	while(ptr != NULL)
+	{
+		item_info = ptr->content;
+		printf("item number: %d : %f , %f\n",item_info->number, item_info->x, item_info->y);
+		ptr = ptr->next;
 	}
 }
