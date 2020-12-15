@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/15 22:55:31 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/16 00:00:30 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	read_cub(fd, &game->cub);
 	test_print_cub(game->cub);
 	is_valid_map(game);
-	adjust_mapscale(game);
+	//adjust_mapscale(game);
 	print_map(game->cub);
 	//print_items(game);
 }
