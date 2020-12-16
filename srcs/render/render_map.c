@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/14 17:39:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/16 00:12:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	render_map_floor(t_game *game, int x, int y)
 	int j;
 	double scale;
 
-	scale = TILE_SIZE * game->cub.map_scale;
+	scale = round(TILE_SIZE * game->cub.map_scale);
 	i = 0;
 	while (i <= scale)
 	{
@@ -35,11 +35,11 @@ void	render_map_floor(t_game *game, int x, int y)
 void	render_map_wall(t_game *game, int x, int y)
 {
 	int		i;
-	int		t;
+	double		t;
 
 	i = 0;
-	t = TILE_SIZE * game->cub.map_scale;
-	while (i <= TILE_SIZE * game->cub.map_scale)
+	t = round(TILE_SIZE * game->cub.map_scale);
+	while (i <= t)
 	{
 		if (game->cub.map[y][x - 1] == '1')
 			my_mlx_pixel_put(&game->view, x * t, y * t + i, 0x00B007);

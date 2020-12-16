@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/13 16:25:24 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/16 16:20:19 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,22 @@ void	clear_view(t_game *game)
 	int j;
 
 	i = 0;
+	while (i < game->cub.window_height / 2)
+	{
+		j = 0;
+		while (j < game->cub.window_width)
+		{
+			my_mlx_pixel_put(&game->view, j, i, 0x00bbbb);
+			j++;
+		}
+		i++;
+	}
 	while (i < game->cub.window_height)
 	{
 		j = 0;
 		while (j < game->cub.window_width)
 		{
-			my_mlx_pixel_put(&game->view, j, i, 0x444444);
+			my_mlx_pixel_put(&game->view, j, i, 0x008000);
 			j++;
 		}
 		i++;

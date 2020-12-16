@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/15 21:28:37 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/16 16:24:24 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ typedef enum	e_err_conf
 void	init_val(t_game *game);
 void	err_exit(char *errormsg);
 void	config_error(int ret);
+int		quit_game(void *param);
 //void	free_cub_info(void);
 int		read_cub(int fd, t_cub *cub);
 int		input_resolution(char *line, t_cub *cub);
