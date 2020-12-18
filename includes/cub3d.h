@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/16 16:24:24 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/18 21:52:11 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 #define PI 3.14159
 #define MAP_BUF_SIZE 64
-#define TILE_SIZE 32
+#define TILE_SIZE 64
 #define ERROR -1
 #define SUCCESS 1
 #define INWALL 1

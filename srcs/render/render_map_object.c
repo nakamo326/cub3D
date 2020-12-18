@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/14 17:42:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/18 23:20:59 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@ void	render_player(t_game *game, int x, int y)
 	line.x1 = round(x + cos(game->player.rotation_angle) * 10);
 	line.y1 = round(y + sin(game->player.rotation_angle) * 10);
 	draw_line(game, line, 0xFF0000);
-	line.x1 = round(x + cos(game->player.rotation_angle + PI / 2) * 5);
-	line.y1 = round(y + sin(game->player.rotation_angle + PI / 2) * 5);
-	draw_line(game, line, 0x00FF00);
-	line.x1 = round(x + cos(game->player.rotation_angle - PI / 2) * 5);
-	line.y1 = round(y + sin(game->player.rotation_angle - PI / 2) * 5);
-	draw_line(game, line, 0x0000FF);
 	//red dot with anti alias
 	my_mlx_pixel_put(&game->view, x, y, 0xFF0000);
 	my_mlx_pixel_put(&game->view, x + 1, y, 0xFF0000);
