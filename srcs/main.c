@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/16 16:24:50 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/18 17:36:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	read_cub(fd, &game->cub);
 	test_print_cub(game->cub);
 	is_valid_map(game);
+	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
 	//adjust_mapscale(game);
 	print_map(game->cub);
 	//print_items(game);
@@ -72,7 +73,7 @@ int		main(int argc, char *argv[])
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
 	//need more check
-	mlx_hook(game.mlx_win, DestroyNotify, StructureNotifyMask, quit_game, &game);
+	mlx_hook(game.mlx_win, 33, StructureNotifyMask, quit_game, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
 	return 0;

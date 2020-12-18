@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/14 11:32:52 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/18 17:44:32 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,8 +191,9 @@ void	cast_all_rays(t_game *game)
 	double	ray_angle;
 	int		i;
 
-	free(game->rays);
-	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
+	//free(game->rays);
+	//game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
+	//ft_bzero(game->rays, (size_t)game->cub.window_width * sizeof(t_ray));
 	start_angle = game->player.rotation_angle - FOV / 2;
 	angle_per_pixel = FOV / game->cub.window_width;
 	i = 0;
