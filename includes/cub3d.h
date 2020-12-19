@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/18 21:52:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/19 14:54:31 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct	s_pl
 	int		sidewalk_direction;//-1 if left, 1 if right
 	double	rotation_angle;
 	double	move_speed;
-	double	rotation_speed;
+	double	turn_speed;
 }				t_pl;
 
 typedef struct	s_sprite
