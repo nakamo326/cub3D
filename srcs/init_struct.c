@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/19 14:54:40 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/19 15:27:27 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_cub(t_game *game)
 	game->cub.map_maxrow = 0;
 	game->cub.map_maxcol = 0;
 	game->cub.items = NULL;
-	game->cub.map_scale = 0.2;
+	game->cub.map_scale = 1;
 }
 
 void	init_val(t_game *game)

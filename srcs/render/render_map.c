@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/16 00:12:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/19 15:25:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,20 @@ void	render_map_floor(t_game *game, int x, int y)
 {
 	int i;
 	int j;
+	int tile_x;
+	int tile_y;
 	double scale;
 
-	scale = round(TILE_SIZE * game->cub.map_scale);
+	scale = game->cub.map_scale;
 	i = 0;
-	while (i <= scale)
+	tile_x = x * TILE_SIZE;
+	tile_y = y * TILE_SIZE;
+	while (i <= TILE_SIZE * scale)
 	{
 		j = 0;
-		while (j < scale)
+		while (j < TILE_SIZE * scale)
 		{
-			my_mlx_pixel_put(&game->view, x * scale + i, y * scale + j, 0x012217);
+			my_mlx_pixel_put(&game->view, tile_x * scale + i, tile_y * scale + j, 0x012217);
 			j++;
 		}
 		i++;
@@ -35,20 +39,24 @@ void	render_map_floor(t_game *game, int x, int y)
 void	render_map_wall(t_game *game, int x, int y)
 {
 	int		i;
-	double		t;
+	double	s;
+	int tile_x;
+	int tile_y;
 
 	i = 0;
-	t = round(TILE_SIZE * game->cub.map_scale);
-	while (i <= t)
+	s = game->cub.map_scale;
+	tile_x = x * TILE_SIZE;
+	tile_y = y * TILE_SIZE;
+	while (i <= TILE_SIZE * s)
 	{
 		if (game->cub.map[y][x - 1] == '1')
-			my_mlx_pixel_put(&game->view, x * t, y * t + i, 0x00B007);
+			my_mlx_pixel_put(&game->view, tile_x * s, tile_y * s + i, 0x00B007);
 		if (game->cub.map[y - 1][x] == '1')
-			my_mlx_pixel_put(&game->view, x * t + i, y * t, 0x00B007);
+			my_mlx_pixel_put(&game->view, tile_x * s + i, tile_y * s, 0x00B007);
 		if (game->cub.map[y][x + 1] == '1')
-			my_mlx_pixel_put(&game->view, (x + 1) * t, y * t + i, 0x00B007);
+			my_mlx_pixel_put(&game->view, (tile_x + TILE_SIZE) * s, tile_y * s + i, 0x00B007);
 		if (game->cub.map[y + 1][x] == '1')
-			my_mlx_pixel_put(&game->view, x * t + i, (y + 1) * t, 0x00B007);
+			my_mlx_pixel_put(&game->view, tile_x * s + i, (tile_y + TILE_SIZE) * s, 0x00B007);
 		i++;
 	}
 }

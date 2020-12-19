@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/18 17:36:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/19 15:32:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	if((fd = open(argv[1],O_RDONLY)) == ERROR)
 		exit(EXIT_FAILURE);
 	read_cub(fd, &game->cub);
-	test_print_cub(game->cub);
 	is_valid_map(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
-	//adjust_mapscale(game);
+	adjust_mapscale(game);
+	test_print_cub(game->cub);
 	print_map(game->cub);
 	//print_items(game);
 }
