@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 11:36:03 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:41:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	test_print_cub(t_cub cub)
 	printf("we_path: %s\n", cub.we_path);
 	printf("ea_path: %s\n", cub.ea_path);
 	printf("sp_path: %s\n", cub.sp_path);
-	printf("fcolor: %d, %d, %d\n", cub.f_color[0],cub.f_color[1],cub.f_color[2]);
-	printf("ccolor: %d, %d, %d\n", cub.c_color[0],cub.c_color[1],cub.c_color[2]);
+	printf("fcolor: %0xd\n", cub.f_color);
+	printf("ccolor: %0xd\n", cub.c_color);
 	printf("map_scale: %f\n", cub.map_scale);
 	//print_map();
 }

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/19 15:27:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:38:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,8 @@ void	init_cub(t_game *game)
 	game->cub.we_path = NULL;
 	game->cub.ea_path = NULL;
 	game->cub.sp_path = NULL;
-	game->cub.f_color[0] = 0xFF;
-	game->cub.f_color[1] = 0xFF;
-	game->cub.f_color[2] = 0xFF;
-	game->cub.c_color[0] = 0x11;
-	game->cub.c_color[1] = 0x11;
-	game->cub.c_color[2] = 0x11;
+	game->cub.f_color = 0;
+	game->cub.c_color = 0;
 	game->cub.map[0] = NULL;
 	game->cub.map_maxrow = 0;
 	game->cub.map_maxcol = 0;

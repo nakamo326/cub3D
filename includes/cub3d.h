@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 13:35:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:43:37 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ typedef struct	s_cub
 	char	*we_path;
 	char	*ea_path;
 	char	*sp_path;
-	int		f_color[3];
-	int		c_color[3];
+	int		f_color;
+	int		c_color;
 	char	*map[MAP_BUF_SIZE + 1];
 	int		map_maxrow;
 	int		map_maxcol;
@@ -173,11 +173,13 @@ void	store_pl_info(t_game *game, int x, int y);
 void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
 int		is_cub(char *filepath);
-int		check_valid_params(game);
+int		check_valid_params(t_game *game);
 
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int		create_trgb(int t, int r, int g, int b);
+int		get_color(char c, int trgb);
 int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
