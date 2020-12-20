@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/16 16:24:38 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:14:32 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	reset_direction(int keycode, t_game *game)
 
 int		keypress_hook(int keycode, t_game *game)
 {
-	printf("The key you pressed is \"%d\"\n", keycode);
+	//printf("The key you pressed is \"%d\"\n", keycode);
 	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 ||
 		keycode == 65361 || keycode == 65363)
 		update_direction(keycode, game);

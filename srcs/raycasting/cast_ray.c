@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/18 17:44:32 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:32:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ void	check_vertical_intersection(t_game *game, int i)
 	double	ystep;
 
 	xintercept = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
-	xintercept += game->rays[i].facing_right ? TILE_SIZE : 0;
+	if (game->rays[i].facing_right)
+		xintercept += TILE_SIZE;
 	yintercept = (xintercept - game->player.x) * tan(game->rays[i].ray_angle)
 				+ game->player.y;
 	xstep = TILE_SIZE;
