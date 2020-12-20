@@ -6,21 +6,11 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/19 15:32:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 13:30:27 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int		is_cub(char *filepath)
-{
-	size_t len;
-
-	len = ft_strlen(filepath);
-	if (len > 4 || ft_strncmp(&filepath[len - 4], ".cub" , 4) == 0)
-		return (SUCCESS);
-	return (0);
-}
 
 int		quit_game(void *param)
 {
@@ -45,11 +35,12 @@ void	init_game(int argc ,char *argv[], t_game *game)
 		exit(EXIT_FAILURE);
 	read_cub(fd, &game->cub);
 	is_valid_map(game);
-	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
+	check_valid_params(game);
 	adjust_mapscale(game);
-	test_print_cub(game->cub);
-	print_map(game->cub);
-	//print_items(game);
+	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
+	//test_print_cub(game->cub);
+	//test_print_map(game->cub);
+	//test_print_items(game);
 }
 
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
@@ -72,7 +63,7 @@ int		main(int argc, char *argv[])
 
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
-	//need more check
+	//need more check why 33?
 	mlx_hook(game.mlx_win, 33, StructureNotifyMask, quit_game, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);

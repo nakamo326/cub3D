@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/19 14:54:31 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 13:35:11 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,9 @@ int		is_valid_map(t_game *game);
 void	store_pl_info(t_game *game, int x, int y);
 void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
+int		is_cub(char *filepath);
+int		check_valid_params(game);
+
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
@@ -185,9 +188,9 @@ void	draw_line(t_game *game, t_line line, int color);
 double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
 //for debug
-void	render_gridline(t_img *map, t_cub cub);
+void	test_render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
-void	print_map(t_cub cub);
-void	print_items(t_game game);
+void	test_print_map(t_cub cub);
+void	test_print_items(t_game game);
 
 #endif

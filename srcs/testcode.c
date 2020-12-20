@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/19 15:32:21 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 11:36:03 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	test_print_cub(t_cub cub)
 	//print_map();
 }
 
-void	print_map(t_cub cub)
+void	test_print_map(t_cub cub)
 {
 	int i;
 
@@ -39,7 +39,7 @@ void	print_map(t_cub cub)
 	}
 }
 
-void	render_gridline(t_img *map, t_cub cub)
+void	test_render_gridline(t_img *map, t_cub cub)
 {
 	int i;
 	int j;
@@ -63,7 +63,7 @@ void	render_gridline(t_img *map, t_cub cub)
 	}
 }
 
-void	print_items(t_game game)
+void	test_print_items(t_game game)
 {
 	t_list *ptr;
 	t_sprite *item_info;
