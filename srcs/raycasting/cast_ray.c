@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 18:40:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 23:48:59 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,28 @@ void	compare_distances(t_game *game, int i)
 	double hor_hit_dist;
 	double ver_hit_dist;
 
-	hor_hit_dist = get_distance_wall(game->player.x, game->player.y,
-									game->rays[i].hwall_x, game->rays[i].hwall_y);
-	ver_hit_dist = get_distance_wall(game->player.x, game->player.y,
-									game->rays[i].vwall_x, game->rays[i].vwall_y);
-	if (game->rays[i].vwall_hit == false)
-	{
-		game->rays[i].distance = hor_hit_dist;
-		return ;
-	}
-	if (game->rays[i].hwall_hit == false)
-	{
-		game->rays[i].distance = ver_hit_dist;
-		return ;
-	}
+
+	if (game->rays[i].hwall_hit == true)
+		hor_hit_dist = get_distance_wall(game->player.x, game->player.y,
+							game->rays[i].hwall_x, game->rays[i].hwall_y);
+	else
+		hor_hit_dist = INT_MAX;
+	if (game->rays[i].vwall_hit == true)
+		ver_hit_dist = get_distance_wall(game->player.x, game->player.y,
+							game->rays[i].vwall_x, game->rays[i].vwall_y);
+	else
+		ver_hit_dist = INT_MAX;
 	if (hor_hit_dist < ver_hit_dist)
 	{
 		game->rays[i].vwall_hit = false;
 		game->rays[i].distance = hor_hit_dist;
-		return ;
 	}
-	if (ver_hit_dist < hor_hit_dist)
+	else if (ver_hit_dist < hor_hit_dist)
 	{
 		game->rays[i].hwall_hit = false;
 		game->rays[i].distance = ver_hit_dist;
-		return ;
 	}
+	return ;
 }
 
 void	check_horizontal_intersections(t_game *game, int i)
@@ -134,12 +130,11 @@ void	check_vertical_intersection(t_game *game, int i)
 	x_intercept = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	x_intercept += game->rays[i].facing_right ? TILE_SIZE : 0;
 	y_intercept = (x_intercept - game->player.x) * tan(game->rays[i].ray_angle)
-				+ game->player.y;
+					+ game->player.y;
 	xstep = TILE_SIZE;
 	if (game->rays[i].facing_left)
 		xstep *= -1;
-
-	ystep = TILE_SIZE * tan(game->rays[i].ray_angle);//sometimes ystep become super big.
+	ystep = TILE_SIZE * tan(game->rays[i].ray_angle);
 	if (game->rays[i].facing_up && ystep > 0)
 		ystep *= -1;
 	if (game->rays[i].facing_down && ystep < 0)
