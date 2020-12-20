@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 23:51:30 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/21 01:11:16 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	loop(t_game *game)
 {
 	move_player(game);
-	//game->player.x = 1471.999487;
-	//game->player.y = 607.000552;
+	//game->player.x = 1471.999999;
+	//game->player.y = 613.000001;
 	cast_all_rays(game);
 	render_projected_wall(game);
 	render_minimap(game);
