@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 23:48:59 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 23:54:39 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 double	normalize_angle(double angle)
 {
-	angle = fmod(angle, PI * 2);
+	angle = fmod(angle, TWO_PI);
 	if (angle < 0)
 	{
-		angle = PI * 2 + angle;
+		angle = TWO_PI + angle;
 	}
 	return (angle);
 }

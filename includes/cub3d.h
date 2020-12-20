@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 23:50:45 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/20 23:53:48 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #include "../get_next_line/get_next_line.h"
 
 #define PI 3.14159265
+#define TWO_PI 6.28318530
 #define MAP_BUF_SIZE 64
 #define TILE_SIZE 64
 #define ERROR -1
