@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2020/12/20 14:42:48 by ynakamot         ###   ########.fr        #
+#    Updated: 2020/12/20 18:39:32 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ libft:
 $(NAME): libft $(OBJECTS)
 	gcc -g $(SRCFILE) -I./includes -L./libft -L./minilibx-linux -lft -lmlx -lXext -lX11 -lm -o cub3D
 
-run:
+run: all
 	./cub3D sample.cub
 
 %.o: %.c
