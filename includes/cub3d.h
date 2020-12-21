@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 23:53:48 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/21 14:30:58 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,11 +185,13 @@ int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
-int		check_collision(t_game *game, double x, double y);
+int		check_collision(t_cub cub, double x, double y);
 void	cast_all_rays(t_game *game);
 void	draw_line(t_game *game, t_line line, int color);
 double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
+
+
 //for debug
 void	test_render_gridline(t_img *map, t_cub cub);
 void	test_print_cub(t_cub cub);
