@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/21 14:30:58 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/22 17:19:22 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct	s_img {
 	int len;
 	int endian;
 }				t_img;
+
+typedef struct	s_tex {
+	t_img	img;
+	int		width;
+	int		height;
+}				t_tex;
 
 typedef struct	s_pl
 {
@@ -127,6 +133,10 @@ typedef struct	s_game
 	t_img	view;
 	t_pl	player;
 	t_ray	*rays;
+	t_tex	tex_n;
+	t_tex	tex_s;
+	t_tex	tex_w;
+	t_tex	tex_e;
 }				t_game;
 
 typedef enum	e_id
@@ -175,21 +185,25 @@ void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
 int		is_cub(char *filepath);
 int		check_valid_params(t_game *game);
+void	open_wall_texture(t_game *game);
 
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-int		create_trgb(int t, int r, int g, int b);
-int		get_color(char c, int trgb);
 int		keypress_hook(int keycode, t_game *game);
 int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
 int		check_collision(t_cub cub, double x, double y);
 void	cast_all_rays(t_game *game);
-void	draw_line(t_game *game, t_line line, int color);
 double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
+int		get_wall_texture(t_game *game);
+
+//utils
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int		create_trgb(int t, int r, int g, int b);
+int		get_color(char c, int trgb);
+void	draw_line(t_game *game, t_line line, int color);
 
 
 //for debug

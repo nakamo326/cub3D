@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:01:47 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 14:44:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/22 16:52:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int		is_cub(char *filepath)
 //	//is_valid_resolution(game);
 //	//is_valid_filepath(game);
 //	//check_missing_params(game);
+//	//is_valid_texture(game);
 //
 //}
