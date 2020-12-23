@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/22 17:19:22 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/23 13:28:40 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,19 @@
 #define FOV (60 * PI / 180)
 
 typedef struct	s_img {
-	void *img_ptr;
-	char *addr;
-	int bpp;
-	int len;
-	int endian;
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		len;
+	int		endian;
 }				t_img;
 
 typedef struct	s_tex {
-	t_img	img;
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		len;
+	int		endian;
 	int		width;
 	int		height;
 }				t_tex;
@@ -197,7 +201,7 @@ int		check_collision(t_cub cub, double x, double y);
 void	cast_all_rays(t_game *game);
 double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
-int		get_wall_texture(t_game *game);
+int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

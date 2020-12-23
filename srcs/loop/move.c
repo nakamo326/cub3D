@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 13:52:52 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/21 14:02:22 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/23 13:32:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void	move_player(t_game *game)
 		game->player.x = new_x;
 	if (!check_collision(game->cub, game->player.x, new_y))
 		game->player.y = new_y;
-	printf("(%f,%f)\n",game->player.x, game->player.y);
+	//printf("(%f,%f)\n",game->player.x, game->player.y);
 }
