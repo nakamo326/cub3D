@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/23 17:32:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/29 21:32:18 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 	double	wall_height;
 	int		wall_start;
 	int		j;
-	int		wall_color;
+	int		color;
 	double	x_ratio;
 	double	y_ratio;
 
@@ -62,10 +62,12 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 	while (j < game->cub.window_height && j < wall_height + wall_start)
 	{
 		y_ratio = (j - wall_start) / wall_height;
-		wall_color = get_wall_texture(game, i, x_ratio, y_ratio);
-		my_mlx_pixel_put(&game->view, i, j, wall_color);
+		color = get_wall_texture(game, i, x_ratio, y_ratio);
+		my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
+
+
 }
 
 void	render_projected_wall(t_game *game)
@@ -75,8 +77,8 @@ void	render_projected_wall(t_game *game)
 
 	//delete after coding ceil and floor projection
 	clear_view(game->cub, &game->view);
+	render_floor(game);
 
-	//render_floor(game);
 	i = 0;
 	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);
 	while (i < game->cub.window_width)

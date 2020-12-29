@@ -1,10 +1,10 @@
 R 1280 720
 NO ./texture/test_n.xpm
-SO ./texture/test_s.xpm
-WE ./texture/test_w.xpm
-EA ./texture/test_e.xpm
+SO ./texture/test_n.xpm
+WE ./texture/test_n.xpm
+EA ./texture/test_n.xpm
 
-S ./path_to_the_sprite_texture
+S ./texture/floor2.xpm
 F 111,111,111
 C 50,50,50
 

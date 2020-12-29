@@ -24,4 +24,9 @@ void	open_wall_texture(t_game *game)
 		&game->tex_e.width, &game->tex_e.height);
 	game->tex_e.addr = mlx_get_data_addr(game->tex_e.img_ptr,
 		&game->tex_e.bpp, &game->tex_e.len, &game->tex_e.endian);
+	path = game->cub.sp_path;
+	game->tex_sp.img_ptr = mlx_xpm_file_to_image(game->mlx, path,
+		&game->tex_sp.width, &game->tex_sp.height);
+	game->tex_sp.addr = mlx_get_data_addr(game->tex_sp.img_ptr,
+		&game->tex_sp.bpp, &game->tex_sp.len, &game->tex_sp.endian);
 }
