@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/29 18:52:00 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/30 20:41:52 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ void	cast_all_rays(t_game *game);
 double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
 int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
-void	render_floor(t_game *game);
+void	render_floor(t_game *game, int i, int j);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

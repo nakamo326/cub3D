@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/29 21:32:18 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/30 20:41:08 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 		my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
-
+	render_floor(game, i, j);
 
 }
 
@@ -77,7 +77,7 @@ void	render_projected_wall(t_game *game)
 
 	//delete after coding ceil and floor projection
 	clear_view(game->cub, &game->view);
-	render_floor(game);
+
 
 	i = 0;
 	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);

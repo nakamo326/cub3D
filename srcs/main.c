@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/22 17:42:45 by ynakamot         ###   ########.fr       */
+/*   Updated: 2020/12/29 21:46:24 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	init_game(int argc ,char *argv[], t_game *game)
 }
 
 //第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
-//minimapが幅超えるときの処理
 int		main(int argc, char *argv[])
 {
 	t_game	game;
