@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 14:38:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/01 11:42:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ void	init_player(t_game *game)
 {
 	game->player.x = 0;
 	game->player.y = 0;
+	game->player.z = 0;
 	game->player.spawn_direction = '\0';
 	game->player.turn_direction = 0;
 	game->player.walk_direction = 0;
 	game->player.sidewalk_direction = 0;
 	game->player.rotation_angle = 0;
-	game->player.move_speed = 1.0;
-	game->player.turn_speed = 1 * PI / 180;
+	game->player.move_speed = 3.0;
+	game->player.turn_speed = 3 * PI / 180;
 }
 
 void	init_cub(t_game *game)

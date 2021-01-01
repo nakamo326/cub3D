@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/30 20:41:52 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/01 11:42:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct	s_pl
 {
 	double	x;
 	double	y;
+	double	z;
 	char	spawn_direction;//error case
 	int		turn_direction;//-1 if left, 1 if right
 	int		walk_direction;//-1 if back, 1 if front
