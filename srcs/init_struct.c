@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/01 11:42:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/04 12:39:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_player(t_game *game)
 {
 	game->player.x = 0;
 	game->player.y = 0;
-	game->player.z = 0;
+	game->player.z = TILE_SIZE / 2;;
 	game->player.spawn_direction = '\0';
 	game->player.turn_direction = 0;
 	game->player.walk_direction = 0;

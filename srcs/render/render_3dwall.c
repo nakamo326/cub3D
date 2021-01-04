@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/30 20:41:08 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/04 12:41:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 
 	correct_distance = game->rays[i].distance
 	* cos(game->rays[i].ray_angle - game->player.rotation_angle);
+	if (correct_distance == 0)
+		correct_distance += 1;
 	wall_height = (TILE_SIZE / correct_distance) * distance_plane;
 	wall_start = round((game->cub.window_height / 2) - (wall_height / 2));
 	if (game->rays[i].vwall_hit)
@@ -61,12 +63,12 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 	j = wall_start > 0 ? wall_start : 0;
 	while (j < game->cub.window_height && j < wall_height + wall_start)
 	{
-		y_ratio = (j - wall_start) / wall_height;
+		y_ratio = fabs((j - wall_start) / wall_height);
 		color = get_wall_texture(game, i, x_ratio, y_ratio);
 		my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
-	render_floor(game, i, j);
+	render_floor(game, distance_plane, i, j);
 
 }
 
