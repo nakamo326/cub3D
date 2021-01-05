@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 11:40:37 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:33:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	loop(t_game *game)
 	cast_all_rays(game);
 	render_projected_wall(game);
 	render_sprite(game);
-	//render_minimap(game);
+	render_minimap(game);
 
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->view.img_ptr, 0, 0);
 	//while (1);

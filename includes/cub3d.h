@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 11:40:48 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:13:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 int		get_color(char c, int trgb);
 void	draw_line(t_game *game, t_line line, int color);
+double	get_distance(double x0, double y0, double x1, double y1);
 
 
 //for debug

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/18 23:20:59 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:19:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,23 @@ void	render_ray(t_game *game)
 	}
 }
 
-void	render_items(t_game *game, int x, int y)
+void	render_items(t_game *game, double x, double y)
 {
-	int i;
-	int j;
-	double		scale;
+	double item_size;
+	double item_angle;
+	t_line line;
+	double delta_x;
+	double delta_y;
 
-	scale = game->cub.map_scale;
-	i = 0;
-	x += TILE_SIZE * scale * 3 / 8;
-	y += TILE_SIZE * scale * 3 / 8;
-	while (i <= TILE_SIZE * scale / 4)
-	{
-		j = 0;
-		while (j <= TILE_SIZE * scale / 4)
-		{
-			my_mlx_pixel_put(&game->view, x + i, y + j, 0x2DC8FF);
-			j++;
-		}
-		i++;
-	}
+	item_size = TILE_SIZE * game->cub.map_scale;
+	delta_x = x - game->player.x * game->cub.map_scale;
+	delta_y = y - game->player.y * game->cub.map_scale;
+	item_angle = atan2(delta_y, delta_x);
+	line.x0 = x + cos(item_angle + PI / 2) * item_size / 2;
+	line.y0 = y + sin(item_angle + PI / 2) * item_size / 2;
+	line.x1 = x + cos(item_angle - PI / 2) * item_size / 2;
+	line.y1 = y + sin(item_angle - PI / 2) * item_size / 2;
+	draw_line(game, line, 0x2DC8FF);
 }
 
 void	render_map_object(t_game *game)
@@ -91,7 +88,6 @@ void	render_map_object(t_game *game)
 
 	scale = game->cub.map_scale;
 	render_ray(game);
-	render_player(game, game->player.x * scale, game->player.y * scale);
 	lstptr = game->cub.items;
 	while (lstptr != NULL)
 	{
@@ -99,5 +95,6 @@ void	render_map_object(t_game *game)
 		render_items(game, item_info->x * scale, item_info->y * scale);
 		lstptr = lstptr->next;
 	}
+	render_player(game, game->player.x * scale, game->player.y * scale);
 
 }
