@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 11:02:58 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/10 12:36:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 11:28:22 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	store_item_info(t_cub *cub, int x, int y)
 	t_list		*new;
 	t_sprite	*item_info;
 	static int	num = 0;
-	item_info = malloc(sizeof(t_sprite));
-	item_info->x = x * TILE_SIZE;
-	item_info->y = y * TILE_SIZE;
-	item_info->number = num++;
+	if (!(item_info = malloc(sizeof(t_sprite))))
+		config_error(MALLOC_ERROR);
+	item_info->x = x * TILE_SIZE + TILE_SIZE / 2;
+	item_info->y = y * TILE_SIZE + TILE_SIZE / 2;
+	item_info->num = num++;
 	if (!(new = ft_lstnew(item_info)))
 		config_error(MALLOC_ERROR);
 	ft_lstadd_back(&cub->items, new);
@@ -29,8 +30,8 @@ void	store_item_info(t_cub *cub, int x, int y)
 
 void	store_pl_info(t_game *game, int x, int y)
 {
-	game->player.x = x * TILE_SIZE + TILE_SIZE /2;
-	game->player.y = y * TILE_SIZE + TILE_SIZE /2;
+	game->player.x = x * TILE_SIZE + TILE_SIZE / 2;
+	game->player.y = y * TILE_SIZE + TILE_SIZE / 2;
 	if (game->cub.map[y][x] == 'N')
 		game->player.rotation_angle = 270 * PI / 180;
 	if (game->cub.map[y][x] == 'S')

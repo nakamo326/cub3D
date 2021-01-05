@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/04 13:24:22 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 11:40:48 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ typedef struct	s_pl
 	double	x;
 	double	y;
 	double	z;
-	char	spawn_direction;//error case
-	int		turn_direction;//-1 if left, 1 if right
-	int		walk_direction;//-1 if back, 1 if front
-	int		sidewalk_direction;//-1 if left, 1 if right
+	char	spawn_direction;
+	int		turn_direction;
+	int		walk_direction;
+	int		sidewalk_direction;
 	double	rotation_angle;
 	double	move_speed;
 	double	turn_speed;
@@ -72,9 +72,11 @@ typedef struct	s_pl
 
 typedef struct	s_sprite
 {
-	int		number;
+	int		num;
 	double	x;
 	double	y;
+	double	distance;
+
 }				t_sprite;
 
 typedef struct	s_ray
@@ -205,6 +207,7 @@ double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
 int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
 void	render_floor(t_game *game, double dist_plane, int i, int j);
+void	render_sprite(t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

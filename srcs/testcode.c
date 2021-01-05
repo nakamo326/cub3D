@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 14:41:49 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 11:41:34 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	test_print_items(t_game game)
 	while(ptr != NULL)
 	{
 		item_info = ptr->content;
-		printf("item number: %d : %f , %f\n",item_info->number, item_info->x, item_info->y);
+		printf("item number: %d : %f , %f\n",item_info->num, item_info->x, item_info->y);
 		ptr = ptr->next;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/04 12:54:14 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/04 22:26:39 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/raycasting/cast_ray.c \
 			srcs/render/render_wall_strip.c \
 			srcs/render/render_wall_texture.c \
-			srcs/render/render_floor.c
+			srcs/render/render_floor.c \
+			srcs/render/render_sprite.c
 
 
 OBJDIR = ./obj
