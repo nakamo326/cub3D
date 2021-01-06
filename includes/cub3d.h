@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 14:13:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/06 10:03:29 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct	s_sprite
 	double	x;
 	double	y;
 	double	distance;
-
+	double	angle;
 }				t_sprite;
 
 typedef struct	s_ray
@@ -193,7 +193,7 @@ void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
 int		is_cub(char *filepath);
 int		check_valid_params(t_game *game);
-void	open_wall_texture(t_game *game);
+void	open_texture(t_game *game);
 
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);

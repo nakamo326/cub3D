@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 16:19:49 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/05 16:32:55 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,18 @@ void	render_ray(t_game *game)
 	}
 }
 
-void	render_items(t_game *game, double x, double y)
+void	render_items(t_game *game, t_sprite item)
 {
-	double item_size;
-	double item_angle;
-	t_line line;
-	double delta_x;
-	double delta_y;
+	double	scale;
+	double	item_size;
+	t_line	line;
 
-	item_size = TILE_SIZE * game->cub.map_scale;
-	delta_x = x - game->player.x * game->cub.map_scale;
-	delta_y = y - game->player.y * game->cub.map_scale;
-	item_angle = atan2(delta_y, delta_x);
-	line.x0 = x + cos(item_angle + PI / 2) * item_size / 2;
-	line.y0 = y + sin(item_angle + PI / 2) * item_size / 2;
-	line.x1 = x + cos(item_angle - PI / 2) * item_size / 2;
-	line.y1 = y + sin(item_angle - PI / 2) * item_size / 2;
+	scale = game->cub.map_scale;
+	item_size = TILE_SIZE * scale;
+	line.x0 = item.x * scale + cos(item.angle + PI / 2) * item_size / 2;
+	line.y0 = item.y * scale + sin(item.angle + PI / 2) * item_size / 2;
+	line.x1 = item.x * scale + cos(item.angle - PI / 2) * item_size / 2;
+	line.y1 = item.y * scale + sin(item.angle - PI / 2) * item_size / 2;
 	draw_line(game, line, 0x2DC8FF);
 }
 
@@ -92,7 +88,7 @@ void	render_map_object(t_game *game)
 	while (lstptr != NULL)
 	{
 		item_info = lstptr->content;
-		render_items(game, item_info->x * scale, item_info->y * scale);
+		render_items(game, *item_info);
 		lstptr = lstptr->next;
 	}
 	render_player(game, game->player.x * scale, game->player.y * scale);

@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	cal_item_dist(t_list *items, t_pl player)
+void	cal_item_info(t_list *items, t_pl player)
 {
 	t_sprite	*info;
 
@@ -8,6 +8,7 @@ void	cal_item_dist(t_list *items, t_pl player)
 	{
 		info = (t_sprite *)items->content;
 		info->distance = get_distance(player.x, player.y, info->x, info->y);
+		info->angle = atan2(info->y - player.y, info->x - player.x);
 		items = items->next;
 	}
 
@@ -20,7 +21,7 @@ void	cal_item_dist(t_list *items, t_pl player)
 
 void	render_sprite(t_game *game)
 {
-	cal_item_dist(game->cub.items, game->player);
+	cal_item_info(game->cub.items, game->player);
 	//距離で並べ替え
 	//sort_items(game->cub.items, game->player);
 

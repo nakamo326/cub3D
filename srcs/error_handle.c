@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/08 13:19:08 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/06 10:02:25 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	config_error(int ret)
 	const char err_msg[][40] = {
 		{"Error in read function.\n"},
 		{"Dummy for skip"},
-		{"Error in malloc function.\n"},
+		{"Error in memory allocation.\n"},
 		{"Identifier is duplicated.\n"},
 		{"Invalid format.\n"},
 		{"Invalid resolution.\n"},
@@ -57,6 +57,5 @@ void	config_error(int ret)
 		{"Map isn't closed.\n"}
 	};
 
-	//free_cub_info();
 	err_exit((char *)err_msg[ret]);
 }

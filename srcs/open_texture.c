@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	open_wall_texture(t_game *game)
+void	open_texture(t_game *game)
 {
 	game->tex_n.img_ptr = mlx_xpm_file_to_image(game->mlx, game->cub.no_path,
 		&game->tex_n.width, &game->tex_n.height);

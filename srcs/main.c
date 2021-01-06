@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/04 12:40:01 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/06 10:04:56 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		main(int argc, char *argv[])
 	game.mlx_win = mlx_new_window(game.mlx, win_width, win_height, "cub3D");
 	game.view.img_ptr = mlx_new_image(game.mlx, win_width, win_height);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr, &game.view.bpp, &game.view.len, &game.view.endian);
-	open_wall_texture(&game);
+	open_texture(&game);
 
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
