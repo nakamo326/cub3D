@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/04 13:24:47 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/06 10:24:04 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 
 	correct_distance = game->rays[i].distance
 	* cos(game->rays[i].ray_angle - game->player.rotation_angle);
+	game->zbuffer[i] = correct_distance;
 	wall_height = (TILE_SIZE / correct_distance) * distance_plane;
 	wall_start = round((game->cub.window_height / 2) - (wall_height / 2));
 	if (game->rays[i].vwall_hit)

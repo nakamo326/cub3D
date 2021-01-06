@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/06 10:03:29 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/06 20:05:38 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ typedef struct	s_game
 	t_img	view;
 	t_pl	player;
 	t_ray	*rays;
+	double	*zbuffer;
 	t_tex	tex_n;
 	t_tex	tex_s;
 	t_tex	tex_w;
@@ -215,6 +216,7 @@ int		create_trgb(int t, int r, int g, int b);
 int		get_color(char c, int trgb);
 void	draw_line(t_game *game, t_line line, int color);
 double	get_distance(double x0, double y0, double x1, double y1);
+void	sort_items(t_list *items);
 
 
 //for debug

@@ -14,16 +14,10 @@ void	cal_item_info(t_list *items, t_pl player)
 
 }
 
-//void	sort_items(t_list *items, t_pl player)
-//{
-//
-//}
-
 void	render_sprite(t_game *game)
 {
 	cal_item_info(game->cub.items, game->player);
-	//距離で並べ替え
-	//sort_items(game->cub.items, game->player);
+	sort_items(game->cub.items);
 
 
 	test_print_items(*game);

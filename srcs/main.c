@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/06 10:04:56 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/06 10:22:10 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	//check_valid_params(game);
 	adjust_mapscale(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
+	game->zbuffer = ft_calloc((size_t)game->cub.window_width,sizeof(double));
 	//test_print_cub(game->cub);
 	//test_print_map(game->cub);
 	//test_print_items(game);
