@@ -36,6 +36,8 @@ void	is_visible_sprite(t_game *game)
 			tmp->visible = true;
 		else if (tmp->right_angle >= start_angle && tmp->right_angle <= start_angle + FOV)
 			tmp->visible = true;
+		else if (tmp->left_angle <= start_angle && tmp->right_angle >= start_angle + FOV)
+			tmp->visible = true;
 		else
 			tmp->visible = false;
 		lst_p = lst_p->next;
