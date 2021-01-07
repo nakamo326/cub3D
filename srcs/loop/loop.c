@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 14:33:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 13:33:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 int	loop(t_game *game)
 {
 	move_player(game);
+	//get sprite info before casting.
+	cal_item_info(game->cub.items, game->player);
+	is_visible_sprite(game);
 	cast_all_rays(game);
 	render_projected_wall(game);
 	render_sprite(game);

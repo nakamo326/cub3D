@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/06 20:04:10 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/07 12:54:52 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/loop/hook.c \
 			srcs/loop/move.c \
 			srcs/raycasting/cast_ray.c \
+			srcs/raycasting/init_sprite.c \
 			srcs/render/render_map.c \
 			srcs/render/render_map_object.c \
 			srcs/render/render_utils.c \

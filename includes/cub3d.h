@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/07 09:54:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 13:34:18 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ typedef struct	s_sprite
 	double	y;
 	double	distance;
 	double	angle;
+	double	rightend_cor[2];
+	double	right_angle;
+	double	leftend_cor[2];
+	double	left_angle;
 }				t_sprite;
 
 typedef struct	s_ray
@@ -204,6 +208,8 @@ int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
 int		check_collision(t_cub cub, double x, double y);
+void	cal_item_info(t_list *items, t_pl player);
+void	is_visible_sprite(t_game *game);
 void	cast_all_rays(t_game *game);
 double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 16:32:55 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 13:00:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,13 @@ void	render_ray(t_game *game)
 void	render_items(t_game *game, t_sprite item)
 {
 	double	scale;
-	double	item_size;
 	t_line	line;
 
 	scale = game->cub.map_scale;
-	item_size = TILE_SIZE * scale;
-	line.x0 = item.x * scale + cos(item.angle + PI / 2) * item_size / 2;
-	line.y0 = item.y * scale + sin(item.angle + PI / 2) * item_size / 2;
-	line.x1 = item.x * scale + cos(item.angle - PI / 2) * item_size / 2;
-	line.y1 = item.y * scale + sin(item.angle - PI / 2) * item_size / 2;
+	line.x0 = item.rightend_cor[0] * scale;
+	line.y0 = item.rightend_cor[1] * scale;
+	line.x1 = item.leftend_cor[0] * scale;
+	line.y1 = item.leftend_cor[1] * scale;
 	draw_line(game, line, 0x2DC8FF);
 }
 
@@ -92,5 +90,4 @@ void	render_map_object(t_game *game)
 		lstptr = lstptr->next;
 	}
 	render_player(game, game->player.x * scale, game->player.y * scale);
-
 }
