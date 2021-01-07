@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 11:02:58 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 14:19:54 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 09:55:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	store_item_info(t_cub *cub, int x, int y)
 		config_error(MALLOC_ERROR);
 	info->x = x * TILE_SIZE + TILE_SIZE / 2;
 	info->y = y * TILE_SIZE + TILE_SIZE / 2;
+	info->visible = false;
 	info->num = num++;
 	if (!(new = ft_lstnew(info)))
 		config_error(MALLOC_ERROR);

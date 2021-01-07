@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 13:52:52 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/23 13:32:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 10:09:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ double	update_rotation_and_movestep(t_game *game)
 
 	game->player.rotation_angle +=
 		game->player.turn_direction * game->player.turn_speed;
+	game->player.rotation_angle = normalize_angle(game->player.rotation_angle);
 	if (game->player.walk_direction != 0)
 		movestep = game->player.walk_direction * game->player.move_speed;
 	if (game->player.sidewalk_direction != 0)

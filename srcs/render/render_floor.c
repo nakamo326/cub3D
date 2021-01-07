@@ -8,7 +8,7 @@ int		get_floor_texture(t_game *game, double x_ratio, double y_ratio)
 	int		x;
 	int		y;
 
-	tex = game->tex_s;
+	tex = game->tex_w;
 	x = round(x_ratio * tex.width);
 	y = round(y_ratio * tex.height);
 	addr = (char *)tex.addr;

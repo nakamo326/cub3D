@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/06 20:05:38 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 09:54:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct	s_pl
 
 typedef struct	s_sprite
 {
+	bool	visible;
 	int		num;
 	double	x;
 	double	y;

@@ -1,10 +1,10 @@
 R 1280 720
-NO ./texture/test_e.xpm
+NO ./texture/test_n.xpm
 SO ./texture/test_e.xpm
 WE ./texture/test_e.xpm
 EA ./texture/test_e.xpm
 
-S ./texture/floor.xpm
+S ./texture/barrel.xpm
 
 F 111,111,111
 C 50,50,50

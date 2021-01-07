@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/05 14:32:38 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/07 10:08:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ void	test_print_items(t_game game)
 	t_sprite *item_info;
 
 	ptr = game.cub.items;
+	printf("------------------------------------------------------------------\n");
 	while(ptr != NULL)
 	{
 		item_info = ptr->content;
-		printf("item number: %d , (%f , %f) , dist :%f\n",item_info->num, item_info->x, item_info->y, item_info->distance);
+		printf("item number: %d, (% 4.0f, % 4.0f), dist: %5.1f, visible: %d\n",
+		item_info->num, item_info->x, item_info->y, item_info->distance, item_info->visible);
 		ptr = ptr->next;
 	}
 }
