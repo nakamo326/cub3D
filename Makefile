@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/07 12:54:52 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/08 18:54:00 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,10 @@ NAME = cub3D
 
 SRCFILE =	get_next_line/get_next_line.c \
 			srcs/main.c \
+			srcs/arg_check.c \
 			srcs/error_handle.c \
 			srcs/init_struct.c \
+			srcs/export_bmp.c \
 			srcs/testcode.c \
 			srcs/open_texture.c \
 			srcs/sort_sprite.c \

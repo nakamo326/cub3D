@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/06 10:02:25 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 14:53:16 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,15 @@ void	err_exit(char *errormsg)
 	ft_putstr_fd(errormsg, 2);
 	exit(EXIT_FAILURE);
 }
-/*
-void	free_cub_info(void)
-{
-	int	i;
 
-	if (cub.no_path != NULL)
-		free(cub.no_path);
-	if (cub.so_path != NULL)
-		free(cub.so_path);
-	if (cub.we_path != NULL)
-		free(cub.we_path);
-	if (cub.ea_path != NULL)
-		free(cub.ea_path);
-	i = 0;
-	if (cub.map != NULL)
-		while (cub.map[i] != NULL)
-		{
-			free(cub.map[i]);
-			i++;
-		}
-}
-*/
 void	config_error(int ret)
 {
 	const char err_msg[][40] = {
 		{"Error in read function.\n"},
 		{"Dummy for skip"},
 		{"Error in memory allocation.\n"},
+		{"argument is wrong.\n"},
+		{"file is not cub file.\n"},
 		{"Identifier is duplicated.\n"},
 		{"Invalid format.\n"},
 		{"Invalid resolution.\n"},
@@ -53,7 +34,7 @@ void	config_error(int ret)
 		{"Invalid color code.\n"},
 		{"No map in cub file.\n"},
 		{"Player's position is duplicated.\n"},
-		{"No player.\n"},
+		{"No player is in map.\n"},
 		{"Map isn't closed.\n"}
 	};
 

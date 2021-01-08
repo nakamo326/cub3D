@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:49:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 18:54:46 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 
 #include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
@@ -170,6 +172,7 @@ typedef enum	e_err_conf
 {
 	READ_ERROR = 0,
 	MALLOC_ERROR = 2,
+	INVALID_ARG,
 	ISNT_CUBFILE,
 	MULTIPLE_ID,
 	INVALID_FORMAT,
@@ -183,10 +186,12 @@ typedef enum	e_err_conf
 }				t_err_conf;
 
 void	init_val(t_game *game);
+void	is_valid_args(int argc, char *argv[], t_game *game);
 void	err_exit(char *errormsg);
 void	config_error(int ret);
 int		quit_game(void *param);
-//void	free_cub_info(void);
+void	export_bmp(t_game *game);
+
 int		read_cub(int fd, t_cub *cub);
 int		input_resolution(char *line, t_cub *cub);
 int		input_path(char *line, int identifier, t_cub *cub);
@@ -216,6 +221,7 @@ double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
 int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
 void	render_floor(t_game *game, double dist_plane, int i, int j);
+void	render_sky(t_game *game);
 void	render_sprite(t_game *game);
 
 //utils

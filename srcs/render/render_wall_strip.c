@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/07 19:50:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:24:10 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ void	render_projected_wall(t_game *game)
 
 	i = 0;
 	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);
-	//delete after coding ceil and floor projection
 	clear_view(game);
-
-
+	//render_sky(game);
 	while (i < game->cub.window_width)
 	{
 		render_wall_strip(distance_plane, i, game);

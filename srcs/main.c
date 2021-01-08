@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:41:59 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 18:55:09 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_game(int argc ,char *argv[], t_game *game)
 {
 	int		fd;
 
-	(void)argc;
+	is_valid_args(argc, argv, game);
 	if (!is_cub(argv[1]))
 		config_error(ISNT_CUBFILE);
 	if((fd = open(argv[1],O_RDONLY)) == ERROR)
@@ -39,12 +39,8 @@ void	init_game(int argc ,char *argv[], t_game *game)
 	adjust_mapscale(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
 	game->zbuffer = ft_calloc((size_t)game->cub.window_width,sizeof(double));
-	//test_print_cub(game->cub);
-	//test_print_map(game->cub);
-	//test_print_items(game);
 }
 
-//第一引数がcubファイル。第二引数に--saveがあったらssをbmpへ。
 int		main(int argc, char *argv[])
 {
 	t_game	game;
@@ -60,7 +56,8 @@ int		main(int argc, char *argv[])
 	game.view.img_ptr = mlx_new_image(game.mlx, win_width, win_height);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr, &game.view.bpp, &game.view.len, &game.view.endian);
 	open_texture(&game);
-
+	if (game.save_flag == true)
+		export_bmp(&game);
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
 	//need more check why 33?
