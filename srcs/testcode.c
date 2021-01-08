@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/07 14:14:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 10:14:36 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	test_print_items(t_game game)
 
 	ptr = game.cub.items;
 	printf("------------------------------------------------------------------\n");
+	printf("FOV is %f to %f\n",game.player.rotation_angle - FOV / 2, game.player.rotation_angle + FOV / 2);
 	while(ptr != NULL)
 	{
 		item_info = ptr->content;
