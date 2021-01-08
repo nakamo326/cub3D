@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 14:36:43 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 13:31:46 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		input_resolution(char *line, t_cub *cub)
 int		input_path(char *line, int identifier, t_cub *cub)
 {
 	char	*path;
-	//pathのチェックは後でまとめてやる
+
 	if (!(path = ft_strtrim(line, " ")))
 		return (MALLOC_ERROR);
 	if (identifier == NO)

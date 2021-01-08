@@ -20,7 +20,7 @@ int		get_sprite_texture(t_game *game, double x_ratio, double y_ratio)
 bool	is_ray_in_sprite(t_ray ray, t_sprite *sprite)
 {
 	if (sprite->left_angle > sprite->right_angle)
-	{//beyond 0
+	{
 		if ((ray.ray_angle >= sprite->left_angle && ray.ray_angle <= TWO_PI) ||
 		(ray.ray_angle >= 0 && ray.ray_angle <= sprite->right_angle))
 		return (true);
@@ -66,13 +66,10 @@ void	render_sprite_strip(t_game *game, t_sprite *sprite, int i, double correct_d
 	int		color;
 	int		j;
 
-	if(!is_ray_in_sprite(game->rays[i], sprite))
-		return ;
 	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);
 	sprite_size = (TILE_SIZE / correct_distance) * distance_plane;
 	sprite_start = round((game->cub.window_height / 2) - (sprite_size / 2));
 	x_ratio = get_sprite_x(game->rays[i], sprite);
-	//x_ratio = (game->rays[i].ray_angle - sprite->left_angle) / (sprite->right_angle - sprite->left_angle);
 	j = sprite_start > 0 ? sprite_start : 0;
 	while (j < game->cub.window_height && j < sprite_size + sprite_start)
 	{
@@ -96,7 +93,8 @@ void	projection_sprite(t_game *game, t_sprite *sprite)
 	i = 0;
 	while (i < game->cub.window_width)
 	{
-		if (game->zbuffer[i] > correct_distance)
+		if (game->zbuffer[i] > correct_distance &&
+				is_ray_in_sprite(game->rays[i], sprite))
 			render_sprite_strip(game, sprite, i, correct_distance);
 		i++;
 	}

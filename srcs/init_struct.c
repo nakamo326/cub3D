@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/04 12:39:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 13:50:09 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	init_val(t_game *game)
 	init_cub(game);
 	init_flags(game);
 	init_player(game);
+	game->save_flag = false;
 	game->rays = NULL;
 }

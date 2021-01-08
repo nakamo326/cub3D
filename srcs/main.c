@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/06 10:22:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/08 13:41:59 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int		main(int argc, char *argv[])
 	int		win_width;
 	int		win_height;
 
-	//is_valid_arg();
 	init_val(&game);
 	init_game(argc, argv, &game);
 	win_width = game.cub.window_width;
