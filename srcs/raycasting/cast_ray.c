@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 11:06:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/09 10:17:54 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	check_ray_direction(t_ray *ray)
 
 void	check_hor_intersection(t_ray *ray, t_pl player)
 {
-	//check intersection position is correct
 	if (ray->hwall_hit == false)
 		return;
 	if ((ray->facing_up && (ray->hwall_y <= player.y) == false) ||

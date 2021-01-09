@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:31:46 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/09 10:35:30 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		input_color(char *line, int identifier, t_cub *cub)
 	i = 0;
 	while (i < 3)
 	{
-		if (strs[i] == NULL)
+		if (strs[i] == NULL || ft_strlen(strs[i]) > 3)
 			return (free_ret(strs, INVALID_FORMAT));
 		rgb[i] = ft_atoi(strs[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)

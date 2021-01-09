@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2020/12/20 15:14:32 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/09 10:15:53 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,11 @@ void	update_direction(int keycode, t_game *game)
 
 void	reset_direction(int keycode, t_game *game)
 {
-	if (keycode == 119)
+	if (keycode == 119 || keycode == 115)
 		game->player.walk_direction = 0;
-	if (keycode == 115)
-		game->player.walk_direction = 0;
-	if (keycode == 100)
+	if (keycode == 100 || keycode == 97)
 		game->player.sidewalk_direction = 0;
-	if (keycode == 97)
-		game->player.sidewalk_direction = 0;
-	if (keycode == 65363)
-		game->player.turn_direction = 0;
-	if (keycode == 65361)
+	if (keycode == 65363 || keycode == 65361)
 		game->player.turn_direction = 0;
 }
 
