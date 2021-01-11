@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 18:55:09 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/11 16:11:31 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,14 @@ void	init_game(int argc ,char *argv[], t_game *game)
 int		main(int argc, char *argv[])
 {
 	t_game	game;
-	int		win_width;
-	int		win_height;
 
 	init_val(&game);
 	init_game(argc, argv, &game);
-	win_width = game.cub.window_width;
-	win_height= game.cub.window_height;
+	game.view.w = game.cub.window_width;
+	game.view.h = game.cub.window_height;
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, win_width, win_height, "cub3D");
-	game.view.img_ptr = mlx_new_image(game.mlx, win_width, win_height);
+	game.mlx_win = mlx_new_window(game.mlx, game.view.w, game.view.h, "cub3D");
+	game.view.img_ptr = mlx_new_image(game.mlx, game.view.w, game.view.h);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr, &game.view.bpp, &game.view.len, &game.view.endian);
 	open_texture(&game);
 	if (game.save_flag == true)

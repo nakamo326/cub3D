@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 18:54:46 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/11 16:10:11 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct	s_img {
 	int		bpp;
 	int		len;
 	int		endian;
+	int		w;
+	int		h;
 }				t_img;
 
 typedef struct	s_tex {
