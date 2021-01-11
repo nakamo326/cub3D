@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/11 21:13:35 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/11 22:39:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int		main(int argc, char *argv[])
 
 	init_val(&game);
 	init_game(argc, argv, &game);
+	game.mlx = mlx_init();
+	check_valid_params(&game);
 	game.view.w = game.cub.window_width;
 	game.view.h = game.cub.window_height;
-	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, game.view.w, game.view.h, "cub3D");
 	game.view.img_ptr = mlx_new_image(game.mlx, game.view.w, game.view.h);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr, &game.view.bpp, &game.view.len, &game.view.endian);
-	check_valid_params(&game);
 	open_texture(&game);
 	if (game.save_flag == true)
 		export_bmp(&game);

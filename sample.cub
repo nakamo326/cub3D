@@ -1,4 +1,4 @@
-R 3000 4000
+R 3000 5888
 NO ./texture/test_n.xpm
 SO ./texture/test_e.xpm
 WE ./texture/test_e.xpm
