@@ -113,7 +113,4 @@ void	render_sprite(t_game *game)
 		projection_sprite(game, sprite);
 		lst_p = lst_p->next;
 	}
-
-
-	test_print_items(*game);
 }

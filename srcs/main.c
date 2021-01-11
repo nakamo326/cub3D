@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/11 16:11:31 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/11 21:13:35 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	init_game(int argc ,char *argv[], t_game *game)
 		exit(EXIT_FAILURE);
 	read_cub(fd, &game->cub);
 	is_valid_map(game);
-	//check_valid_params(game);
 	adjust_mapscale(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
 	game->zbuffer = ft_calloc((size_t)game->cub.window_width,sizeof(double));
@@ -53,6 +52,7 @@ int		main(int argc, char *argv[])
 	game.mlx_win = mlx_new_window(game.mlx, game.view.w, game.view.h, "cub3D");
 	game.view.img_ptr = mlx_new_image(game.mlx, game.view.w, game.view.h);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr, &game.view.bpp, &game.view.len, &game.view.endian);
+	check_valid_params(&game);
 	open_texture(&game);
 	if (game.save_flag == true)
 		export_bmp(&game);

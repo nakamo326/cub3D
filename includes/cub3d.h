@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/11 16:10:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/11 20:20:02 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ void	store_pl_info(t_game *game, int x, int y);
 void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
 int		is_cub(char *filepath);
-int		check_valid_params(t_game *game);
+void	check_valid_params(t_game *game);
 void	open_texture(t_game *game);
 
 void	render_minimap(t_game *game);
