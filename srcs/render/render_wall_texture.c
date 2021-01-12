@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:07:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:08:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 21:42:45 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_tex	choose_texture(t_ray ray, t_game *game)
 	if (ray.facing_down && ray.hwall_hit)
 		tex = game->tex_s;
 	if (ray.facing_right && ray.vwall_hit)
-		tex = game->tex_w;
-	if (ray.facing_left && ray.vwall_hit)
 		tex = game->tex_e;
+	if (ray.facing_left && ray.vwall_hit)
+		tex = game->tex_w;
 	return (tex);
 }
 
