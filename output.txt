@@ -1,74 +1,15 @@
-Norme: ./srcs/loop/hook.c
-Norme: ./srcs/loop/loop.c
-Norme: ./srcs/loop/update_sprite.c
-Error (line 48): line has 84 characters
-Error (line 50): line has 91 characters
-Error (line 52): line has 90 characters
-Norme: ./srcs/loop/move.c
-Norme: ./srcs/open_texture.c
-Warning: /home/nakamo/workspace/42cursus/cub3D/srcs/open_texture.c may not compile or is invalid for some reasons.
-Norme: ./srcs/render/render_map.c
-Norme: ./srcs/render/render_utils.c
-Norme: ./srcs/render/render_wall_texture.c
-Norme: ./srcs/render/render_wall_strip.c
-Error (line 43): function render_wall_strip has 27 lines
-Error (line 43, col 0): render_wall_strip has 7 variables
-Error (line 82): C++ comment
-Norme: ./srcs/render/render_sky.c
-Error: 42 header not at top of the file
-Error: file must end with a single empty line
-Error (line 9): Empty line
-Error (line 10, col 0): no empty line before block
-Error (line 10, col 0): no newline after block
-Norme: ./srcs/render/render_sprite.c
-Error: 42 header not at top of the file
-Error: 6 functions in the file
-Error (line 14): Empty line
-Error (line 26): bad indentation
-Error (line 37): bad spacing after get_sprite_x
-Error (line 58): multiple empty lines
-Error (line 59): bad spacing before render_sprite_strip
-Error (line 59, col 0): render_sprite_strip has 7 variables
-Error (line 89): C++ comment
-Error (line 90): C++ comment
-Norme: ./srcs/render/render_map_object.c
-Norme: ./srcs/render/render_line.c
-Norme: ./srcs/render/render_floor.c
-Norme: ./srcs/testcode.c
-Error (line 27): C++ comment
-Error (line 42): declarations must be followed by one empty line in test_render_gridline
-Error (line 47): Empty line
-Error (line 47): multiple empty lines
-Error (line 66): declarations in test_print_items are bad aligned
-Error (line 72): line has 84 characters
-Error (line 73): line has 108 characters
-Error (line 73, col 27): bad character after ,
-Error (line 74, col 1): missing space after while
-Error (line 78): line has 94 characters
-Error (line 80, col 42): bad character after ,
-Norme: ./srcs/sort_sprite.c
-Norme: ./srcs/config/store_object_info.c
-Norme: ./srcs/config/adjust_map_scale.c
-Norme: ./srcs/config/perse_map.c
-Norme: ./srcs/config/init_config.c
-Norme: ./srcs/config/perse_params.c
-Norme: ./srcs/config/check_params.c
-Norme: ./srcs/arg_check.c
-Norme: ./srcs/export_bmp.c
-Norme: ./srcs/error_handle.c
-Norme: ./srcs/init_struct.c
 Norme: ./srcs/raycasting/cast_ray.c
 Error: 10 functions in the file
 Error (line 39, col 2): missing space after return
-Error (line 53): C++ comment
-Error (line 53): bad indentation
-Error (line 55, col 2): missing space after return
-Error (line 81, col 44): bad character after ,
-Error (line 85, col 44): bad character after ,
-Error (line 101): function check_horizontal_intersections has 33 lines
-Error (line 101, col 0): check_horizontal_intersections has 6 variables
-Error (line 131, col 3): missing space after break
-Error (line 138): function check_vertical_intersection has 34 lines
-Error (line 138, col 0): check_vertical_intersection has 6 variables
-Error (line 169, col 3): missing space after break
+Error (line 54, col 2): missing space after return
+Error (line 80, col 44): bad character after ,
+Error (line 84, col 44): bad character after ,
+Error (line 100): function check_horizontal_intersections has 33 lines
+Error (line 100, col 0): check_horizontal_intersections has 6 variables
+Error (line 130, col 3): missing space after break
+Error (line 137): function check_vertical_intersection has 34 lines
+Error (line 137, col 0): check_vertical_intersection has 6 variables
+Error (line 168, col 3): missing space after break
+Error (line 180): C++ comment
+Error (line 181): C++ comment
 Norme: ./srcs/main.c

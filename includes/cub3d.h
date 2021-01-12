@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 15:51:53 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 20:59:39 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,24 +233,26 @@ int		keyrelease_hook(int keycode, t_game *game);
 int		loop(t_game *game);
 void	move_player(t_game *game);
 int		check_collision(t_cub cub, double x, double y);
+void	check_horizontal_intersections(t_ray *ray, t_pl player, t_cub cub);
+void	check_vertical_intersection(t_ray *ray, t_pl player, t_cub cub);
 void	cal_item_info(t_list *items, t_pl player);
 void	is_visible_sprite(t_game *game);
 void	cast_all_rays(t_game *game);
-double	normalize_angle(double angle);
 void	render_projected_wall(t_game *game);
 int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
 void	render_floor(t_game *game, double dist_plane, int i, int j);
 void	render_sky(t_game *game);
 void	render_sprite(t_game *game);
+void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 int		get_color(char c, int trgb);
-void	draw_line(t_game *game, t_line line, int color);
+double	normalize_angle(double angle);
 double	get_distance(double x0, double y0, double x1, double y1);
+void	draw_line(t_game *game, t_line line, int color);
 void	sort_items(t_list *items);
-
 
 //for debug
 void	test_render_gridline(t_img *map, t_cub cub);

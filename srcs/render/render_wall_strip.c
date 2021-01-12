@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 15:39:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:20:24 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,15 @@ void	clear_view(t_game *game)
 
 void	render_wall_strip(double distance_plane, int i, t_game *game)
 {
-	double	correct_distance;
 	double	wall_height;
 	int		wall_start;
 	int		j;
-	int		color;
 	double	x_ratio;
 	double	y_ratio;
 
-	correct_distance = game->rays[i].distance
+	game->zbuffer[i] = game->rays[i].distance
 	* cos(game->rays[i].ray_angle - game->player.rotation_angle);
-	game->zbuffer[i] = correct_distance;
-	wall_height = (TILE_SIZE / correct_distance) * distance_plane;
+	wall_height = (TILE_SIZE / game->zbuffer[i]) * distance_plane;
 	wall_start = round((game->cub.window_height / 2) - (wall_height / 2));
 	if (game->rays[i].vwall_hit)
 		x_ratio = 1 - fmod(game->rays[i].vwall_y, TILE_SIZE) / TILE_SIZE;
@@ -63,13 +60,12 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 	while (j < game->cub.window_height && j < wall_height + wall_start)
 	{
 		y_ratio = (j - wall_start) / wall_height;
-		color = get_wall_texture(game, i, x_ratio, y_ratio);
-		my_mlx_pixel_put(&game->view, i, j, color);
+		my_mlx_pixel_put(&game->view, i, j,
+			get_wall_texture(game, i, x_ratio, y_ratio));
 		j++;
 	}
 	if (BONUS_F == 1)
 		render_floor(game, distance_plane, i, j);
-
 }
 
 void	render_projected_wall(t_game *game)

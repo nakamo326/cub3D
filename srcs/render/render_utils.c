@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:38:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:07:31 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:32:06 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,22 @@ int		get_color(char c, int trgb)
 	if (c == 'b')
 		return (trgb & 0xFF);
 	return (ERROR);
+}
+
+double	normalize_angle(double angle)
+{
+	angle = fmod(angle, TWO_PI);
+	if (angle < 0)
+	{
+		angle = TWO_PI + angle;
+	}
+	return (angle);
+}
+
+double	get_distance(double x0, double y0, double x1, double y1)
+{
+	double distance;
+
+	distance = sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0));
+	return (distance);
 }

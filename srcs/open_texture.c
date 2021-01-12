@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:04:08 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 15:53:29 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 21:07:39 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	open_texture(t_game *game)
 		open_skybox(game);
 	if (BONUS_F == 1)
 		open_floor(game);
+	ft_putendl_fd("All textures are opened.", 0);
 }

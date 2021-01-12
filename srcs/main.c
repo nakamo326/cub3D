@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:30:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 21:09:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		quit_game(void *param)
 	game = (t_game *)param;
 	mlx_destroy_image(game->mlx, game->view.img_ptr);
 	mlx_destroy_display(game->mlx);
-	ft_putstr_fd("The game ended successfully.\n", 1);
+	ft_putstr_fd("The game ended successfully!\n", 1);
 	exit(EXIT_SUCCESS);
 	return (SUCCESS);
 }

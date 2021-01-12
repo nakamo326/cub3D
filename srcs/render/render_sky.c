@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_sky.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 16:05:30 by ynakamot          #+#    #+#             */
+/*   Updated: 2021/01/12 16:06:10 by ynakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int		get_sky_color(t_game *game, double x_ratio, double y_ratio)
@@ -21,7 +33,7 @@ void	render_sky_strip(t_game *game, int i, double ray_angle)
 	double	x_ratio;
 	double	y_ratio;
 	int		color;
-	int j;
+	int		j;
 
 	x_ratio = ray_angle / FOV;
 	if (x_ratio > 1)
@@ -34,7 +46,6 @@ void	render_sky_strip(t_game *game, int i, double ray_angle)
 		my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
-
 }
 
 void	render_sky(t_game *game)
@@ -43,7 +54,7 @@ void	render_sky(t_game *game)
 	double	angle_per_pixel;
 	int		i;
 
-	ray_angle= game->player.rotation_angle - FOV / 2;
+	ray_angle = game->player.rotation_angle - FOV / 2;
 	angle_per_pixel = FOV / game->cub.window_width;
 	i = 0;
 	while (i < game->cub.window_width)
