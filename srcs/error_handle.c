@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 14:53:16 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 10:21:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	config_error(int ret)
 		{"No map in cub file.\n"},
 		{"Player's position is duplicated.\n"},
 		{"No player is in map.\n"},
-		{"Map isn't closed.\n"}
+		{"Map isn't closed.\n"},
+		{"Missing paramater in cub file.\n"}
 	};
 
 	err_exit((char *)err_msg[ret]);

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/11 20:20:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 10:40:47 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@
 #define INWALL 1
 #define ONFLOOR 0
 #define FOV (60 * PI / 180)
+
+#define KEY_W 119
+#define KEY_A 97
+#define KEY_S 115
+#define KEY_D 100
+#define KEY_UP 65362
+#define KEY_DOWN 65364
+#define KEY_RIGHT 65363
+#define KEY_LEFT 65361
+#define KEY_ESC 65307
 
 typedef struct	s_img {
 	void	*img_ptr;
@@ -184,7 +194,8 @@ typedef enum	e_err_conf
 	NO_MAP_INFILE,
 	MULTIPLE_PLAYER,
 	NO_PLAYER,
-	MAP_ISNT_CLOSED
+	MAP_ISNT_CLOSED,
+	MISSING_PARAMS
 }				t_err_conf;
 
 void	init_val(t_game *game);

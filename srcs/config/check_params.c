@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:01:47 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/11 21:14:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 11:05:19 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,56 @@ void	is_valid_resolution(t_game *game)
 		game->cub.window_width = width;
 	if (game->cub.window_height > height)
 		game->cub.window_height = height;
-	printf("%d,%d\n",game->cub.window_width, game->cub.window_height);
 }
 
-//void	check_missing_params(t_game *game)
-//{
-//
-//}
-//
-//void	is_valid_filepath(t_game *game)
-//{
-//
-//}
+void	check_missing_params(t_game *game)
+{
+	if (game->cub.win_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.no_path_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.so_path_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.we_path_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.ea_path_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.sp_path_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.f_color_f == false)
+		config_error(MISSING_PARAMS);
+	if (game->cub.c_color_f == false)
+		config_error(MISSING_PARAMS);
+}
+
+void	is_valid_filepath(t_game *game)
+{
+	int	fd;
+	int	i;
+	char *pathes[5];
+
+	pathes[0] = game->cub.no_path;
+	pathes[1] = game->cub.so_path;
+	pathes[2] = game->cub.we_path;
+	pathes[3] = game->cub.ea_path;
+	pathes[4] = game->cub.sp_path;
+	i = 0;
+	while (i < 5)
+	{
+		if (((fd = open(pathes[i], O_RDONLY)) == -1))
+		{
+			close(fd);
+			config_error(INVALID_FILEPATH);
+		}
+		i++;
+	}
+	ft_putendl_fd("Texture file path is confirmed!", 0);
+}
 
 void	check_valid_params(t_game *game)
 {
 	is_valid_resolution(game);
-	//is_valid_filepath(game);
-	//check_missing_params(game);
-	//is_valid_texture(game);
-
+	adjust_mapscale(game);
+	check_missing_params(game);
+	is_valid_filepath(game);
 }

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/09 10:15:53 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 10:58:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,44 @@
 
 void	update_direction(int keycode, t_game *game)
 {
-	if (keycode == 119)
+	if (keycode == KEY_W)
 		game->player.walk_direction = 1;
-	if (keycode == 115)
+	if (keycode == KEY_S)
 		game->player.walk_direction = -1;
-	if (keycode == 100)
+	if (keycode == KEY_D)
 		game->player.sidewalk_direction = 1;
-	if (keycode == 97)
+	if (keycode == KEY_A)
 		game->player.sidewalk_direction = -1;
-	if (keycode == 65363)
+	if (keycode == KEY_RIGHT)
 		game->player.turn_direction = 1;
-	if (keycode == 65361)
+	if (keycode == KEY_LEFT)
 		game->player.turn_direction = -1;
 }
 
 void	reset_direction(int keycode, t_game *game)
 {
-	if (keycode == 119 || keycode == 115)
+	if (keycode == KEY_W || keycode == KEY_S)
 		game->player.walk_direction = 0;
-	if (keycode == 100 || keycode == 97)
+	if (keycode == KEY_A || keycode == KEY_D)
 		game->player.sidewalk_direction = 0;
-	if (keycode == 65363 || keycode == 65361)
+	if (keycode == KEY_RIGHT || keycode == KEY_LEFT)
 		game->player.turn_direction = 0;
 }
 
 int		keypress_hook(int keycode, t_game *game)
 {
-	//printf("The key you pressed is \"%d\"\n", keycode);
-	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 ||
-		keycode == 65361 || keycode == 65363)
+	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S ||
+	keycode == KEY_D || keycode == KEY_RIGHT || keycode == KEY_LEFT)
 		update_direction(keycode, game);
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 		quit_game((void *)game);
 	return (SUCCESS);
 }
 
 int		keyrelease_hook(int keycode, t_game *game)
 {
-	//printf("The key you released is \"%d\"\n", keycode);
-	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100 ||
-		keycode == 65361 || keycode == 65363)
+	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S ||
+	keycode == KEY_D || keycode == KEY_RIGHT || keycode == KEY_LEFT)
 		reset_direction(keycode, game);
 
 	return (SUCCESS);

@@ -56,7 +56,7 @@ double	get_sprite_x(t_ray ray, t_sprite *sprite)
 }
 
 
-void	render_sprite_strip(t_game *game, t_sprite *sprite, int i, double correct_distance)
+void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist)
 {
 	double	distance_plane;
 	double	sprite_size;
@@ -67,9 +67,9 @@ void	render_sprite_strip(t_game *game, t_sprite *sprite, int i, double correct_d
 	int		j;
 
 	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);
-	sprite_size = (TILE_SIZE / correct_distance) * distance_plane;
+	sprite_size = (TILE_SIZE / dist) * distance_plane;
 	sprite_start = round((game->cub.window_height / 2) - (sprite_size / 2));
-	x_ratio = get_sprite_x(game->rays[i], sprite);
+	x_ratio = get_sprite_x(game->rays[i], sp);
 	j = sprite_start > 0 ? sprite_start : 0;
 	while (j < game->cub.window_height && j < sprite_size + sprite_start)
 	{

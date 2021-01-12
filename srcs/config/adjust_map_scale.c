@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 21:27:02 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:29:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/11 22:43:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	adjust_mapscale(t_game *game)
 	int	map_height;
 
 	map_width = game->cub.map_maxcol * TILE_SIZE * game->cub.map_scale;
-	while (map_width * 2 >= game->cub.window_width)
+	while (map_width * 3 >= game->cub.window_width)
 	{
 		game->cub.map_scale -= 0.1;
 		map_width = game->cub.map_maxcol * TILE_SIZE * game->cub.map_scale;
 	}
 	map_height = game->cub.map_maxrow * TILE_SIZE * game->cub.map_scale;
-	while (map_height * 2 >= game->cub.window_height)
+	while (map_height * 3 >= game->cub.window_height)
 	{
 		game->cub.map_scale -= 0.1;
 		map_height = game->cub.map_maxrow * TILE_SIZE * game->cub.map_scale;

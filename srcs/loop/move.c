@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 13:52:52 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/07 10:09:36 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 10:34:15 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double	update_rotation_and_movestep(t_game *game)
 	if (game->player.walk_direction != 0)
 		movestep = game->player.walk_direction * game->player.move_speed;
 	if (game->player.sidewalk_direction != 0)
-		movestep = ft_abs(game->player.sidewalk_direction) * game->player.move_speed;
+		movestep = game->player.sidewalk_direction * game->player.move_speed;
 	return (movestep);
 }
 
@@ -43,31 +43,27 @@ int		check_collision(t_cub cub, double x, double y)
 
 void	move_player(t_game *game)
 {
-	double movestep;
-	double new_x;
-	double new_y;
+	double	movestep;
+	double	p_angle;
+	double	new_x;
+	double	new_y;
 
 	movestep = update_rotation_and_movestep(game);
+	p_angle = game->player.rotation_angle;
 	new_x = game->player.x;
 	new_y = game->player.y;
 	if (game->player.walk_direction != 0)
 	{
-		new_x = game->player.x + cos(game->player.rotation_angle) * movestep;
-		new_y = game->player.y + sin(game->player.rotation_angle) * movestep;
+		new_x = game->player.x + cos(p_angle) * movestep;
+		new_y = game->player.y + sin(p_angle) * movestep;
 	}
-	if (game->player.sidewalk_direction == 1)
+	if (game->player.sidewalk_direction != 0)
 	{
-		new_x = game->player.x + cos(game->player.rotation_angle + PI / 2) * movestep;
-		new_y = game->player.y + sin(game->player.rotation_angle + PI / 2) * movestep;
-	}
-	if (game->player.sidewalk_direction == -1)
-	{
-		new_x = game->player.x + cos(game->player.rotation_angle - PI / 2) * movestep;
-		new_y = game->player.y + sin(game->player.rotation_angle - PI / 2) * movestep;
+		new_x = game->player.x + cos(p_angle + PI / 2) * movestep;
+		new_y = game->player.y + sin(p_angle + PI / 2) * movestep;
 	}
 	if (!check_collision(game->cub, new_x, game->player.y))
 		game->player.x = new_x;
 	if (!check_collision(game->cub, game->player.x, new_y))
 		game->player.y = new_y;
-	//printf("(%f,%f)\n",game->player.x, game->player.y);
 }

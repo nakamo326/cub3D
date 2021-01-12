@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/09 10:45:51 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 10:26:40 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	loop(t_game *game)
 	render_minimap(game);
 
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->view.img_ptr, 0, 0);
-	//while (1);
 	mlx_do_sync(game->mlx);
 	return (SUCCESS);
 }
