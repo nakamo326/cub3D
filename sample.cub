@@ -1,8 +1,8 @@
 R 1280 720
-NO ./texture/test_n.xpm
-SO ./texture/test_s.xpm
-WE ./texture/test_w.xpm
-EA ./texture/test_e.xpm
+NO ./texture/bluestone.xpm
+SO ./texture/colorstone.xpm
+WE ./texture/mossy.xpm
+EA ./texture/redbrick.xpm
 
 S ./texture/barrel.xpm
 
