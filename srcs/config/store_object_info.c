@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 11:02:58 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:28:29 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:24:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	store_item_info(t_cub *cub, int x, int y)
 	cub->map[y][x] = '0';
 }
 
-void	store_pl_info(t_game *game, int x, int y)
+bool	store_pl_info(t_game *game, int x, int y)
 {
 	game->player.x = x * TILE_SIZE + TILE_SIZE / 2;
 	game->player.y = y * TILE_SIZE + TILE_SIZE / 2;
@@ -43,4 +43,5 @@ void	store_pl_info(t_game *game, int x, int y)
 	if (game->cub.map[y][x] == 'E')
 		game->player.rotation_angle = 180 * PI / 180;
 	game->cub.map[y][x] = '0';
+	return (true);
 }

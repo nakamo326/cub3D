@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:01:47 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 11:05:19 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:12:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		is_cub(char *filepath)
 	size_t len;
 
 	len = ft_strlen(filepath);
-	if (len > 4 || ft_strncmp(&filepath[len - 4], ".cub" , 4) == 0)
+	if (len > 4 || ft_strncmp(&filepath[len - 4], ".cub", 4) == 0)
 		return (SUCCESS);
 	return (0);
 }
@@ -56,9 +56,9 @@ void	check_missing_params(t_game *game)
 
 void	is_valid_filepath(t_game *game)
 {
-	int	fd;
-	int	i;
-	char *pathes[5];
+	int		fd;
+	int		i;
+	char	*pathes[5];
 
 	pathes[0] = game->cub.no_path;
 	pathes[1] = game->cub.so_path;

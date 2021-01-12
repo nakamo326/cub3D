@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_floor.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 13:34:25 by ynakamot          #+#    #+#             */
+/*   Updated: 2021/01/12 13:35:27 by ynakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int		get_floor_texture(t_game *game, double x_ratio, double y_ratio)
@@ -25,7 +37,7 @@ void	render_floor(t_game *game, double dist_plane, int i, int j)
 	double	ratio;
 
 	ratio = game->player.z * dist_plane;
-	while(j < game->cub.window_height)
+	while (j < game->cub.window_height)
 	{
 		correct_distance = ratio / (j - game->cub.window_height / 2)
 			/ cos(game->rays[i].ray_angle - game->player.rotation_angle);
@@ -33,7 +45,7 @@ void	render_floor(t_game *game, double dist_plane, int i, int j)
 		y = game->player.y + correct_distance * sin(game->rays[i].ray_angle);
 		color = get_floor_texture(game, fmod(x, TILE_SIZE) / TILE_SIZE,
 										fmod(y, TILE_SIZE) / TILE_SIZE);
-		my_mlx_pixel_put(&game->view, i , j, color);
+		my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
 }

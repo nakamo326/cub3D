@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:50:09 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:28:13 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_player(t_game *game)
 {
 	game->player.x = 0;
 	game->player.y = 0;
-	game->player.z = TILE_SIZE / 2;;
+	game->player.z = TILE_SIZE / 2;
 	game->player.spawn_direction = '\0';
 	game->player.turn_direction = 0;
 	game->player.walk_direction = 0;
@@ -41,7 +41,7 @@ void	init_player(t_game *game)
 void	init_cub(t_game *game)
 {
 	game->cub.window_width = 640;
-	game->cub.window_height= 480;
+	game->cub.window_height = 480;
 	game->cub.no_path = NULL;
 	game->cub.so_path = NULL;
 	game->cub.we_path = NULL;

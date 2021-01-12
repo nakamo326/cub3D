@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 10:40:47 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:24:41 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 #include "../libft/libft.h"
 #include "../minilibx-linux/mlx.h"
 #include "../get_next_line/get_next_line.h"
+
+#ifndef BONUS_F
+# define BONUS_F 0
+# endif
 
 #define PI 3.14159265
 #define TWO_PI 6.28318530
@@ -92,9 +96,9 @@ typedef struct	s_sprite
 	double	y;
 	double	distance;
 	double	angle;
-	double	rightend_cor[2];
+	double	right_cor[2];
 	double	right_angle;
-	double	leftend_cor[2];
+	double	left_cor[2];
 	double	left_angle;
 }				t_sprite;
 
@@ -166,6 +170,7 @@ typedef struct	s_game
 	t_tex	tex_w;
 	t_tex	tex_e;
 	t_tex	tex_sp;
+	t_tex	tex_sky;
 }				t_game;
 
 typedef enum	e_id
@@ -213,7 +218,7 @@ int		is_validmapline(char *line, t_cub *cub);
 int		set_flag(int identifier, t_cub *cub);
 int		perse_map(int fd, t_cub *cub);
 int		is_valid_map(t_game *game);
-void	store_pl_info(t_game *game, int x, int y);
+bool	store_pl_info(t_game *game, int x, int y);
 void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
 int		is_cub(char *filepath);

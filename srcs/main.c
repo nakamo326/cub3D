@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 10:48:13 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:30:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,23 @@ int		quit_game(void *param)
 	return (SUCCESS);
 }
 
-void	init_game(int argc ,char *argv[], t_game *game)
+void	init_game(int argc, char *argv[], t_game *game)
 {
 	int		fd;
 
 	is_valid_args(argc, argv, game);
 	if (!is_cub(argv[1]))
 		config_error(ISNT_CUBFILE);
-	if((fd = open(argv[1],O_RDONLY)) == ERROR)
+	if ((fd = open(argv[1], O_RDONLY)) == ERROR)
 		exit(EXIT_FAILURE);
 	read_cub(fd, &game->cub);
 	is_valid_map(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
-	game->zbuffer = ft_calloc((size_t)game->cub.window_width,sizeof(double));
+	game->zbuffer = ft_calloc((size_t)game->cub.window_width, sizeof(double));
 	check_valid_params(game);
 	open_texture(game);
 }
 
-//expose,textureの向き
 int		main(int argc, char *argv[])
 {
 	t_game	game;
@@ -62,5 +61,5 @@ int		main(int argc, char *argv[])
 	mlx_hook(game.mlx_win, 33, StructureNotifyMask, quit_game, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
-	return 0;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/09 13:12:11 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:09:54 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ int		input_color(char *line, int identifier, t_cub *cub)
 			return (free_ret(strs, INVALID_COLOR));
 		i++;
 	}
-		if (identifier == F)
-			cub->f_color = create_trgb(0, rgb[0], rgb[1], rgb[2]);
-		if (identifier == C)
-			cub->c_color = create_trgb(0, rgb[0], rgb[1], rgb[2]);
+	if (identifier == F)
+		cub->f_color = create_trgb(0, rgb[0], rgb[1], rgb[2]);
+	if (identifier == C)
+		cub->c_color = create_trgb(0, rgb[0], rgb[1], rgb[2]);
 	set_flag(identifier, cub);
 	return (free_ret(strs, SUCCESS));
 }

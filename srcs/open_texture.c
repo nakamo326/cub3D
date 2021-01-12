@@ -1,4 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_texture.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 13:04:08 by ynakamot          #+#    #+#             */
+/*   Updated: 2021/01/12 13:43:44 by ynakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
+
+void	open_skybox(t_game *game)
+{
+	const	char *path = "./texture/cyberpunk-street.xpm";
+
+	game->tex_sky.img_ptr = mlx_xpm_file_to_image(game->mlx, (char *)path,
+		&game->tex_sky.width, &game->tex_sky.height);
+	game->tex_sky.addr = mlx_get_data_addr(game->tex_sky.img_ptr,
+		&game->tex_sky.bpp, &game->tex_sky.len, &game->tex_sky.endian);
+}
 
 void	open_texture(t_game *game)
 {
@@ -22,4 +44,6 @@ void	open_texture(t_game *game)
 		&game->tex_sp.width, &game->tex_sp.height);
 	game->tex_sp.addr = mlx_get_data_addr(game->tex_sp.img_ptr,
 		&game->tex_sp.bpp, &game->tex_sp.len, &game->tex_sp.endian);
+	if (BONUS_F == 1)
+		open_skybox(game);
 }

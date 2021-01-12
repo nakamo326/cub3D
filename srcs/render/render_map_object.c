@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 12:18:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/07 13:00:49 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:36:09 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	render_player(t_game *game, int x, int y)
 {
-	t_line line;
+	t_line	line;
 
 	line.x0 = x;
 	line.y0 = y;
 	line.x1 = round(x + cos(game->player.rotation_angle) * 10);
 	line.y1 = round(y + sin(game->player.rotation_angle) * 10);
 	draw_line(game, line, 0xFF0000);
-	//red dot with anti alias
 	my_mlx_pixel_put(&game->view, x, y, 0xFF0000);
 	my_mlx_pixel_put(&game->view, x + 1, y, 0xFF0000);
 	my_mlx_pixel_put(&game->view, x - 1, y, 0xFF0000);
@@ -41,7 +40,7 @@ void	render_ray(t_game *game)
 
 	scale = game->cub.map_scale;
 	i = 0;
-	while(i < game->cub.window_width)
+	while (i < game->cub.window_width)
 	{
 		line.x0 = game->player.x * scale;
 		line.y0 = game->player.y * scale;
@@ -57,7 +56,7 @@ void	render_ray(t_game *game)
 			line.y1 = round(game->rays[i].vwall_y * scale);
 			draw_line(game, line, 0x50FFFF00);
 		}
-	i++;
+		i++;
 	}
 }
 
@@ -67,10 +66,10 @@ void	render_items(t_game *game, t_sprite item)
 	t_line	line;
 
 	scale = game->cub.map_scale;
-	line.x0 = item.rightend_cor[0] * scale;
-	line.y0 = item.rightend_cor[1] * scale;
-	line.x1 = item.leftend_cor[0] * scale;
-	line.y1 = item.leftend_cor[1] * scale;
+	line.x0 = item.right_cor[0] * scale;
+	line.y0 = item.right_cor[1] * scale;
+	line.x1 = item.left_cor[0] * scale;
+	line.y1 = item.left_cor[1] * scale;
 	draw_line(game, line, 0x2DC8FF);
 }
 

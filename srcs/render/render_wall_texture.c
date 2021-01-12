@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_wall_texture.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/12 13:07:56 by ynakamot          #+#    #+#             */
+/*   Updated: 2021/01/12 13:08:23 by ynakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -27,7 +38,6 @@ int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio)
 	tex = choose_texture(game->rays[i], game);
 	x = round(x_ratio * tex.width);
 	y = round(y_ratio * tex.height);
-
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
 	return (color);

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 10:58:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 12:57:35 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int		keyrelease_hook(int keycode, t_game *game)
 	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S ||
 	keycode == KEY_D || keycode == KEY_RIGHT || keycode == KEY_LEFT)
 		reset_direction(keycode, game);
-
 	return (SUCCESS);
 }

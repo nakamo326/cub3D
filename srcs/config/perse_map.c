@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:30:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:26:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		is_valid_map(t_game *game)
 	int		x;
 	int		y;
 	bool	p_flag;
+
 	y = 0;
 	p_flag = false;
 	while (game->cub.map[y] != NULL)
@@ -85,20 +86,16 @@ int		is_valid_map(t_game *game)
 		{
 			if (game->cub.map[y][x] == '2')
 				store_item_info(&game->cub, x, y);
+			if (ft_strchr("NSWE", game->cub.map[y][x]) && p_flag)
+				config_error(MULTIPLE_PLAYER);
 			if (ft_strchr("NSWE", game->cub.map[y][x]))
-			{
-				if (p_flag == true)
-					config_error(MULTIPLE_PLAYER);
-				store_pl_info(game, x, y);
-				p_flag = true;
-			}
+				p_flag = store_pl_info(game, x, y);
 			x++;
 		}
 		y++;
 	}
 	if (p_flag == false)
 		config_error(NO_PLAYER);
-	x = game->player.x / TILE_SIZE;
-	y = game->player.y / TILE_SIZE;
-	return (is_closed_map(&game->cub, x, y));
+	return (is_closed_map(&game->cub, game->player.x / TILE_SIZE,
+										game->player.y / TILE_SIZE));
 }

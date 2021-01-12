@@ -102,8 +102,8 @@ void	projection_sprite(t_game *game, t_sprite *sprite)
 
 void	render_sprite(t_game *game)
 {
-	t_list *lst_p;
-	t_sprite *sprite;
+	t_list		*lst_p;
+	t_sprite	*sprite;
 
 	sort_items(game->cub.items);
 	lst_p = game->cub.items;
