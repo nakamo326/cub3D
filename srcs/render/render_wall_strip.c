@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 17:24:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:39:27 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 		my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
-	render_floor(game, distance_plane, i, j);
+	if (BONUS_F == 1)
+		render_floor(game, distance_plane, i, j);
 
 }
 
@@ -79,7 +80,8 @@ void	render_projected_wall(t_game *game)
 	i = 0;
 	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);
 	clear_view(game);
-	//render_sky(game);
+	if (BONUS_F == 1)
+		render_sky(game);
 	while (i < game->cub.window_width)
 	{
 		render_wall_strip(distance_plane, i, game);

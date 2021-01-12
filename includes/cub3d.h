@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:24:41 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:51:53 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ typedef struct	s_game
 	t_tex	tex_e;
 	t_tex	tex_sp;
 	t_tex	tex_sky;
+	t_tex	tex_floor;
 }				t_game;
 
 typedef enum	e_id

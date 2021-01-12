@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 15:10:54 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/09 10:17:54 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 14:06:01 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	check_hor_intersection(t_ray *ray, t_pl player)
 
 void	check_ver_intersection(t_ray *ray, t_pl player)
 {
-	//check intersection position is correct
 	if (ray->vwall_hit == false)
 		return;
 	if ((ray->facing_up && (ray->vwall_y <= player.y) == false) ||
@@ -178,8 +177,8 @@ void	search_first_collision_wall(t_game *game, int i)
 	check_ray_direction(&game->rays[i]);
 	check_horizontal_intersections(&game->rays[i], game->player, game->cub);
 	check_vertical_intersection(&game->rays[i], game->player, game->cub);
-	check_hor_intersection(&game->rays[i], game->player);
-	check_ver_intersection(&game->rays[i], game->player);
+	//check_hor_intersection(&game->rays[i], game->player);
+	//check_ver_intersection(&game->rays[i], game->player);
 	compare_distances(&game->rays[i], game->player);
 }
 

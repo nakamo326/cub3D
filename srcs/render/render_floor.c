@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:34:25 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:35:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:52:59 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		get_floor_texture(t_game *game, double x_ratio, double y_ratio)
 	int		x;
 	int		y;
 
-	tex = game->tex_w;
+	tex = game->tex_floor;
 	x = round(x_ratio * tex.width);
 	y = round(y_ratio * tex.height);
 	addr = (char *)tex.addr;
