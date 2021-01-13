@@ -6,13 +6,13 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:10:29 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 16:28:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/13 13:47:11 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		get_sprite_texture(t_game *game, double x_ratio, double y_ratio)
+int		get_sprite_texture(t_game *game, t_sprite *sp, double x_ratio, double y_ratio)
 {
 	int		x;
 	int		y;
@@ -20,7 +20,10 @@ int		get_sprite_texture(t_game *game, double x_ratio, double y_ratio)
 	char	*addr;
 	t_tex	tex;
 
-	tex = game->tex_sp;
+	if (BONUS_F == 1)
+		tex = choose_sp_tex(*sp, game);
+	else
+		tex = game->tex_sp;
 	x = round(x_ratio * tex.width);
 	y = round(y_ratio * tex.height);
 	addr = (char *)tex.addr;
@@ -65,9 +68,9 @@ void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist)
 	while (j < game->cub.window_height && j < sprite_size + sprite_start)
 	{
 		y_ratio = (j - sprite_start) / sprite_size;
-		if (get_sprite_texture(game, x_ratio, y_ratio) != 0x000000)
+		if (get_sprite_texture(game, sp, x_ratio, y_ratio) != 0x000000)
 			my_mlx_pixel_put(&game->view, i, j,
-				get_sprite_texture(game, x_ratio, y_ratio));
+				get_sprite_texture(game, sp, x_ratio, y_ratio));
 		j++;
 	}
 }

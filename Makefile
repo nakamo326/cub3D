@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/12 21:00:13 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/13 15:43:20 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/render/render_floor.c \
 			srcs/render/render_sprite.c \
 			srcs/render/render_sprite_strip.c \
+			srcs/render/choose_sprite_tex.c \
 			srcs/render/render_sky.c
 
 

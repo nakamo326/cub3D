@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 20:59:39 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:15:27 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ typedef struct	s_pl
 
 typedef struct	s_sprite
 {
-	bool	visible;
 	int		num;
 	double	x;
 	double	y;
+	int		life;
 	double	distance;
 	double	angle;
 	double	right_cor[2];
@@ -172,6 +172,8 @@ typedef struct	s_game
 	t_tex	tex_sp;
 	t_tex	tex_sky;
 	t_tex	tex_floor;
+	t_tex	tex_ani_sp[5];
+	t_tex	tex_ani_fire[3];
 }				t_game;
 
 typedef enum	e_id
@@ -224,7 +226,7 @@ void	store_item_info(t_cub *cub, int x, int y);
 void	adjust_mapscale(t_game *game);
 int		is_cub(char *filepath);
 void	check_valid_params(t_game *game);
-void	open_texture(t_game *game);
+void	open_all_texture(t_game *game);
 
 void	render_minimap(t_game *game);
 void	render_map_object(t_game *game);
@@ -244,6 +246,7 @@ void	render_floor(t_game *game, double dist_plane, int i, int j);
 void	render_sky(t_game *game);
 void	render_sprite(t_game *game);
 void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist);
+t_tex	choose_sp_tex(t_sprite sp, t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

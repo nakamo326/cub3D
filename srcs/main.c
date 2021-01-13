@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 21:09:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:31:07 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_game(int argc, char *argv[], t_game *game)
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
 	game->zbuffer = ft_calloc((size_t)game->cub.window_width, sizeof(double));
 	check_valid_params(game);
-	open_texture(game);
+	open_all_texture(game);
 }
 
 int		main(int argc, char *argv[])
@@ -50,7 +50,9 @@ int		main(int argc, char *argv[])
 	init_game(argc, argv, &game);
 	game.view.w = game.cub.window_width;
 	game.view.h = game.cub.window_height;
-	game.mlx_win = mlx_new_window(game.mlx, game.view.w, game.view.h, "cub3D");
+	if (game.save_flag == false)
+		game.mlx_win = mlx_new_window(
+			game.mlx, game.view.w, game.view.h, "cub3D");
 	game.view.img_ptr = mlx_new_image(game.mlx, game.view.w, game.view.h);
 	game.view.addr = mlx_get_data_addr(game.view.img_ptr,
 		&game.view.bpp, &game.view.len, &game.view.endian);
@@ -58,7 +60,7 @@ int		main(int argc, char *argv[])
 		export_bmp(&game);
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
-	mlx_hook(game.mlx_win, 33, StructureNotifyMask, quit_game, &game);
+	mlx_hook(game.mlx_win, ClientMessage, StructureNotifyMask, quit_game, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
 	return (0);

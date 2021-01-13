@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 10:35:24 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/08 13:38:16 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/13 13:14:56 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	test_print_items(t_game game)
 	{
 		item_info = ptr->content;
 		printf("item number: %d, (% 4.0f, % 4.0f), dist: %5.1f, visible: %d\n",
-		item_info->num, item_info->x, item_info->y, item_info->distance, item_info->visible);
+		item_info->num, item_info->x, item_info->y, item_info->distance, item_info->life);
 		printf("spriteAngle: %f, rightAngle: %f, leftAngle: %f\n",
 		item_info->angle, item_info->right_angle,item_info->left_angle);
 		ptr = ptr->next;
