@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 11:02:58 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:24:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/13 10:54:59 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ bool	store_pl_info(t_game *game, int x, int y)
 	if (game->cub.map[y][x] == 'S')
 		game->player.rotation_angle = 90 * PI / 180;
 	if (game->cub.map[y][x] == 'W')
-		game->player.rotation_angle = 0 * PI / 180;
-	if (game->cub.map[y][x] == 'E')
 		game->player.rotation_angle = 180 * PI / 180;
+	if (game->cub.map[y][x] == 'E')
+		game->player.rotation_angle = 0 * PI / 180;
 	game->cub.map[y][x] = '0';
 	return (true);
 }
