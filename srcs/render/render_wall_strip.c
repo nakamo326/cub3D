@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 14:33:10 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 16:20:24 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:47:14 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	clear_view(t_game *game)
 	}
 }
 
-void	render_wall_strip(double distance_plane, int i, t_game *game)
+void	render_wall_strip(int i, t_game *game)
 {
 	double	wall_height;
 	int		wall_start;
@@ -50,7 +50,7 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 
 	game->zbuffer[i] = game->rays[i].distance
 	* cos(game->rays[i].ray_angle - game->player.rotation_angle);
-	wall_height = (TILE_SIZE / game->zbuffer[i]) * distance_plane;
+	wall_height = (TILE_SIZE / game->zbuffer[i]) * game->dist_plane;
 	wall_start = round((game->cub.window_height / 2) - (wall_height / 2));
 	if (game->rays[i].vwall_hit)
 		x_ratio = 1 - fmod(game->rays[i].vwall_y, TILE_SIZE) / TILE_SIZE;
@@ -65,22 +65,20 @@ void	render_wall_strip(double distance_plane, int i, t_game *game)
 		j++;
 	}
 	if (BONUS_F == 1)
-		render_floor(game, distance_plane, i, j);
+		render_floor(game, i, j);
 }
 
 void	render_projected_wall(t_game *game)
 {
 	int		i;
-	double	distance_plane;
 
 	i = 0;
-	distance_plane = (game->cub.window_width / 2) / tan(FOV / 2);
 	clear_view(game);
 	if (BONUS_F == 1)
 		render_sky(game);
 	while (i < game->cub.window_width)
 	{
-		render_wall_strip(distance_plane, i, game);
+		render_wall_strip(i, game);
 		i = i + 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 11:02:58 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/13 16:09:30 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:41:32 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ void	store_item_info(t_cub *cub, int x, int y)
 {
 	t_list		*new;
 	t_sprite	*info;
-	static int	num = 0;
 
 	if (!(info = malloc(sizeof(t_sprite))))
 		config_error(MALLOC_ERROR);
 	info->x = x * TILE_SIZE + TILE_SIZE / 2;
 	info->y = y * TILE_SIZE + TILE_SIZE / 2;
 	info->life = 3;
-	info->num = num++;
+	info->num = -1;
 	if (!(new = ft_lstnew(info)))
 		config_error(MALLOC_ERROR);
 	ft_lstadd_back(&cub->items, new);

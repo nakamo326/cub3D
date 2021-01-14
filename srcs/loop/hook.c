@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 12:57:35 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:57:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ void	reset_direction(int keycode, t_game *game)
 		game->player.turn_direction = 0;
 }
 
+void	toggle_flag(bool *flag)
+{
+	if (*flag == true)
+		*flag = false;
+	else
+		*flag = true;
+}
+
 int		keypress_hook(int keycode, t_game *game)
 {
 	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S ||
@@ -45,6 +53,8 @@ int		keypress_hook(int keycode, t_game *game)
 		update_direction(keycode, game);
 	if (keycode == KEY_ESC)
 		quit_game((void *)game);
+	if (keycode == KEY_M)
+		toggle_flag(&game->map_toggle);
 	return (SUCCESS);
 }
 

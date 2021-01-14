@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:34:25 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 15:52:59 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:47:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		get_floor_texture(t_game *game, double x_ratio, double y_ratio)
 	return (color);
 }
 
-void	render_floor(t_game *game, double dist_plane, int i, int j)
+void	render_floor(t_game *game, int i, int j)
 {
 	int		color;
 	double	x;
@@ -36,7 +36,7 @@ void	render_floor(t_game *game, double dist_plane, int i, int j)
 	double	correct_distance;
 	double	ratio;
 
-	ratio = game->player.z * dist_plane;
+	ratio = game->player.z * game->dist_plane;
 	while (j < game->cub.window_height)
 	{
 		correct_distance = ratio / (j - game->cub.window_height / 2)

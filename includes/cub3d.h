@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/13 16:15:27 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 21:51:41 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 #define KEY_A 97
 #define KEY_S 115
 #define KEY_D 100
+#define KEY_M 109
 #define KEY_UP 65362
 #define KEY_DOWN 65364
 #define KEY_RIGHT 65363
@@ -160,11 +161,13 @@ typedef struct	s_game
 	void	*mlx;
 	void	*mlx_win;
 	bool	save_flag;
+	bool	map_toggle;
 	t_cub	cub;
 	t_img	view;
 	t_pl	player;
 	t_ray	*rays;
 	double	*zbuffer;
+	double	dist_plane;
 	t_tex	tex_n;
 	t_tex	tex_s;
 	t_tex	tex_w;
@@ -173,7 +176,8 @@ typedef struct	s_game
 	t_tex	tex_sky;
 	t_tex	tex_floor;
 	t_tex	tex_ani_sp[5];
-	t_tex	tex_ani_fire[3];
+	t_tex	tex_ani_lot[3];
+	int		frame;
 }				t_game;
 
 typedef enum	e_id
@@ -242,11 +246,11 @@ void	is_visible_sprite(t_game *game);
 void	cast_all_rays(t_game *game);
 void	render_projected_wall(t_game *game);
 int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
-void	render_floor(t_game *game, double dist_plane, int i, int j);
+void	render_floor(t_game *game, int i, int j);
 void	render_sky(t_game *game);
 void	render_sprite(t_game *game);
 void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist);
-t_tex	choose_sp_tex(t_sprite sp, t_game *game);
+t_tex	choose_sp_tex(t_sprite *sp, t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);

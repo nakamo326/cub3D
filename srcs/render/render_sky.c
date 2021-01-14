@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:05:30 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 16:06:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/13 20:20:46 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		get_sky_color(t_game *game, double x_ratio, double y_ratio)
 	t_tex	tex;
 
 	tex = game->tex_sky;
-	x = round(x_ratio * tex.width);
-	y = round(y_ratio * tex.height);
+	x = x_ratio * tex.width;
+	y = y_ratio * tex.height;
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
 	return (color);
