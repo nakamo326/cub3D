@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 21:55:03 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:18:10 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	init_val(t_game *game)
 	init_player(game);
 	game->save_flag = false;
 	game->map_toggle = true;
+	game->shot = false;
 	game->rays = NULL;
 	game->frame = 0;
 }

@@ -6,24 +6,23 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:15:23 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 16:15:24 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:55:19 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_ray_in_sprite(t_ray ray, t_sprite *sprite)
+bool	is_angle_in_sprite(double angle, t_sprite *sprite)
 {
 	if (sprite->left_angle > sprite->right_angle)
 	{
-		if ((ray.ray_angle >= sprite->left_angle && ray.ray_angle <= TWO_PI) ||
-		(ray.ray_angle >= 0 && ray.ray_angle <= sprite->right_angle))
+		if ((angle >= sprite->left_angle && angle <= TWO_PI) ||
+		(angle >= 0 && angle <= sprite->right_angle))
 			return (true);
 	}
 	else
 	{
-		if (ray.ray_angle >= sprite->left_angle &&
-				ray.ray_angle <= sprite->right_angle)
+		if (angle >= sprite->left_angle && angle <= sprite->right_angle)
 			return (true);
 	}
 	return (false);
@@ -40,7 +39,7 @@ void	projection_sprite(t_game *game, t_sprite *sprite)
 	while (i < game->cub.window_width)
 	{
 		if (game->zbuffer[i] > correct_distance &&
-				is_ray_in_sprite(game->rays[i], sprite))
+				is_angle_in_sprite(game->rays[i].ray_angle, sprite))
 			render_sprite_strip(game, sprite, i, correct_distance);
 		i++;
 	}

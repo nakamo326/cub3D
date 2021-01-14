@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:27:35 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:06:48 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:25:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	render_minimap(t_game *game)
 	int	x;
 	int	y;
 
+	if (game->map_toggle == false)
+		return ;
 	y = 0;
 	while (y < game->cub.map_maxrow)
 	{

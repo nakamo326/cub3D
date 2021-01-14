@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/13 15:43:20 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/14 22:24:59 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/testcode.c \
 			srcs/open_texture.c \
 			srcs/sort_sprite.c \
+			srcs/cal_shot.c \
 			srcs/config/init_config.c \
 			srcs/config/perse_params.c \
 			srcs/config/perse_map.c \

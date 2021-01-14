@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 21:51:41 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:57:04 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 #define KEY_RIGHT 65363
 #define KEY_LEFT 65361
 #define KEY_ESC 65307
+#define KEY_ENTER 65293
 
 typedef struct	s_img {
 	void	*img_ptr;
@@ -162,6 +163,7 @@ typedef struct	s_game
 	void	*mlx_win;
 	bool	save_flag;
 	bool	map_toggle;
+	bool	shot;
 	t_cub	cub;
 	t_img	view;
 	t_pl	player;
@@ -251,6 +253,7 @@ void	render_sky(t_game *game);
 void	render_sprite(t_game *game);
 void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist);
 t_tex	choose_sp_tex(t_sprite *sp, t_game *game);
+void	cal_shot(t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
@@ -260,6 +263,7 @@ double	normalize_angle(double angle);
 double	get_distance(double x0, double y0, double x1, double y1);
 void	draw_line(t_game *game, t_line line, int color);
 void	sort_items(t_list *items);
+bool	is_angle_in_sprite(double angle, t_sprite *sprite);
 
 //for debug
 void	test_render_gridline(t_img *map, t_cub cub);

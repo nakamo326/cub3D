@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:01:47 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:12:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 22:04:39 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	is_valid_filepath(t_game *game)
 			close(fd);
 			config_error(INVALID_FILEPATH);
 		}
+		close(fd);
 		i++;
 	}
 	ft_putendl_fd("Texture file path is confirmed!", 0);
