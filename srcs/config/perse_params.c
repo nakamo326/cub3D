@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 22:00:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 22:17:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int		input_resolution(char *line, t_cub *cub)
 	}
 	if (!(strs = ft_split(line, ' ')))
 		return (MALLOC_ERROR);
-	i = 0;
-	while (strs[i] != NULL)
-		i++;
-	if (i != 2)
+	if (check_str_num(strs) != 2)
 		return (INVALID_FORMAT);
 	cub->window_width = ft_atoi(strs[0]);
 	cub->window_height = ft_atoi(strs[1]);
@@ -60,10 +57,21 @@ int		input_path(char *line, int identifier, t_cub *cub)
 	return (SUCCESS);
 }
 
-int		free_ret(char **strs, int ret)
+bool	is_valid_color(char **strs)
 {
-	ft_free_split(strs);
-	return (ret);
+	int i;
+
+	if (check_str_num(strs) != 3)
+		return (false);
+	i = 0;
+	while (i < 3)
+	{
+		if (strs[i] == NULL || !is_all_digit(strs[i])
+			|| ft_strlen(strs[i]) > 4 || (ft_strlen(strs[i]) == 0))
+			return (false);
+		i++;
+	}
+	return (true);
 }
 
 int		input_color(char *line, int identifier, t_cub *cub)
@@ -76,12 +84,11 @@ int		input_color(char *line, int identifier, t_cub *cub)
 		return (INVALID_FORMAT);
 	if (!(strs = ft_split(line, ',')))
 		return (MALLOC_ERROR);
+	if (!is_valid_color(strs))
+		return (free_ret(strs, INVALID_FORMAT));
 	i = 0;
 	while (i < 3)
 	{
-		if (strs[i] == NULL || (ft_strlen(strs[i]) > 4)
-			|| !is_all_digit(strs[i]))
-			return (free_ret(strs, INVALID_FORMAT));
 		rgb[i] = ft_atoi(strs[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (free_ret(strs, INVALID_COLOR));

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 21:51:28 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 23:16:32 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ int		perse_map(int fd, t_cub *cub)
 	line = NULL;
 	while ((rc = get_next_line(fd, &line)) >= 0)
 	{
+		if (line[0] == '\0')
+		{
+			free(line);
+			break ;
+		}
 		ret = is_validmapline(line, cub);
 		free(line);
 		if (ret != MAP)

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 21:22:25 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 21:25:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 22:11:19 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,20 @@ bool	is_all_digit(char *str)
 		str++;
 	}
 	return (true);
+}
+
+int		check_str_num(char **strs)
+{
+	int i;
+
+	i = 0;
+	while(strs[i] != NULL)
+		i++;
+	return (i);
+}
+
+int		free_ret(char **strs, int ret)
+{
+	ft_free_split(strs);
+	return (ret);
 }
