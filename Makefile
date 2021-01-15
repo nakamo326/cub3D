@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/15 16:46:19 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/15 21:25:54 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/config/store_object_info.c \
 			srcs/config/check_params.c \
 			srcs/config/adjust_map_scale.c \
+			srcs/config/perse_utils.c \
 			srcs/loop/loop.c \
 			srcs/loop/hook.c \
 			srcs/loop/move.c \

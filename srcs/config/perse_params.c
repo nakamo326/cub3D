@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:09:54 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:38:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ int		input_resolution(char *line, t_cub *cub)
 	}
 	if (!(strs = ft_split(line, ' ')))
 		return (MALLOC_ERROR);
-	tmp = ft_atoi(strs[0]);
-	cub->window_width = tmp;
-	tmp = ft_atoi(strs[1]);
-	cub->window_height = tmp;
+	i = 0;
+	while (strs[i] != NULL)
+		i++;
+	if (i != 3)
+		return (INVALID_FORMAT);
+	cub->window_width = ft_atoi(strs[0]);
+	cub->window_height = ft_atoi(strs[1]);
 	ft_free_split(strs);
 	if (cub->window_width <= 0 || cub->window_height <= 0)
 		return (INVALID_RESO);
@@ -75,7 +78,8 @@ int		input_color(char *line, int identifier, t_cub *cub)
 	i = 0;
 	while (i < 3)
 	{
-		if (strs[i] == NULL || (ft_strlen(strs[i]) > 4))
+		if (strs[i] == NULL || (ft_strlen(strs[i]) > 4)
+			|| is_all_digit(strs[i]))
 			return (free_ret(strs, INVALID_FORMAT));
 		rgb[i] = ft_atoi(strs[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)

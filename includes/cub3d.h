@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 21:10:20 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:25:18 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,7 @@ void	draw_line(t_game *game, t_line line, int color);
 void	sort_items(t_list *items);
 bool	is_angle_in_sprite(double angle, t_sprite *sprite);
 int		add_shadow(int color, t_game *game, double dist);
+bool	is_all_digit(char *str);
 
 //for debug
 void	test_render_gridline(t_img *map, t_cub cub);
