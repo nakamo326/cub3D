@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 23:57:40 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 21:38:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 22:00:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		input_resolution(char *line, t_cub *cub)
 {
 	int		i;
-	int		tmp;
 	char	**strs;
 
 	i = 0;
@@ -30,7 +29,7 @@ int		input_resolution(char *line, t_cub *cub)
 	i = 0;
 	while (strs[i] != NULL)
 		i++;
-	if (i != 3)
+	if (i != 2)
 		return (INVALID_FORMAT);
 	cub->window_width = ft_atoi(strs[0]);
 	cub->window_height = ft_atoi(strs[1]);
@@ -73,13 +72,15 @@ int		input_color(char *line, int identifier, t_cub *cub)
 	int		i;
 	int		rgb[3];
 
+	if (*line++ != ' ')
+		return (INVALID_FORMAT);
 	if (!(strs = ft_split(line, ',')))
 		return (MALLOC_ERROR);
 	i = 0;
 	while (i < 3)
 	{
 		if (strs[i] == NULL || (ft_strlen(strs[i]) > 4)
-			|| is_all_digit(strs[i]))
+			|| !is_all_digit(strs[i]))
 			return (free_ret(strs, INVALID_FORMAT));
 		rgb[i] = ft_atoi(strs[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
