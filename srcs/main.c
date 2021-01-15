@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 21:45:54 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 12:21:08 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		main(int argc, char *argv[])
 		export_bmp(&game);
 	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, keypress_hook, &game);
 	mlx_hook(game.mlx_win, KeyRelease, KeyReleaseMask, keyrelease_hook, &game);
-	mlx_hook(game.mlx_win, ClientMessage, StructureNotifyMask, quit_game, &game);
+	mlx_hook(game.mlx_win, 33, StructureNotifyMask, quit_game, &game);
 	mlx_loop_hook(game.mlx, loop, &game);
 	mlx_loop(game.mlx);
 	return (0);

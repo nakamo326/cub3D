@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 11:13:20 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 12:18:04 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	update_frame(t_game *game)
 {
-	if(game->frame == 5)
+	if (game->frame == 5)
 		game->frame = 0;
 	game->frame++;
 }

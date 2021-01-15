@@ -6,13 +6,14 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:10:29 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 11:07:42 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 12:22:04 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		get_sprite_texture(t_game *game, t_sprite *sp, double x_ratio, double y_ratio)
+int		get_sprite_texture(
+			t_game *game, t_sprite *sp, double x_ratio, double y_ratio)
 {
 	int		x;
 	int		y;
@@ -29,7 +30,7 @@ int		get_sprite_texture(t_game *game, t_sprite *sp, double x_ratio, double y_rat
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
 	if (BONUS_F == 1)
-		return (add_shadow(color, game , sp->corr_dist));
+		return (add_shadow(color, game, sp->corr_dist));
 	return (color);
 }
 
@@ -62,7 +63,8 @@ void	render_sprite_strip(t_game *game, t_sprite *sp, int i)
 	double	y_ratio;
 	int		j;
 
-	sprite_size = (TILE_SIZE / sp->corr_dist) * (game->view.w / 2) / tan(FOV / 2);
+	sprite_size = (TILE_SIZE / sp->corr_dist) *
+					(game->view.w / 2) / tan(FOV / 2);
 	sprite_start = round((game->view.h / 2) - (sprite_size / 2));
 	x_ratio = get_sprite_x(game->rays[i], sp);
 	j = sprite_start > 0 ? sprite_start : 0;
