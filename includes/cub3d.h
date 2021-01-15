@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 22:57:04 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 11:06:50 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct	s_sprite
 	double	y;
 	int		life;
 	double	distance;
+	double	corr_dist;
 	double	angle;
 	double	right_cor[2];
 	double	right_angle;
@@ -251,9 +252,10 @@ int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
 void	render_floor(t_game *game, int i, int j);
 void	render_sky(t_game *game);
 void	render_sprite(t_game *game);
-void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist);
+void	render_sprite_strip(t_game *game, t_sprite *sp, int i);
 t_tex	choose_sp_tex(t_sprite *sp, t_game *game);
 void	cal_shot(t_game *game);
+void	render_reticle(t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
@@ -264,6 +266,7 @@ double	get_distance(double x0, double y0, double x1, double y1);
 void	draw_line(t_game *game, t_line line, int color);
 void	sort_items(t_list *items);
 bool	is_angle_in_sprite(double angle, t_sprite *sprite);
+int		add_shadow(int color, t_game *game, double dist);
 
 //for debug
 void	test_render_gridline(t_img *map, t_cub cub);

@@ -6,11 +6,13 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:21:15 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 23:04:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 23:08:23 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//segfo suruyo
 
 void	cal_shot(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 22:24:17 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 11:13:20 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	update_frame(t_game *game)
 {
-	game->frame++;
 	if(game->frame == 5)
 		game->frame = 0;
+	game->frame++;
 }
 
 int		loop(t_game *game)
@@ -30,6 +30,7 @@ int		loop(t_game *game)
 	if (BONUS_F == 1)
 	{
 		render_minimap(game);
+		render_reticle(game);
 		update_frame(game);
 	}
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->view.img_ptr, 0, 0);

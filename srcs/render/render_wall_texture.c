@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:07:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 21:42:45 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 11:15:16 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio)
 	y = round(y_ratio * tex.height);
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
+	if (BONUS_F == 1)
+		return (add_shadow(color, game , game->zbuffer[i]));
 	return (color);
 }

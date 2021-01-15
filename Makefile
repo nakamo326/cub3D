@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/14 22:24:59 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/15 11:16:16 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,9 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/render/render_sprite.c \
 			srcs/render/render_sprite_strip.c \
 			srcs/render/choose_sprite_tex.c \
-			srcs/render/render_sky.c
+			srcs/render/render_sky.c \
+			srcs/render/render_reticle.c \
+			srcs/render/add_shadow.c
 
 
 OBJDIR = ./obj

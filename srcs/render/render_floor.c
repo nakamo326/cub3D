@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:34:25 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 21:47:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 11:19:31 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,23 @@ void	render_floor(t_game *game, int i, int j)
 	int		color;
 	double	x;
 	double	y;
-	double	correct_distance;
+	double	correct_dist;
 	double	ratio;
 
 	ratio = game->player.z * game->dist_plane;
 	while (j < game->cub.window_height)
 	{
-		correct_distance = ratio / (j - game->cub.window_height / 2)
+		correct_dist = ratio / (j - game->cub.window_height / 2)
 			/ cos(game->rays[i].ray_angle - game->player.rotation_angle);
-		x = game->player.x + correct_distance * cos(game->rays[i].ray_angle);
-		y = game->player.y + correct_distance * sin(game->rays[i].ray_angle);
+		x = game->player.x + correct_dist * cos(game->rays[i].ray_angle);
+		y = game->player.y + correct_dist * sin(game->rays[i].ray_angle);
 		color = get_floor_texture(game, fmod(x, TILE_SIZE) / TILE_SIZE,
 										fmod(y, TILE_SIZE) / TILE_SIZE);
-		my_mlx_pixel_put(&game->view, i, j, color);
+		if (BONUS_F == 1)
+			my_mlx_pixel_put(&game->view, i, j,
+				add_shadow(color, game, correct_dist));
+		else
+			my_mlx_pixel_put(&game->view, i, j, color);
 		j++;
 	}
 }

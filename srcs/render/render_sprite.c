@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:15:23 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 22:55:19 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 11:03:54 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,16 @@ bool	is_angle_in_sprite(double angle, t_sprite *sprite)
 
 void	projection_sprite(t_game *game, t_sprite *sprite)
 {
-	double	correct_distance;
-	int		i;
+	int	i;
 
-	correct_distance = sprite->distance
+	sprite->corr_dist = sprite->distance
 		* cos(sprite->angle - game->player.rotation_angle);
 	i = 0;
 	while (i < game->cub.window_width)
 	{
-		if (game->zbuffer[i] > correct_distance &&
+		if (game->zbuffer[i] > sprite->corr_dist &&
 				is_angle_in_sprite(game->rays[i].ray_angle, sprite))
-			render_sprite_strip(game, sprite, i, correct_distance);
+			render_sprite_strip(game, sprite, i);
 		i++;
 	}
 }

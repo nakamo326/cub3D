@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:10:29 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 21:27:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 11:07:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		get_sprite_texture(t_game *game, t_sprite *sp, double x_ratio, double y_rat
 	y = round(y_ratio * tex.height);
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
+	if (BONUS_F == 1)
+		return (add_shadow(color, game , sp->corr_dist));
 	return (color);
 }
 
@@ -52,7 +54,7 @@ double	get_sprite_x(t_ray ray, t_sprite *sprite)
 	return (result);
 }
 
-void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist)
+void	render_sprite_strip(t_game *game, t_sprite *sp, int i)
 {
 	double	sprite_size;
 	int		sprite_start;
@@ -60,9 +62,8 @@ void	render_sprite_strip(t_game *game, t_sprite *sp, int i, double dist)
 	double	y_ratio;
 	int		j;
 
-	sprite_size = (TILE_SIZE / dist) *
-				(game->cub.window_width / 2) / tan(FOV / 2);
-	sprite_start = round((game->cub.window_height / 2) - (sprite_size / 2));
+	sprite_size = (TILE_SIZE / sp->corr_dist) * (game->view.w / 2) / tan(FOV / 2);
+	sprite_start = round((game->view.h / 2) - (sprite_size / 2));
 	x_ratio = get_sprite_x(game->rays[i], sp);
 	j = sprite_start > 0 ? sprite_start : 0;
 	while (j < game->cub.window_height && j < sprite_size + sprite_start)

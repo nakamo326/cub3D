@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 22:38:51 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 22:26:52 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/14 23:59:37 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	toggle_flag(bool *flag)
 
 int		keypress_hook(int keycode, t_game *game)
 {
-	printf("%d\n", keycode);
 	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S ||
 	keycode == KEY_D || keycode == KEY_RIGHT || keycode == KEY_LEFT)
 		update_direction(keycode, game);

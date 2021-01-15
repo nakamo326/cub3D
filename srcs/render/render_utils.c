@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:38:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 16:32:06 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 10:47:12 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int		create_trgb(int t, int r, int g, int b)
 int		get_color(char c, int trgb)
 {
 	if (c == 't')
-		return (trgb & (0xFF << 24));
+		return ((trgb & (0xFF << 24)) >> 24);
 	if (c == 'r')
-		return (trgb & (0xFF << 16));
+		return ((trgb & (0xFF << 16)) >> 16);
 	if (c == 'g')
-		return (trgb & (0xFF << 8));
+		return ((trgb & (0xFF << 8)) >> 8);
 	if (c == 'b')
 		return (trgb & 0xFF);
 	return (ERROR);
