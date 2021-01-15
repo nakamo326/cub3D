@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:40:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 21:02:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:12:00 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,14 @@ void	render_hitpoint(t_game *game)
 		i++;
 	}
 	render_lifebar_frame(game);
+}
+
+void	put_hp_num(t_game *game)
+{
+	char *str;
+
+	str = ft_itoa(game->player.life);
+	mlx_string_put(game->mlx, game->mlx_win,
+				game->view.w * 3 / 100, game->view.h * 93 / 100,
+				0x00B007, str);
 }

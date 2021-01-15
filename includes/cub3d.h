@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 16:41:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:10:20 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,7 @@ t_tex	choose_sp_tex(t_sprite *sp, t_game *game);
 void	cal_shot(t_game *game);
 void	render_reticle(t_game *game);
 void	render_hitpoint(t_game *game);
+void	put_hp_num(t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
