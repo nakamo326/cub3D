@@ -6,11 +6,16 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 13:25:39 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 12:19:12 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 21:03:49 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	get_damage(t_game *game)
+{
+	game->player.life -= 25;
+}
 
 t_tex	open_lottery(t_sprite *sp, t_game *game)
 {
@@ -21,7 +26,10 @@ t_tex	open_lottery(t_sprite *sp, t_game *game)
 		if (game->frame >= 2)
 			sp->num = 1;
 		if (game->frame >= 4)
+		{
+			get_damage(game);
 			sp->num = 2;
+		}
 	}
 	return (game->tex_ani_lot[sp->num]);
 }

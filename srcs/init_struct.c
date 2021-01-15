@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 23:53:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:20:37 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_player(t_game *game)
 	game->player.rotation_angle = 0;
 	game->player.move_speed = 3.0;
 	game->player.turn_speed = 2 * PI / 180;
+	game->player.life = 100;
 }
 
 void	init_cub(t_game *game)

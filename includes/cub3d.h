@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 11:06:50 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:41:33 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct	s_pl
 	double	rotation_angle;
 	double	move_speed;
 	double	turn_speed;
+	int		life;
 }				t_pl;
 
 typedef struct	s_sprite
@@ -256,6 +257,7 @@ void	render_sprite_strip(t_game *game, t_sprite *sp, int i);
 t_tex	choose_sp_tex(t_sprite *sp, t_game *game);
 void	cal_shot(t_game *game);
 void	render_reticle(t_game *game);
+void	render_hitpoint(t_game *game);
 
 //utils
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
