@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 23:10:28 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:36:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ typedef enum	e_err_conf
 {
 	READ_ERROR = 0,
 	MALLOC_ERROR = 2,
+	OPEN_ERROR,
 	INVALID_ARG,
 	ISNT_CUBFILE,
 	MULTIPLE_ID,

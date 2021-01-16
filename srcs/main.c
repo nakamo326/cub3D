@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 12:21:08 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:44:03 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ void	init_game(int argc, char *argv[], t_game *game)
 	int		fd;
 
 	is_valid_args(argc, argv, game);
-	if (!is_cub(argv[1]))
-		config_error(ISNT_CUBFILE);
 	if ((fd = open(argv[1], O_RDONLY)) == ERROR)
-		exit(EXIT_FAILURE);
+		config_error(OPEN_ERROR);
 	read_cub(fd, &game->cub);
 	is_valid_map(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));

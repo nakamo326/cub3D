@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:22:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 10:21:05 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:40:42 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	config_error(int ret)
 		{"Error in read function.\n"},
 		{"Dummy for skip"},
 		{"Error in memory allocation.\n"},
+		{"Error in open function.\n"},
 		{"argument is wrong.\n"},
 		{"file is not cub file.\n"},
 		{"Identifier is duplicated.\n"},

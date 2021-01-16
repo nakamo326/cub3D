@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:01:47 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/14 22:04:39 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:38:28 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 int		is_cub(char *filepath)
 {
-	size_t len;
+	size_t	len;
+	char	*ptr;
 
-	len = ft_strlen(filepath);
-	if (len > 4 || ft_strncmp(&filepath[len - 4], ".cub", 4) == 0)
+	if ((ptr = ft_strrchr(filepath, '/')) == NULL)
+		ptr = filepath;
+	len = ft_strlen(ptr);
+	if (len > 5 && ft_strncmp(&ptr[len - 4], ".cub", 4) == 0)
 		return (SUCCESS);
 	return (0);
 }

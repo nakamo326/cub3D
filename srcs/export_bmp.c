@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:31:14 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/12 13:32:33 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 13:41:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	export_bmp(t_game *game)
 	mlx_do_sync(game->mlx);
 	fd = open("./ss.bmp", O_CREAT | O_WRONLY, S_IRWXU);
 	if (fd == ERROR)
-		exit(EXIT_FAILURE);
+		config_error(OPEN_ERROR);
 	pad = 0;
 	if (game->cub.window_width * 3 % 4 != 0)
 		pad = 4 - game->cub.window_width * 3 % 4;
