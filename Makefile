@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/16 17:33:45 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/16 19:26:01 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/error_handle.c \
 			srcs/init_struct.c \
 			srcs/export_bmp.c \
-			srcs/testcode.c \
 			srcs/open_texture.c \
 			srcs/sort_sprite.c \
 			srcs/cal_shot.c \
