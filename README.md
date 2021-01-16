@@ -5,7 +5,8 @@ It is simple raycasting FPS.
 ## Installation
 
 ```shell
-git submodule init && git submodule update
+git submodule init
+git submodule update
 make bonus
 ```
 
