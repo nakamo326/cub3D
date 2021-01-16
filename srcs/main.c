@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 13:44:03 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 18:00:57 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	init_game(int argc, char *argv[], t_game *game)
 		config_error(OPEN_ERROR);
 	read_cub(fd, &game->cub);
 	is_valid_map(game);
+	check_valid_params(game);
 	game->rays = ft_calloc((size_t)game->cub.window_width, sizeof(t_ray));
 	game->zbuffer = ft_calloc((size_t)game->cub.window_width, sizeof(double));
 	game->dist_plane = (game->cub.window_width / 2) / tan(FOV / 2);
-	check_valid_params(game);
 	open_all_texture(game);
 }
 
@@ -49,6 +49,7 @@ int		main(int argc, char *argv[])
 	init_game(argc, argv, &game);
 	game.view.w = game.cub.window_width;
 	game.view.h = game.cub.window_height;
+	printf("current window size is %d,%d\n", game.cub.window_width, game.cub.window_height);
 	if (game.save_flag == false)
 		game.mlx_win = mlx_new_window(
 			game.mlx, game.view.w, game.view.h, "cub3D");
