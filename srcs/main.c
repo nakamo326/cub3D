@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 13:47:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 18:00:57 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 18:14:43 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		main(int argc, char *argv[])
 	init_game(argc, argv, &game);
 	game.view.w = game.cub.window_width;
 	game.view.h = game.cub.window_height;
-	printf("current window size is %d,%d\n", game.cub.window_width, game.cub.window_height);
 	if (game.save_flag == false)
 		game.mlx_win = mlx_new_window(
 			game.mlx, game.view.w, game.view.h, "cub3D");

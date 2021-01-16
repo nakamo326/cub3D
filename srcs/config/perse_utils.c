@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 21:22:25 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 22:11:19 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 18:14:31 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		check_str_num(char **strs)
 	int i;
 
 	i = 0;
-	while(strs[i] != NULL)
+	while (strs[i] != NULL)
 		i++;
 	return (i);
 }

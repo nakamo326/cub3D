@@ -6,54 +6,54 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 18:08:04 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 18:13:07 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <stdio.h>
-#include <string.h>
-#include <limits.h>
-#include <math.h>
-#include <errno.h>
-#include <stdbool.h>
-#include <X11/keysym.h>
-#include <X11/X.h>
-#include <assert.h>
-#include "../libft/libft.h"
-#include "../minilibx-linux/mlx.h"
-#include "../get_next_line/get_next_line.h"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <stdio.h>
+# include <string.h>
+# include <limits.h>
+# include <math.h>
+# include <errno.h>
+# include <stdbool.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include <assert.h>
+# include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../get_next_line/get_next_line.h"
 
-#ifndef BONUS_F
-# define BONUS_F 0
+# ifndef BONUS_F
+#  define BONUS_F 0
 # endif
 
-#define PI 3.14159265
-#define TWO_PI 6.28318530
-#define MAP_BUF_SIZE 64
-#define TILE_SIZE 64
-#define ERROR -1
-#define SUCCESS 1
-#define INWALL 1
-#define ONFLOOR 0
-#define FOV (60 * PI / 180)
+# define PI 3.14159265
+# define TWO_PI 6.28318530
+# define FOV 1.04719755
+# define MAP_BUF_SIZE 256
+# define TILE_SIZE 64
+# define ERROR -1
+# define SUCCESS 1
+# define INWALL 1
+# define ONFLOOR 0
 
-#define KEY_W 119
-#define KEY_A 97
-#define KEY_S 115
-#define KEY_D 100
-#define KEY_M 109
-#define KEY_UP 65362
-#define KEY_DOWN 65364
-#define KEY_RIGHT 65363
-#define KEY_LEFT 65361
-#define KEY_ESC 65307
-#define KEY_ENTER 65293
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_M 109
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+# define KEY_LEFT 65361
+# define KEY_ESC 65307
+# define KEY_ENTER 65293
 
 typedef struct	s_img {
 	void	*img_ptr;
@@ -214,70 +214,65 @@ typedef enum	e_err_conf
 	MISSING_PARAMS
 }				t_err_conf;
 
-void	init_val(t_game *game);
-void	is_valid_args(int argc, char *argv[], t_game *game);
-void	err_exit(char *errormsg);
-void	config_error(int ret);
-int		quit_game(void *param);
-void	export_bmp(t_game *game);
+void			init_val(t_game *game);
+void			is_valid_args(int argc, char *argv[], t_game *game);
+void			err_exit(char *errormsg);
+void			config_error(int ret);
+int				quit_game(void *param);
+void			export_bmp(t_game *game);
 
-int		read_cub(int fd, t_cub *cub);
-int		input_resolution(char *line, t_cub *cub);
-int		input_path(char *line, int identifier, t_cub *cub);
-int		input_color(char *line, int identifier, t_cub *cub);
-int		is_validmapline(char *line, t_cub *cub);
-int		set_flag(int identifier, t_cub *cub);
-int		perse_map(int fd, t_cub *cub);
-int		is_valid_map(t_game *game);
-bool	store_pl_info(t_game *game, int x, int y);
-void	store_item_info(t_cub *cub, int x, int y);
-void	adjust_mapscale(t_game *game);
-int		is_cub(char *filepath);
-void	check_valid_params(t_game *game);
-void	open_all_texture(t_game *game);
+int				read_cub(int fd, t_cub *cub);
+int				input_resolution(char *line, t_cub *cub);
+int				input_path(char *line, int identifier, t_cub *cub);
+int				input_color(char *line, int identifier, t_cub *cub);
+int				is_validmapline(char *line, t_cub *cub);
+int				set_flag(int identifier, t_cub *cub);
+int				perse_map(int fd, t_cub *cub);
+int				is_valid_map(t_game *game);
+bool			store_pl_info(t_game *game, int x, int y);
+void			store_item_info(t_cub *cub, int x, int y);
+void			adjust_mapscale(t_game *game);
+int				is_cub(char *filepath);
+void			check_valid_params(t_game *game);
+void			open_all_texture(t_game *game);
 
-void	render_minimap(t_game *game);
-void	render_map_object(t_game *game);
-int		keypress_hook(int keycode, t_game *game);
-int		keyrelease_hook(int keycode, t_game *game);
-int		loop(t_game *game);
-void	move_player(t_game *game);
-int		check_collision(t_cub cub, double x, double y);
-void	check_horizontal_intersections(t_ray *ray, t_pl player, t_cub cub);
-void	check_vertical_intersection(t_ray *ray, t_pl player, t_cub cub);
-void	cal_item_info(t_list *items, t_pl player);
-void	is_visible_sprite(t_game *game);
-void	cast_all_rays(t_game *game);
-void	render_projected_wall(t_game *game);
-int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio);
-void	render_floor(t_game *game, int i, int j);
-void	render_sky(t_game *game);
-void	render_sprite(t_game *game);
-void	render_sprite_strip(t_game *game, t_sprite *sp, int i);
-t_tex	choose_sp_tex(t_sprite *sp, t_game *game);
-void	cal_shot(t_game *game);
-void	render_reticle(t_game *game);
-void	render_hitpoint(t_game *game);
-void	put_hp_num(t_game *game);
+void			render_minimap(t_game *game);
+void			render_map_object(t_game *game);
+int				keypress_hook(int keycode, t_game *game);
+int				keyrelease_hook(int keycode, t_game *game);
+int				loop(t_game *game);
+void			move_player(t_game *game);
+int				check_collision(t_cub cub, double x, double y);
+void			check_horizontal_intersections
+						(t_ray *ray, t_pl player, t_cub cub);
+void			check_vertical_intersection(t_ray *ray, t_pl player, t_cub cub);
+void			cal_item_info(t_list *items, t_pl player);
+void			is_visible_sprite(t_game *game);
+void			cast_all_rays(t_game *game);
+void			render_projected_wall(t_game *game);
+int				get_wall_texture
+					(t_game *game, int i, double x_ratio, double y_ratio);
+void			render_floor(t_game *game, int i, int j);
+void			render_sky(t_game *game);
+void			render_sprite(t_game *game);
+void			render_sprite_strip(t_game *game, t_sprite *sp, int i);
+t_tex			choose_sp_tex(t_sprite *sp, t_game *game);
+void			cal_shot(t_game *game);
+void			render_reticle(t_game *game);
+void			render_hitpoint(t_game *game);
+void			put_hp_num(t_game *game);
 
-//utils
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-int		create_trgb(int t, int r, int g, int b);
-int		get_color(char c, int trgb);
-double	normalize_angle(double angle);
-double	get_distance(double x0, double y0, double x1, double y1);
-void	draw_line(t_game *game, t_line line, int color);
-void	sort_items(t_list *items);
-bool	is_angle_in_sprite(double angle, t_sprite *sprite);
-int		add_shadow(int color, t_game *game, double dist);
-bool	is_all_digit(char *str);
-int		check_str_num(char **strs);
-int		free_ret(char **strs, int ret);
-
-//for debug
-void	test_render_gridline(t_img *map, t_cub cub);
-void	test_print_cub(t_cub cub);
-void	test_print_map(t_cub cub);
-void	test_print_items(t_game game);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+int				create_trgb(int t, int r, int g, int b);
+int				get_color(char c, int trgb);
+double			normalize_angle(double angle);
+double			get_distance(double x0, double y0, double x1, double y1);
+void			draw_line(t_game *game, t_line line, int color);
+void			sort_items(t_list *items);
+bool			is_angle_in_sprite(double angle, t_sprite *sprite);
+int				add_shadow(int color, t_game *game, double dist);
+bool			is_all_digit(char *str);
+int				check_str_num(char **strs);
+int				free_ret(char **strs, int ret);
 
 #endif

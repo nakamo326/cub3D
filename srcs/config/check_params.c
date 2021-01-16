@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 11:01:47 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 18:01:46 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 18:14:55 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	is_valid_resolution(t_game *game)
 	int	height;
 
 	mlx_get_screen_size(game->mlx, &width, &height);
-	printf("Max window size is %d,%d\n", width, height);
 	if (game->cub.window_width > width)
 		game->cub.window_width = width;
 	if (game->cub.window_height > height)
