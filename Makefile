@@ -6,7 +6,7 @@
 #    By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 09:09:02 by ynakamot          #+#    #+#              #
-#    Updated: 2021/01/15 21:25:54 by ynakamot         ###   ########.fr        #
+#    Updated: 2021/01/16 17:33:45 by ynakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,10 @@ SRCFILE =	get_next_line/get_next_line.c \
 			srcs/open_texture.c \
 			srcs/sort_sprite.c \
 			srcs/cal_shot.c \
-			srcs/config/init_config.c \
+			srcs/config/read_config.c \
 			srcs/config/perse_params.c \
 			srcs/config/perse_map.c \
+			srcs/config/map_validation.c \
 			srcs/config/store_object_info.c \
 			srcs/config/check_params.c \
 			srcs/config/adjust_map_scale.c \
@@ -60,10 +61,13 @@ all: $(NAME)
 libft:
 	$(MAKE) bonus -C ./libft
 
-$(NAME): libft $(OBJECTS)
+minilibx:
+	$(MAKE) do_configure -C ./minilibx-linux
+
+$(NAME): libft minilibx $(OBJECTS)
 	gcc -g $(SRCFILE) -I./includes -L./libft -L./minilibx-linux -lft -lmlx -lXext -lX11 -lm -o cub3D
 
-bonus: libft $(OBJECTS)
+bonus: libft minilibx $(OBJECTS)
 	gcc -g $(SRCFILE) -I./includes -L./libft -L./minilibx-linux -lft -lmlx -lXext -lX11 -lm -o cub3D -DBONUS_F=1
 
 run: all
@@ -74,12 +78,14 @@ run: all
 
 clean:
 	$(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./minilibx-linux
 	$(RM) $(OBJECTS)
 
 fclean:
 	$(MAKE) fclean -C ./libft
+	$(MAKE) clean -C ./minilibx-linux
 	$(RM) $(OBJECTS) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft minilibx

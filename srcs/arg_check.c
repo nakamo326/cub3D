@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:12:49 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 13:40:02 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 17:28:43 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	is_valid_args(int argc, char *argv[], t_game *game)
 		config_error(INVALID_ARG);
 	if (!is_cub(argv[1]))
 		config_error(ISNT_CUBFILE);
-	if (argc == 3 && !ft_strncmp(argv[2], "--save", 7))
+	if (argc == 3 && (ft_strncmp(argv[2], "--save", 7) == 0))
 		game->save_flag = true;
+	if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
+		config_error(INVALID_ARG);
 	if ((fd = open(argv[1], O_RDONLY)) == ERROR)
 		config_error(OPEN_ERROR);
 }
