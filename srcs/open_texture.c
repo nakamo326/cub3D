@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:04:08 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 11:09:29 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 20:00:31 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	open_ani_sp(t_game *game, t_tex tex_ar[])
 	open_tex(game, &tex_ar[0], "./texture/ani_sprite/oilbarrel0.xpm");
 	open_tex(game, &tex_ar[1], "./texture/ani_sprite/oilbarrel1.xpm");
 	open_tex(game, &tex_ar[2], "./texture/ani_sprite/oilbarrel2.xpm");
-	open_tex(game, &tex_ar[3], "./texture/ani_sprite/oilbarrel_halfup.xpm");
-	open_tex(game, &tex_ar[4], "./texture/ani_sprite/oilbarrel_halfdown.xpm");
 }
 
 void	open_tex_lot(t_game *game, t_tex tex_ar[])

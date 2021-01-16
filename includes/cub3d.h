@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 18:13:07 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/16 20:00:55 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ typedef struct	s_game
 	t_tex	tex_sp;
 	t_tex	tex_sky;
 	t_tex	tex_floor;
-	t_tex	tex_ani_sp[5];
+	t_tex	tex_ani_sp[3];
 	t_tex	tex_ani_lot[3];
 	int		frame;
 }				t_game;
