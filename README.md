@@ -1,8 +1,8 @@
-#cub3D
+# cub3D
 
 It is simple raycasting FPS.
 
-##Installation
+## Installation
 
 ```shell
 git submodule init && git submodule update
