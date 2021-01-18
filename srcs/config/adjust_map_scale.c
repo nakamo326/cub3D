@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 21:27:02 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/11 22:43:26 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/18 13:12:55 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	adjust_mapscale(t_game *game)
 		game->cub.map_scale -= 0.1;
 		map_height = game->cub.map_maxrow * TILE_SIZE * game->cub.map_scale;
 	}
+	if (game->cub.map_scale < 0.1)
+		game->cub.map_scale = -1;
 }

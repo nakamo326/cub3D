@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 15:06:12 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 21:07:10 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/18 13:12:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int		loop(t_game *game)
 	render_sprite(game);
 	if (BONUS_F == 1)
 	{
-		render_minimap(game);
+		if (game->cub.map_scale != -1)
+			render_minimap(game);
 		render_reticle(game);
 		render_hitpoint(game);
 		update_frame(game);
