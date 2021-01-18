@@ -1,6 +1,6 @@
 # cub3D
 
-It is simple raycasting FPS.
+Simple raycasting FPS.
 
 ## Installation
 
@@ -10,8 +10,7 @@ git submodule update
 make bonus
 ```
 
-Lottery pictures by irastoya.
-
+Lottery pictures by irasutoya.
 
 https://www.irasutoya.com/
 
