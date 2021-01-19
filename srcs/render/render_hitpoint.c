@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:40:46 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 18:14:16 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:16:10 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void	put_hp_num(t_game *game)
 	mlx_string_put(game->mlx, game->mlx_win,
 				game->view.w * 3 / 100, game->view.h * 93 / 100,
 				0x00B007, str);
+	free(str);
 }
