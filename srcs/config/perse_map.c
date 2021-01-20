@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 22:40:17 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 17:34:23 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/20 10:07:05 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		is_validmapline(char *line, t_cub *cub)
 		if (!ft_strchr(mapchar, line[i++]))
 			return (INVALID_FORMAT);
 	i = cub->map_maxrow;
+	if (i == MAP_BUF_SIZE)
+		return (MAP_TOO_BIG);
 	if (!(cub->map[i] = ft_strdup(line)))
 		return (MALLOC_ERROR);
 	cub->map[i + 1] = NULL;

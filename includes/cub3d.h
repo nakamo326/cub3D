@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/16 20:00:55 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/20 10:08:22 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define PI 3.14159265
 # define TWO_PI 6.28318530
 # define FOV 1.04719755
-# define MAP_BUF_SIZE 256
+# define MAP_BUF_SIZE 64
 # define TILE_SIZE 64
 # define ERROR -1
 # define SUCCESS 1
@@ -208,6 +208,7 @@ typedef enum	e_err_conf
 	INVALID_FILEPATH,
 	INVALID_COLOR,
 	NO_MAP_INFILE,
+	MAP_TOO_BIG,
 	MULTIPLE_PLAYER,
 	NO_PLAYER,
 	MAP_ISNT_CLOSED,
