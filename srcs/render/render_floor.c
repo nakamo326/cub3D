@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:34:25 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 11:19:31 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:26:34 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	render_floor(t_game *game, int i, int j)
 										fmod(y, TILE_SIZE) / TILE_SIZE);
 		if (BONUS_F == 1)
 			my_mlx_pixel_put(&game->view, i, j,
-				add_shadow(color, game, correct_dist));
+				add_shadow(color, correct_dist));
 		else
 			my_mlx_pixel_put(&game->view, i, j, color);
 		j++;

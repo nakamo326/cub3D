@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 11:01:45 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/20 10:08:22 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:25:26 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,7 +271,7 @@ double			get_distance(double x0, double y0, double x1, double y1);
 void			draw_line(t_game *game, t_line line, int color);
 void			sort_items(t_list *items);
 bool			is_angle_in_sprite(double angle, t_sprite *sprite);
-int				add_shadow(int color, t_game *game, double dist);
+int				add_shadow(int color, double dist);
 bool			is_all_digit(char *str);
 int				check_str_num(char **strs);
 int				free_ret(char **strs, int ret);

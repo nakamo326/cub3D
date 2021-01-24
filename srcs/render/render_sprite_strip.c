@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:10:29 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/15 12:22:04 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/24 12:24:21 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		get_sprite_texture(
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
 	if (BONUS_F == 1)
-		return (add_shadow(color, game, sp->corr_dist));
+		return (add_shadow(color, sp->corr_dist));
 	return (color);
 }
 
