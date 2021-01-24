@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 16:10:29 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/24 12:24:21 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:48:51 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		get_sprite_texture(
 		tex = choose_sp_tex(sp, game);
 	else
 		tex = game->tex_sp;
-	x = round(x_ratio * tex.width);
-	y = round(y_ratio * tex.height);
+	x = x_ratio * tex.width;
+	y = y_ratio * tex.height;
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
 	if (BONUS_F == 1)

@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 16:43:32 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/24 13:12:45 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:49:32 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_player(t_game *game)
 	game->player.walk_direction = 0;
 	game->player.sidewalk_direction = 0;
 	game->player.rotation_angle = 0;
-	game->player.move_speed = 2.0;
+	game->player.move_speed = 3.0;
 	game->player.turn_speed = 2 * PI / 180;
 	game->player.life = 100;
 }

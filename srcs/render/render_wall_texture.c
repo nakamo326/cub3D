@@ -6,7 +6,7 @@
 /*   By: ynakamot <ynakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 13:07:56 by ynakamot          #+#    #+#             */
-/*   Updated: 2021/01/24 13:27:07 by ynakamot         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:47:22 by ynakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		get_wall_texture(t_game *game, int i, double x_ratio, double y_ratio)
 	t_tex	tex;
 
 	tex = choose_texture(game->rays[i], game);
-	x = round(x_ratio * tex.width);
-	y = round(y_ratio * tex.height);
+	x = x_ratio * tex.width;
+	y = y_ratio * tex.height;
 	addr = (char *)tex.addr;
 	color = *(int *)(addr + y * tex.len + x * (tex.bpp / 8));
 	if (BONUS_F == 1)
