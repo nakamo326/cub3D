@@ -8,7 +8,14 @@ Simple raycasting FPS.
 git submodule init
 git submodule update
 make bonus
+./cub3D bonus.cub
 ```
+
+## How to play
+
+WASD ... move
+Right arrow, left arrow ... rotate
+Enter ... shot
 
 Lottery pictures by irasutoya.
 
