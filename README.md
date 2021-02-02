@@ -1,5 +1,7 @@
 # cub3D
 
+![ss](./ss.png)
+
 Simple raycasting FPS.
 
 ## Installation
@@ -14,8 +16,11 @@ make bonus
 ## How to play
 
 WASD ... move
+
 Right arrow, left arrow ... rotate
+
 Enter ... shot
+
 
 Lottery pictures by irasutoya.
 
